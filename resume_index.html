@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>[求职]sinksmell-Go开发工程师</title>
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/typo.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <script>
+        function loading() {
+            document.getElementsByClassName('avatar')[0].style.display = 'block';
+            document.getElementsByClassName('loading')[0].style.display = 'none';
+        }
+    </script>
+</head>
+
+<body>
+
+<header class="header"></header>
+
+<article class="container">
+    <section class="side" id="side">
+
+        <!-- 左栏固定开关，记得及时删除这段代码 Start-->
+        <label class="switch" style="display: none;" onchange="switchFixed()">
+            <script type="text/javaScript">
+                function switchFixed() {
+                    var value = document.getElementById('side').style.position === 'fixed' ? 'absolute' : 'fixed';
+                    document.getElementById('side').style.position = value;
+                }
+            </script>
+            <input id="cb" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <style>
+            @media (min-width: 414px) {
+                .switch {
+                    position: relative;
+                    display: inline-block !important;
+                    width: 60px;
+                    height: 34px;
+                }
+
+                .switch input {
+                    display: none;
+                }
+
+                .slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: #ccc;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+
+                .slider:before {
+                    position: absolute;
+                    content: "";
+                    height: 26px;
+                    width: 26px;
+                    left: 4px;
+                    bottom: 4px;
+                    background-color: white;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+
+                input:checked + .slider {
+                    background-color: #1abc9c;
+                }
+
+                input:focus + .slider {
+                    box-shadow: 0 0 1px #1abc9c;
+                }
+
+                input:checked + .slider:before {
+                    -webkit-transform: translateX(26px);
+                    -ms-transform: translateX(26px);
+                    transform: translateX(26px);
+                }
+
+                .slider.round {
+                    border-radius: 34px;
+                }
+
+                .slider.round:before {
+                    border-radius: 50%;
+                }
+            }
+        </style>
+        <!-- 左侧固定开关，记得及时删除这段代码 End-->
+
+        <!-- 个人肖像 -->
+        <section class="me">
+            <section class="portrait">
+                <div class="loading">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <!-- 头像照片 -->
+                <img class="avatar" src="assets/images/card.jpg" onload="loading()">
+            </section>
+
+            <h1 class="name"><strong>求职方向</strong></h1>
+            <h4 class="info-job"><strong>Go开发工程师[后端、平台]</strong> </h4>
+
+        </section>
+
+        <!-- 基本信息 -->
+        <section class="profile info-unit">
+            <h2>
+                <i class="fa fa-user" aria-hidden="true"></i>基本信息</h2>
+            <hr/>
+            <ul>
+                <li>
+                    <label>个人信息</label>
+                    <span>sinksmell / 男 / 22岁</span>
+                </li>
+                <li>
+                    <label>英语水平</label>
+                    <span>CET-6</span>
+                </li>
+
+            </ul>
+        </section>
+
+        <!-- 联系方式 -->
+        <section class="contact info-unit">
+            <h2>
+                <i class="fa fa-phone" aria-hidden="true"></i>联系方式</h2>
+            <hr/>
+            <ul>
+                <li>
+                    <label>微信</label>
+                    <a  target="_blank">destory97</a>
+                </li>
+                <li>
+                    <label>邮箱</label>
+                    <a href="mailto:sinksmell@163.com" target="_blank">sinksmell@163.com</a>
+                </li>
+                <li>
+                    <label>个人博客</label>
+                    <a href="http://47.101.222.133" target="_blank">http://47.101.222.133</a>
+                </li>
+                <li>
+                    <label>Github</label>
+                    <a href="https://github.com/sinksmell" target="_blank">github.com/sinksmell</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 技术栈 -->
+        <div class="stack info-unit">
+            <h2><i class="fa fa-code" aria-hidden="true"></i>技术栈</h2>
+            <hr/>
+            <ul>
+                <li>
+                    <label>前端</label>
+                    <span>Vue 、Bootstrap、Ajax</span>
+                </li>
+                <li>
+                    <label>后端</label>
+                    <span>Go 、Etcd、K8s 、Docker</span>
+                </li>
+                <li>
+                    <label>工具</label>
+                    <span>Git、Markdown、Tcpdump</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="main">
+
+        <!-- 教育经历 -->
+        <section class="edu info-unit">
+            <h2>
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>教育经历</h2>
+            <hr/>
+            <ul>
+                <li>
+                    <h3>
+                        <span>安徽工业大学 - 软件工程专业（本科）</span>
+                        <time>2016.9-2020.7</time>
+                    </h3>
+                    <p>专业排名
+                        <mark>5%-10%</mark>
+                        期间获得校级奖学金2次，校友会奖学金2次。
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 工作经历 -->
+
+        <section class="project info-unit">
+            <h2>
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>工作经历</h2>
+            <hr/>
+            <ul>
+                <li>
+                    <h3>
+                        <span>[实习]Caicloud</span>
+                        <time>2019.7-Now</time>
+                    </h3>
+                    <ul class="info-content">
+                        <!--<li>技术栈：Vue+ajax+D2Admin+Beego RestFul api+Mysql+Nginx</li>-->
+                        <li>
+                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            [公司]
+                            <mark>Caicloud(才云科技)</mark>: 是一家基于容器技术和人工智能，引领新一代智能云计算平台和AI服务的公司。
+                            同时也是 CNCF 的成员，Kubeflow 重要贡献者。主要产品是企业级容器云平台 Caicloud Compass 和人工智能 云平台 Caicloud Clever。
+                            <br/>
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            [部门]基础设施部
+                            <br/>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            [贡献]作为 infra 组中的 net 小组成员，学习网络与 k8s 相关知识，GitHub 工作流，敏捷开发;完成导师分配的小任务。
+                            参与 LoadBalancer 项目的实现与测试，负责 LB 中修改 HTTP/HTTPS 端口的方案验证，设计，编码，联调等工作。
+                            协助组⻓完成网络相关基础设施的建立。
+                            <br/>
+
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </section>
+        <!-- 项目经验 -->
+        <section class="project info-unit">
+            <h2>
+                <i class="fa fa-terminal" aria-hidden="true"></i>个人项目</h2>
+            <hr/>
+            <ul>
+                <li>
+                    <h3>
+                        <span>[项目1]LanBlog 个人博客系统</span>
+                        <span class="link">
+                                <a href="#" target="_blank">已上线</a>
+                            </span>
+                        <time>2018.12-2019.2</time>
+                    </h3>
+                    <ul class="info-content">
+                        <li>技术栈：Vue + Axios + Beego RESTFul api + MySQL + Nginx</li>
+                        <li>
+                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            [目标]实现一个简洁美观，响应速度快的个人写作平台，提供文章、标签、分类等资源管理，后台监控服务器信息
+                            <br/>
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            [团队]个人
+                            <br/>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            [贡献]完成从
+                            <mark>“分析-设计-实现-文档”</mark>
+                            等工作，项目前后端分离，利用 Nginx 反向代理功能解决跨域问题；博客前端界面可以多条件进行文章检索，使用 axios 进行异步刷新，
+                            文章阅读时自动渲染 MarkDown，实现代码高亮；后台登录使用 token 进行验证，登录后可以对服务器运行情况进行监控，对博客资源进行管理
+                            <br/>
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                            [效果]源码开源托管在 GitHub 上获得120+star、40+fork，收入 D2Projects 项目，博客部署在阿里云服务器上运行良好
+                            项目地址: https://github.com/sinksmell/LanBlog
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>
+                        <span>[项目2]分布式定时任务调度器</span>
+                        <span class="link">
+                                <a href="#" target="_blank">Demo</a>
+                            </span>
+                        <time>2019.1-2019.3</time>
+                    </h3>
+                    <ul class="info-content">
+                        <li>技术栈：Vue + Go + Etcd + MongoDB + K8s</li>
+                        <li>
+                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            [目标]解决 Linux 下 crontab 定时调度任务发布复杂，状态跟踪难，调度精度不够等痛点
+                            <br/>
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            [团队]个人
+                            <br/>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            [贡献]采用 Master-Worker 分布式架构；基于
+                            <mark>etcd</mark>
+                            实现分布式锁，服务注册与发现，任务同步等功能，解决单点故障问题；充分利用
+                            <mark>channel</mark>和
+                            <mark>goroutine</mark>
+                            实现秒级任务调度(linux下crontab只支持分钟级别)；
+                            追踪任务执行状态，采集任务输出和任务执行日志存储到<mark>mongoDB</mark>
+                            <br/>
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                            [效果]提供可视化Web界面来配置任务，相比 Linux 下 crontab 更方便且调度精确度提高10倍以上；任务数据高效存储不易丢失；
+                            实现 Worker 节点注册与发现，任务同步；Master 查看健康节点，管理任务，查看任务日志；部署在k8s上可以轻松对 Master 和 Worker 进行伸缩。
+                            项目地址: https://github.com/sinksmell/bee-crontab
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </section>
+
+        <!-- 自我评价 -->
+        <section class="work info-unit">
+            <h2>
+                <i class="fa fa-pencil" aria-hidden="true"></i>自我评价</h2>
+            <hr/>
+            <p>热爱编程，乐于学习新技术，拥抱开源；平时喜欢去GitHub，掘金，开源中国等网站了解最新行业动态；
+                希望未来能成为一名系统架构师。
+
+            </p>
+        </section>
+    </section>
+</article>
+
+
+<footer class="footer">
+    <p> 我心里那一座天下，你坐镇笑靥如桃花 </p>
+</footer>
+
+<!-- 侧栏 -->
+<aside>
+    <ul>
+        <li>
+            <a href="https://github.com/sinksmell/sinksmell.github.io" target="_blank">源代码</a>
+        </li>
+        <li>
+            <a href="http://47.101.222.133" target="_blank">Blog</a>
+        </li>
+    </ul>
+</aside>
+
+<script src="./assets/js/index.js"></script>
+</body>
+
+</html>
