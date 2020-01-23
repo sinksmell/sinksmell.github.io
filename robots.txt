@@ -63,4 +63,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://sinksmell.github.io/sitemap.xml

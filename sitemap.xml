@@ -2,19 +2,9 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://example.com/</loc>
+      <loc>https://sinksmell.github.io/</loc>
       
-      <lastmod>2020-01-23T13:25:19+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://example.com/2020/my-first-post/</loc>
-      
-      <lastmod>2020-01-23T13:25:19+08:00</lastmod>
+      <lastmod>2020-01-23T14:45:50+08:00</lastmod>
       
       
       
@@ -22,17 +12,9 @@
     </url>
   
     <url>
-      <loc>https://example.com/posts/</loc>
+      <loc>https://sinksmell.github.io/2020/my-first-post/</loc>
       
-      <lastmod>2020-01-23T13:25:19+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://example.com/categories/</loc>
+      <lastmod>2020-01-23T14:45:50+08:00</lastmod>
       
       
       
@@ -40,7 +22,25 @@
     </url>
   
     <url>
-      <loc>https://example.com/tags/</loc>
+      <loc>https://sinksmell.github.io/posts/</loc>
+      
+      <lastmod>2020-01-23T14:45:50+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://sinksmell.github.io/categories/</loc>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://sinksmell.github.io/tags/</loc>
       
       
       

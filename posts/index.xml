@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on LeaveIt</title>
-    <link>https://example.com/posts/</link>
+    <link>https://sinksmell.github.io/posts/</link>
     <description>Recent content in Posts on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jan 2020 13:25:19 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jan 2020 14:45:50 +0800</lastBuildDate>
     
-	<atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sinksmell.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My First Post</title>
-      <link>https://example.com/2020/my-first-post/</link>
-      <pubDate>Thu, 23 Jan 2020 13:25:19 +0800</pubDate>
+      <link>https://sinksmell.github.io/2020/my-first-post/</link>
+      <pubDate>Thu, 23 Jan 2020 14:45:50 +0800</pubDate>
       
-      <guid>https://example.com/2020/my-first-post/</guid>
-      <description>Hello , hugo </description>
+      <guid>https://sinksmell.github.io/2020/my-first-post/</guid>
+      <description>hugo blog new </description>
     </item>
     
   </channel>
