@@ -26,7 +26,8 @@
       <pubDate>Sun, 26 Jan 2020 10:10:36 +0800</pubDate>
       
       <guid>https://sinksmell.github.io/2020/test/</guid>
-      <description>test mock ci </description>
+      <description>test mock ci  hello
+ </description>
     </item>
     
     <item>
@@ -35,7 +36,8 @@
       <pubDate>Sun, 26 Jan 2020 10:03:50 +0800</pubDate>
       
       <guid>https://sinksmell.github.io/2020/ci/</guid>
-      <description>Test ci </description>
+      <description>Test ci  hello
+ </description>
     </item>
     
   </channel>
