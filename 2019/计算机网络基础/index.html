@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="sinksmell">
+    
+    
+    
+    
+    <link rel="next" href="https://sinksmell.github.io/2020/test/" />
+    <link rel="canonical" href="https://sinksmell.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+         
+         
+             计算机网络基础 | SinkSmell
+         
+    </title>
+    <meta name="title" content="计算机网络基础 | SinkSmell">
+      
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{   "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sinksmell.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "计算机网络基础",
+    "headline" : "计算机网络基础",
+    "description" : "学习计算机网络知识可以更好地理解应用直接的网络通信",
+    "inLanguage" : "en-us",
+    "author" : "sinksmell",
+    "creator" : "sinksmell",
+    "publisher": "sinksmell",
+    "accountablePerson" : "sinksmell",
+    "copyrightHolder" : "sinksmell",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-14 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2019-10-14 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sinksmell.github.io\/2019\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80\/",
+    "wordCount" : "169",
+    "keywords" : [ "network","tcp","http", "SinkSmell"]
+}
+</script>
+
+  </head>
+  
+    
+  
+  
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    
+        <div class="top-scroll-bar"></div>
+    
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <div class="top-scroll-bar"></div>
+    
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+        
+        <div id="landlord">
+          <div class="message" style="opacity:0"></div>
+          <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+          <div class="hide-button">隐藏</div>
+       </div>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">计算机网络基础</h1>
+        <div class="post-meta">
+                发表于 
+                <span class="post-time">
+                    <time datetime=2019-10-14 itemprop="datePublished">October 14, 2019</time>
+                </span>
+                | 分类于
+                
+                <span class="post-category">
+                        <a href="https://sinksmell.github.io/categories/network/"> Network </a>
+                        <a href="https://sinksmell.github.io/categories/tcp/"> TCP </a>
+                        <a href="https://sinksmell.github.io/categories/http/"> HTTP </a>
+                        
+                </span>
+                <span class="post-word-count">（169 Words，阅读时间约 0 Min）</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="计算机网络基础知识">计算机网络基础知识</h3>
+<h4 id="tcpip-四层结构">TCP/IP 四层结构</h4>
+<p><img src="https://i.loli.net/2019/03/19/5c90c93369306.png" alt="">
+ps: 上图中是图解HTTP中的划分</p>
+<ul>
+<li>应用层</li>
+</ul>
+<blockquote>
+<p>决定了向用户提供应用服务时通信的活动</p>
+</blockquote>
+<ul>
+<li>传输层</li>
+</ul>
+<blockquote>
+<p>提供处于网络连接中的两台计算机直接的数据传输</p>
+</blockquote>
+<ul>
+<li>网络层 或 网际层</li>
+</ul>
+<blockquote>
+<p>处理网络上流动的数据包</p>
+</blockquote>
+<ul>
+<li>网络接口层 对应 OSI 中的 链路层+物理层</li>
+</ul>
+<blockquote>
+<p>处理连接网络的硬件部分</p>
+</blockquote>
+<h4 id="应用层">应用层</h4>
+<h5 id="http协议">HTTP协议</h5>
+<ul>
+<li>HTTP请求报文格式</li>
+</ul>
+<p><img src="https://i.loli.net/2019/03/19/5c90c93131e1d.png" alt=""></p>
+<ul>
+<li>HTTP响应报文格式</li>
+</ul>
+<p><img src="https://i.loli.net/2019/03/19/5c90c93268f14.png" alt=""></p>
+<p><strong>GET请求与POST请求的区别?</strong></p>
+<blockquote>
+<ul>
+<li>GET请求参数出现在url中，POST请求数据写入报文主体</li>
+<li>GET请求封装在一个TCP报文中发出，POST 被浏览器拆分，先发首部，再发数据</li>
+<li>GET请求时幂等的，POST不是</li>
+</ul>
+</blockquote>
+<h4 id="传输层">传输层</h4>
+<h5 id="tcp">TCP</h5>
+<ul>
+<li>TCP 连接的建立
+<img src="https://i.loli.net/2019/03/19/5c90c934694ab.png" alt=""></li>
+</ul>
+<p>三次握手过程(三握手报文)及目的</p>
+<blockquote>
+<p>目的：建立可靠的通信信道,简单地说，就是通信双方都确认自己与对方的接收与发送都是正常的。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">方向</th>
+<th align="center">动作</th>
+<th align="center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">Client -&gt; Sever</td>
+<td align="center">发送带有<em>SYN</em>标志的数据包</td>
+<td align="center">Server确定自己接收正常；对方发送正常</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Server -&gt; Client</td>
+<td align="center">发送带有<em>SYN</em>和<em>ACK</em>标志的数据包</td>
+<td align="center">Client确定自己发送正常,接收正常；对方发送正常</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Client -&gt; Server</td>
+<td align="center">发送带有<em>ACK</em>标志的数据包</td>
+<td align="center">Server确认自己发送正常,接收正常；对方发送正常,接收正常</td>
+</tr>
+</tbody>
+</table>
+<p><strong>为什么要进行3次握手?</strong></p>
+<blockquote>
+<ul>
+<li>防止之前的请求建立连接报文滞留网络中，当报文到达Server端是2，对报文确认，此时会打开2条连接。第三次握手的存在可以使客户端忽略服务端对滞留报文的确认。</li>
+<li>通过3次握手，双方才能初始化通信时的序号seq和ack，即ISN（Intial Sequence Number）和 MSS</li>
+<li>通过次握手，通信双方才能知道自己和对方 发送和接收功能都正常</li>
+</ul>
+</blockquote>
+<p><strong>Question:有没有其它握手方案?</strong></p>
+<blockquote>
+<ul>
+<li>可以将第二次握手 Server -&gt; Client 发送<em>SYN</em>,<em>ACK</em> 报文拆分成两次 一次发送 <em>SYN</em> 一次发送<em>ACK</em></li>
+<li>三次握手已经是最佳方案,握手次数不能比3少,可以比3多,但握手次数多消耗资源也更多</li>
+</ul>
+</blockquote>
+<ul>
+<li>TCP 连接的释放
+<img src="https://i.loli.net/2019/03/19/5c90c93569f64.png" alt=""></li>
+</ul>
+<p>四次挥手</p>
+<blockquote>
+<p>对可靠的通信信道进行关闭</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">方向</th>
+<th align="center">动作</th>
+<th align="center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">Client -&gt; Server</td>
+<td align="center">发送带有<em>FIN</em>的数据包</td>
+<td align="center">Client提出关闭请求,进入只接收不发送状态</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Server -&gt; Client</td>
+<td align="center">发送带有<em>ACK</em>的数据包</td>
+<td align="center">Server回应收到关闭请求</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Server -&gt; Client</td>
+<td align="center">发送带有<em>FIN</em>的数据包</td>
+<td align="center">Server提出关闭请求</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Client -&gt; Server</td>
+<td align="center">发送带有<em>ACK</em>的数据包</td>
+<td align="center">Client发送最后一个<em>ACK</em> 通道关闭</td>
+</tr>
+</tbody>
+</table>
+<p><strong>为什么要进行四次挥手?</strong></p>
+<blockquote>
+<ul>
+<li>TCP连接是全双工的，双方都要主动关闭连接和确认对方关闭</li>
+<li>如果两边同时断开连接，就会进入CLOSING状态，然后到达TIME_WAIT状态，双方都会浪费2MSL时间</li>
+<li>ps: RFC793 3.5节中提到，如果Server收到FIN后没有数据要发送了，那么就回复一个FIN，ACK 四次握手就变成了3次，(多次出现[ F.]、[F.]、[.]三个序列，即3次挥手）
+<img src="https://i.loli.net/2019/08/15/H4lByPZmhUANJpW.png" alt=""></li>
+</ul>
+</blockquote>
+<p><strong>TIME-WAIT 为何等待2MSL？</strong></p>
+<blockquote>
+<p>ps: MSL 为最长报文寿命</p>
+<ul>
+<li>
+<ol>
+<li>保证最后一个ACK被服务端收到,没收到可以再发送,并重置2MSL定时器</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>保证本地端口号在2MSL时间内<em>不会</em>被再次使用,避免新连接中出现旧连接的请求报文</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<p><strong>如何避免TIME_WAIT</strong></p>
+<blockquote>
+<ul>
+<li>调整Linux内核参数</li>
+</ul>
+<blockquote>
+<ul>
+<li>修改/etc/sysctl.conf 设置 net.ipv4.tcp_tw_reuse = 1 复用TIME_WAIT状态下的socket</li>
+<li>net.ipv4.tcp_tw_recycle = 1 加速TIME_WAIT状态下的socket回收</li>
+</ul>
+</blockquote>
+<ul>
+<li>设置Nginx等服务器</li>
+</ul>
+<blockquote>
+<ul>
+<li>设置keepalive 属性 让服务器不要主动关闭连接，除非连接超时</li>
+</ul>
+</blockquote>
+<ul>
+<li>使用RST报文来关闭连接</li>
+</ul>
+<blockquote>
+<ul>
+<li>RST表示复位，用来异常的关闭连接，在TCP的设计中它是不可或缺的。就像上面说的一样，发送RST包关闭连接时，不必等缓冲区的包都发出去，直接就丢弃缓存区的包发送RST包。而接收端收到RST包后，也不必发送ACK包来确认。</li>
+</ul>
+</blockquote>
+<ul>
+<li>设置socket属性：SO_REUSEADDR</li>
+</ul>
+<blockquote>
+<ul>
+<li>这个套接字选项通知内核，如果端口忙，但TCP状态位于 TIME_WAIT ，可以重用 端口。如果端口忙，而TCP状态位于其他状态，重用端口时依旧得到一个错误信息， 指明&quot;地址已经使用中&rdquo;。如果你的服务程序停止后想立即重启，而新套接字依旧 使用同一端口，此时 SO_REUSEADDR 选项非常有用。必须意识到，此时任何非期 望数据到达，都可能导致服务程序反应混乱，不过这只是一种可能，事实上很不 可能。</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><strong>CLOSE-WAIT 存在意义?</strong></p>
+<blockquote>
+<p>通知上层应用,通道即将关闭，尽快把剩余的数据发出，上层应用将剩余数据发送完成后，确认关闭后，Server才发出 <em>FIN</em> 报文</p>
+</blockquote>
+<p><strong>TCP提供可靠传输服务的原因</strong></p>
+<ul>
+<li><strong>可靠传输的工作原理</strong></li>
+</ul>
+<p>1.停止等待协议</p>
+<blockquote>
+<p>每发送完一个分组就停下来,等待对方的确认,收到确认后再发送下一个分组</p>
+</blockquote>
+<p>2.连续ARQ协议</p>
+<blockquote>
+<p>发送方每收到一个确认就把发送窗口向前移动一个分组的位置</p>
+</blockquote>
+<ul>
+<li><strong>可靠传输的实现</strong></li>
+</ul>
+<p>1.<code>滑动窗口协议</code></p>
+<p>2.超时重传机制</p>
+<h5 id="udp">UDP</h5>
+<h4 id="网络层">网络层</h4>
+<h4 id="链路层">链路层</h4>
+
+    </div>
+
+    <div class="post-copyright">
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/network/">
+                    #network</a></span>
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/tcp/">
+                    #tcp</a></span>
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/http/">
+                    #http</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sinksmell.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://sinksmell.github.io/2020/test/" class="next" rel="next" title="Test">Test&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sinksmell.github.io">sinksmell</a> | </span> 
+         
+
+         
+		  <span>
+           Powered by
+           <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a>
+           <span> &  </span>
+           <a href="https://github.com/cyseria/LeaveIt" target="_blank" rel="external nofollow">LeaveIt</a>
+         </span> 
+      </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var message_Path =  null 
+    var home_Path =  null   
+</script>
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+
+
+
+
+     </div>
+  
+  </body>
+</html>

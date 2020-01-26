@@ -6,9 +6,37 @@
     <description>Recent content in Tags on SinkSmell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sinksmell.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>http</title>
+      <link>https://sinksmell.github.io/tags/http/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/tags/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>https://sinksmell.github.io/tags/network/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tcp</title>
+      <link>https://sinksmell.github.io/tags/tcp/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/tags/tcp/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

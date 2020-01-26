@@ -6,9 +6,37 @@
     <description>Recent content in Categories on SinkSmell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sinksmell.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTTP</title>
+      <link>https://sinksmell.github.io/categories/http/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/categories/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network</title>
+      <link>https://sinksmell.github.io/categories/network/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/categories/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TCP</title>
+      <link>https://sinksmell.github.io/categories/tcp/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/categories/tcp/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
