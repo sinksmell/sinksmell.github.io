@@ -1,6 +1,6 @@
 baseURL = "https://sinksmell.github.io"
 languageCode = "en-us"
-title = "SinkSmell"
+title = "SinkSmell | Blog"
 theme = "LeaveIt"
 
 paginate = 12
@@ -20,7 +20,7 @@ preserveTaxonomyNames = true
 
 [menu]
   [[menu.main]]
-    name = "Blog"
+    name = "Archive"
     url = "/posts/"
     weight = 1
 
@@ -45,12 +45,12 @@ preserveTaxonomyNames = true
     avatar = "/images/me/avatar.jpeg"           # Author's avatar
     subtitle = "我会更好，因为我没有停止"         # Subtitle
     cdn_url = ""           # Base CDN URL
-    home_mode = "" # post or other
+    home_mode = "post" # post or other
 
     google_verification = ""
    
     description = "" # site description
-    keywords = "" # site keywords
+    keywords = "go,golang,sinksmell" # site keywords
 
     beian = ""
     baiduAnalytics = ""
@@ -59,7 +59,6 @@ preserveTaxonomyNames = true
 
 [params.social]
     GitHub = "https://github.com/sinksmell"
-    Twitter = "xxoo"
     Email   = "sinksmell@163.com"
     Wechat = "/images/me/wechat.png"  # Wechat QRcode image
     Facebook = "xxoo"
