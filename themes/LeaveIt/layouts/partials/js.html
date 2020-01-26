@@ -1,0 +1,46 @@
+{{ $cdn_url := .Scratch.Get "cdn_url" }}
+{{ $postHasImages :=  .Scratch.Get "postHasImages"}}
+{{ $jquery := resources.Get "/js/jquery.min.js" }}
+{{ $lazysizes := resources.Get "/js/lazysizes.min.js"}}
+{{ $prettify := resources.Get "/js/prettify.min.js" }}
+{{ $dynamic := resources.Get "/js/dynamic.to.top.min.js" }}
+{{ $live2d := resources.Get "/js/live2d.min.js" }}
+{{ $live2d_message := resources.Get "/js/message.js" }}
+{{ $main := resources.Get "/js/main.js" }}
+{{ $lihtGallery := resources.Get "/js/lightGallery-all.min.js" }}
+{{ $lihtGallery_init := resources.Get "/js/lightGallery-init.js" }}
+{{ $custom := resources.Get "/js/_custom.js" }}
+
+<script type="text/javascript">
+    var message_Path = {{ .Site.Params.Live2d.MessagePath }}
+    var home_Path = {{ .Site.Params.Live2d.HomePath }}  //此处修改为你的域名，必须带斜杠
+</script>
+
+{{ if .IsPage }}
+    {{ if $postHasImages }}
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+     {{ $vendorscript := slice $jquery $lazysizes $prettify $dynamic $live2d $live2d_message $main $lihtGallery $custom $lihtGallery_init | resources.Concat "/js/vendor_gallery.js" | resources.Minify }} 
+     <script src="{{ printf "%s%s" $cdn_url $vendorscript.RelPermalink }}" async="" ></script>
+    {{ else }}
+    {{ $vendorscript := slice $jquery $prettify $dynamic $live2d $live2d_message $custom $main | resources.Concat "/js/vendor_no_gallery.js" | resources.Minify }}
+    <script src="{{ printf "%s%s" $cdn_url $vendorscript.RelPermalink }}" async=""></script>
+    {{ end }}
+{{ else }}
+    {{ $main := slice $jquery $live2d $live2d_message $custom $main | resources.Concat "/js/vendor_main.js" | resources.Minify}}
+    <script src="{{ printf "%s%s" $cdn_url $main.RelPermalink }}" async=""></script>
+{{ end }}
+
+{{ if eq ( getenv "HUGO_ENV" ) "production" }}
+  {{ template "_internal/google_analytics_async.html" . }}
+  {{ with .Site.Params.baiduAnalytics}}
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?{{.}}";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    {{ end }}
+{{ end }}
