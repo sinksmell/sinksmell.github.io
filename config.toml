@@ -9,6 +9,8 @@ enableRobotsTXT = true
 googleAnalytics = ""
 
 preserveTaxonomyNames = true
+hasCJKLanguage = true
+
 
 [blackfriday]
   hrefTargetBlank = true
@@ -63,5 +65,9 @@ preserveTaxonomyNames = true
     Wechat = "/images/me/wechat.png"  # Wechat QRcode image
     Facebook = "xxoo"
     Telegram = "xxoo"
+
+[params.live2d]
+    messagePath = "/live2d/"
+    homePath   = "https://sinksmell.github.io/"
 
 
