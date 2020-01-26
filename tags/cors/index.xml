@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Network on SinkSmell | Blog</title>
-    <link>https://sinksmell.github.io/categories/network/</link>
-    <description>Recent content in Network on SinkSmell | Blog</description>
+    <title>cors on SinkSmell | Blog</title>
+    <link>https://sinksmell.github.io/tags/cors/</link>
+    <description>Recent content in cors on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://sinksmell.github.io/categories/network/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sinksmell.github.io/tags/cors/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -32,23 +32,6 @@
 部署时
 Nginx
  Go 是一个独立的 HTTP 服务器，但是我们有些时候为了 nginx 可以帮我做很多工作，例如访问日志，cc 攻击，静态服务等，nginx 已经做的很成熟了，Go 只要专注于业务逻辑和功能就好，所以通过 nginx 配置代理就可以实现多应用同时部署。</description>
-    </item>
-    
-    <item>
-      <title>计算机网络基础</title>
-      <link>https://sinksmell.github.io/2019/network/</link>
-      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://sinksmell.github.io/2019/network/</guid>
-      <description>计算机网络基础知识 TCP/IP 四层结构 ps: 上图中是图解HTTP中的划分
- 应用层   决定了向用户提供应用服务时通信的活动
-  传输层   提供处于网络连接中的两台计算机直接的数据传输
-  网络层 或 网际层   处理网络上流动的数据包
-  网络接口层 对应 OSI 中的 链路层+物理层   处理连接网络的硬件部分
- 应用层 HTTP协议  HTTP请求报文格式   HTTP响应报文格式  GET请求与POST请求的区别?
-  GET请求参数出现在url中，POST请求数据写入报文主体 GET请求封装在一个TCP报文中发出，POST 被浏览器拆分，先发首部，再发数据 GET请求时幂等的，POST不是   传输层 TCP  TCP 连接的建立   三次握手过程(三握手报文)及目的
- 目的：建立可靠的通信信道,简单地说，就是通信双方都确认自己与对方的接收与发送都是正常的。
-    序号 方向 动作 效果     1 Client -&amp;gt; Sever 发送带有SYN标志的数据包 Server确定自己接收正常；对方发送正常   2 Server -&amp;gt; Client 发送带有SYN和ACK标志的数据包 Client确定自己发送正常,接收正常；对方发送正常   3 Client -&amp;gt; Server 发送带有ACK标志的数据包 Server确认自己发送正常,接收正常；对方发送正常,接收正常    为什么要进行3次握手?</description>
     </item>
     
   </channel>

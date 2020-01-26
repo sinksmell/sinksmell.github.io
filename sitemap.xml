@@ -22,29 +22,19 @@
     </url>
   
     <url>
-      <loc>https://sinksmell.github.io/posts/</loc>
-      
-      <lastmod>2020-01-26T10:10:36+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sinksmell.github.io/2020/test/</loc>
-      
-      <lastmod>2020-01-26T10:10:36+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
       <loc>https://sinksmell.github.io/categories/</loc>
       
-      <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://sinksmell.github.io/tags/cors/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
       
       
       
@@ -54,7 +44,7 @@
     <url>
       <loc>https://sinksmell.github.io/categories/http/</loc>
       
-      <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
       
       
       
@@ -64,7 +54,7 @@
     <url>
       <loc>https://sinksmell.github.io/tags/http/</loc>
       
-      <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
       
       
       
@@ -74,7 +64,7 @@
     <url>
       <loc>https://sinksmell.github.io/categories/network/</loc>
       
-      <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
       
       
       
@@ -84,7 +74,37 @@
     <url>
       <loc>https://sinksmell.github.io/tags/network/</loc>
       
-      <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://sinksmell.github.io/categories/nginx/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://sinksmell.github.io/tags/nginx/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://sinksmell.github.io/posts/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
       
       
       
@@ -94,7 +114,17 @@
     <url>
       <loc>https://sinksmell.github.io/tags/</loc>
       
-      <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://sinksmell.github.io/2019/cors/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
       
       
       
@@ -122,7 +152,7 @@
     </url>
   
     <url>
-      <loc>https://sinksmell.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</loc>
+      <loc>https://sinksmell.github.io/2019/network/</loc>
       
       <lastmod>2020-01-25T00:00:00+00:00</lastmod>
       

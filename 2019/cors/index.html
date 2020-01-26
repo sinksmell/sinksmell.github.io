@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="sinksmell">
+    
+    <meta name="keywords" content="go,golang,sinksmell">
+    
+    <link rel="prev" href="https://sinksmell.github.io/2019/network/" />
+    
+    <link rel="canonical" href="https://sinksmell.github.io/2019/cors/" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+         
+         
+             跨域问题及解决方法 | SinkSmell | Blog
+         
+    </title>
+    <meta name="title" content="跨域问题及解决方法 | SinkSmell | Blog">
+      
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{   "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sinksmell.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "跨域问题及解决方法",
+    "headline" : "跨域问题及解决方法",
+    "description" : "学习计算机网络知识可以更好地理解应用直接的网络通信",
+    "inLanguage" : "en-us",
+    "author" : "sinksmell",
+    "creator" : "sinksmell",
+    "publisher": "sinksmell",
+    "accountablePerson" : "sinksmell",
+    "copyrightHolder" : "sinksmell",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-16 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2019-10-16 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sinksmell.github.io\/2019\/cors\/",
+    "wordCount" : "132",
+    "keywords" : [ "network","nginx","http","cors", "SinkSmell | Blog"]
+}
+</script>
+
+  </head>
+  
+    
+  
+  
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    
+        <div class="top-scroll-bar"></div>
+    
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <div class="top-scroll-bar"></div>
+    
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+        
+        <div id="landlord">
+          <div class="message" style="opacity:0"></div>
+          <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+          <div class="hide-button">隐藏</div>
+       </div>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">跨域问题及解决方法</h1>
+        <div class="post-meta">
+                发表于 
+                <span class="post-time">
+                    <time datetime=2019-10-16 itemprop="datePublished">October 16, 2019</time>
+                </span>
+                | 分类于
+                
+                <span class="post-category">
+                        <a href="https://sinksmell.github.io/categories/network/"> Network </a>
+                        <a href="https://sinksmell.github.io/categories/http/"> HTTP </a>
+                        <a href="https://sinksmell.github.io/categories/nginx/"> Nginx </a>
+                        
+                </span>
+                <span class="post-word-count">（132 Words，阅读时间约 0 Min）</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="跨域问题是什么">跨域问题是什么</h3>
+<p>同源策略</p>
+<blockquote>
+<p>同源策略是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSRF等攻击。所谓同源是指&quot;协议+域名+端口&quot;三者相同，即便两个不同的域名指向同一个ip地址，也非同源。</p>
+</blockquote>
+<p>跨域 (cors)</p>
+<blockquote>
+<p>cross-origin sharing standard:当协议、子域名、主域名、端口号中任意一个不相同时，都算作不同域。不同域之间相互请求资源，就算作“跨域”。例如:</p>
+<blockquote>
+<p>http://localhost:8080 -&gt; http://localhost:8088</p>
+</blockquote>
+</blockquote>
+<h3 id="为什么出现跨域问题">为什么出现跨域问题</h3>
+<p>浏览器拦截</p>
+<blockquote>
+<p>跨域并不是没有发出请求，其实请求能发出去，服务端收到请求并正常返回结果，只是结果被浏览器拦截了。浏览器为了阻止用户读取到另一个域名下的内容，拦截了ajax响应。</p>
+</blockquote>
+<h3 id="如何解决跨域问题">如何解决跨域问题</h3>
+<p><strong>开发时</strong></p>
+<blockquote>
+<p>假设后台服务监听localhost:8080,以axios为例</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">axios</span>({
+  <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;post&#39;</span>,
+  <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;http://localhost:8080/api/login&#39;</span>,
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">Name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Fred&#39;</span>,
+    <span style="color:#a6e22e">passWord</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;xxx&#39;</span>
+  }
+});
+
+</code></pre></div><p>只需要在后端允许cors</p>
+<blockquote>
+<p>以beego为例，虽然不同框架添加形式不一样，但想法都是在后端允许跨域请求</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">InsertFilter</span>(<span style="color:#e6db74">&#34;*&#34;</span>, <span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">BeforeRouter</span>, <span style="color:#a6e22e">cors</span>.<span style="color:#a6e22e">Allow</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cors</span>.<span style="color:#a6e22e">Options</span>{
+		<span style="color:#a6e22e">AllowAllOrigins</span>:  <span style="color:#66d9ef">true</span>,
+		<span style="color:#a6e22e">AllowMethods</span>:     []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;POST&#34;</span>,<span style="color:#e6db74">&#34;OPTIONS&#34;</span>},
+		<span style="color:#a6e22e">AllowHeaders</span>:     []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;Origin&#34;</span>, <span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#e6db74">&#34;Access-Control-Allow-Origin&#34;</span>, <span style="color:#e6db74">&#34;Access-Control-Allow-Headers&#34;</span>, <span style="color:#e6db74">&#34;Content-Type&#34;</span>},
+		<span style="color:#a6e22e">ExposeHeaders</span>:    []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;Content-Length&#34;</span>, <span style="color:#e6db74">&#34;Access-Control-Allow-Origin&#34;</span>, <span style="color:#e6db74">&#34;Access-Control-Allow-Headers&#34;</span>, <span style="color:#e6db74">&#34;Content-Type&#34;</span>},
+		<span style="color:#a6e22e">AllowCredentials</span>: <span style="color:#66d9ef">true</span>,
+	}))
+
+</code></pre></div><p>这时再发送ajax请求就可以正常响应了</p>
+<p><strong>部署时</strong></p>
+<p>Nginx</p>
+<blockquote>
+<p>Go 是一个独立的 HTTP 服务器，但是我们有些时候为了 nginx 可以帮我做很多工作，例如访问日志，cc 攻击，静态服务等，nginx 已经做的很成熟了，Go 只要专注于业务逻辑和功能就好，所以通过 nginx 配置代理就可以实现多应用同时部署。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/02/28/5c776da4a011f.png" alt=""></p>
+<ul>
+<li>1.修改Nginx对应的配置文件,添加如下代码实现反向代理</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">server</span> {
+<span style="color:#a6e22e">listen</span> <span style="color:#ae81ff">9090</span>;
+<span style="color:#a6e22e">server_name</span> <span style="color:#a6e22e">localhost</span>;
+ ......
+  <span style="color:#a6e22e">location</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">api</span> {
+            <span style="color:#a6e22e">proxy_pass</span>   <span style="color:#a6e22e">http</span><span style="color:#f92672">:</span><span style="color:#75715e">//localhost:8080/api;
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">add_header</span> <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Methods</span> <span style="color:#f92672">*</span>;
+            <span style="color:#a6e22e">add_header</span> <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Max</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Age</span> <span style="color:#ae81ff">3600</span>;
+            <span style="color:#a6e22e">add_header</span> <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Credentials</span> <span style="color:#66d9ef">true</span>;
+            <span style="color:#a6e22e">add_header</span> <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Origin</span> <span style="color:#a6e22e">$http_origin</span>;
+            <span style="color:#a6e22e">add_header</span> <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Headers</span> <span style="color:#a6e22e">$http_access_control_request_headers</span>;
+            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">$request_method</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">OPTIONS</span> ) {
+                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">200</span>;
+            }
+        }
+
+}
+
+</code></pre></div><ul>
+<li>2.修改ajax请求地址</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">axios</span>({
+  <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;post&#39;</span>,
+  <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/api/login&#39;</span>,
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">Name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Fred&#39;</span>,
+    <span style="color:#a6e22e">passWord</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;xxx&#39;</span>
+  }
+});
+
+</code></pre></div><ul>
+<li>3.解释</li>
+</ul>
+<blockquote>
+<p>假设前端页面运行在 http://localhost:80,使用ajax异步请求后,根据url会访问 http://localhost:80/api/login  由于设置了Nginx反向代理 Nginx将请求转发给 http://localhost:8080/api/login 来处理。可以简单的理解为,访问当前地址 /api &mdash;&gt; http://localhost:8080/api。请求地址并没有改变,跨域问题也就不存在了。</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/network/">
+                    #network</a></span>
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/nginx/">
+                    #nginx</a></span>
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/http/">
+                    #http</a></span>
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/cors/">
+                    #cors</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sinksmell.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sinksmell.github.io/2019/network/" class="prev" rel="prev" title="计算机网络基础"><i class="iconfont icon-left"></i>&nbsp;计算机网络基础</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sinksmell.github.io">sinksmell</a> | </span> 
+         
+
+         
+		  <span>
+           Powered by
+           <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a>
+           <span> &  </span>
+           <a href="https://github.com/cyseria/LeaveIt" target="_blank" rel="external nofollow">LeaveIt</a>
+         </span> 
+      </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var message_Path =  null 
+    var home_Path =  null   
+</script>
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+
+
+
+
+     </div>
+  
+  </body>
+</html>
