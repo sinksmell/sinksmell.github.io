@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on LeaveIt</title>
@@ -6,18 +6,18 @@
     <description>Recent content in Posts on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jan 2020 14:45:50 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jan 2020 10:03:50 +0800</lastBuildDate>
     
 	<atom:link href="https://sinksmell.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My First Post</title>
-      <link>https://sinksmell.github.io/2020/my-first-post/</link>
-      <pubDate>Thu, 23 Jan 2020 14:45:50 +0800</pubDate>
+      <title>Ci</title>
+      <link>https://sinksmell.github.io/2020/ci/</link>
+      <pubDate>Sun, 26 Jan 2020 10:03:50 +0800</pubDate>
       
-      <guid>https://sinksmell.github.io/2020/my-first-post/</guid>
-      <description>hugo blog new </description>
+      <guid>https://sinksmell.github.io/2020/ci/</guid>
+      <description> Test ci </description>
     </item>
     
   </channel>
