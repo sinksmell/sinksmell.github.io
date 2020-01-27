@@ -1,7 +1,7 @@
 ---
 title: "计算机网络基础"
 draft: false
-description: "学习计算机网络知识可以更好地理解应用直接的网络通信"
+description: "学习计算机网络知识可以更好地理解应用之间的网络通信"
 tags: [ "network", "tcp", "http"]
 lastmod: 2020-01-25
 date: "2019-10-14"
