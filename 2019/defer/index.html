@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="sinksmell">
+    
+    <meta name="keywords" content="go,golang,sinksmell">
+    
+    
+    <link rel="next" href="https://sinksmell.github.io/2019/network/" />
+    <link rel="canonical" href="https://sinksmell.github.io/2019/defer/" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+         
+         
+             Defer | SinkSmell | Blog
+         
+    </title>
+    <meta name="title" content="Defer | SinkSmell | Blog">
+      
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{   "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sinksmell.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Defer",
+    "headline" : "Defer",
+    "description" : "Go语言Defer Return 返回值执行顺序探究 defer之间的执行顺序 go 的 defer 语句是用来延迟执行函数的关键字 package main import \x26#34;fmt\x26#34; func defers(a int) int { defer func() { fmt.Println(\x26#34;Defer 1...\x26#34;) }() defer func() { fmt.Println(\x26#34;Defer 2...\x26#34;) }()",
+    "inLanguage" : "en-us",
+    "author" : "sinksmell",
+    "creator" : "sinksmell",
+    "publisher": "sinksmell",
+    "accountablePerson" : "sinksmell",
+    "copyrightHolder" : "sinksmell",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-01 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2019-03-01 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/sinksmell.github.io\/2019\/defer\/",
+    "wordCount" : "1348",
+    "keywords" : [ "golang","go","defer", "SinkSmell | Blog"]
+}
+</script>
+
+  </head>
+  
+    
+  
+  
+<aside class="side-toc">
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#go语言defer-return-返回值执行顺序探究">Go语言Defer Return 返回值执行顺序探究</a>
+      <ul>
+        <li><a href="#defer之间的执行顺序">defer之间的执行顺序</a></li>
+        <li><a href="#未声明返回值">未声明返回值</a></li>
+        <li><a href="#结论">结论</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    
+        <div class="top-scroll-bar"></div>
+    
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <div class="top-scroll-bar"></div>
+    
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+        
+        <div id="landlord">
+          <div class="message" style="opacity:0"></div>
+          <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+          <div class="hide-button">隐藏</div>
+       </div>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Defer</h1>
+        <div class="post-meta">
+                发表于 
+                <span class="post-time">
+                    <time datetime=2019-03-01 itemprop="datePublished">March 1, 2019</time>
+                </span>
+                | 分类于
+                
+                <span class="post-category">
+                        <a href="https://sinksmell.github.io/categories/go/"> Go </a>
+                        <a href="https://sinksmell.github.io/categories/assembler/"> Assembler </a>
+                        
+                </span>
+                <span class="post-word-count">（1348 Words，阅读时间约 4 Min）</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="go语言defer-return-返回值执行顺序探究">Go语言Defer Return 返回值执行顺序探究</h2>
+<p><img src="https://i.loli.net/2019/03/01/5c79001fee417.png" alt=""></p>
+<h3 id="defer之间的执行顺序">defer之间的执行顺序</h3>
+<blockquote>
+<p>go 的 defer 语句是用来<code>延迟执行函数</code>的关键字</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">defers</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+	<span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Defer 1...&#34;</span>)
+	}()
+	<span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Defer 2...&#34;</span>)
+	}()
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Run defers  ...&#34;</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">res</span><span style="color:#f92672">:=</span> <span style="color:#a6e22e">defers</span>(<span style="color:#ae81ff">1</span>)
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;get result: %d\n&#34;</span>,<span style="color:#a6e22e">res</span>)
+}
+
+<span style="color:#75715e">//运行结果
+</span><span style="color:#75715e"></span><span style="color:#75715e">//Run defers  ...
+</span><span style="color:#75715e"></span><span style="color:#75715e">//Defer 2...
+</span><span style="color:#75715e"></span><span style="color:#75715e">//Defer 1...
+</span><span style="color:#75715e"></span><span style="color:#75715e">//get result: 1
+</span><span style="color:#75715e"></span>
+</code></pre></div><blockquote>
+<p>由此可见 :</p>
+<blockquote>
+<ul>
+<li>多个defer执行顺序为后进先出,可以推测defer将函数压入栈中,待到执行时在依次出栈执行</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="未声明返回值">未声明返回值</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">demo1</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) ( <span style="color:#66d9ef">int</span>) {
+	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">a</span>
+	<span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Defer ...&#34;</span>)
+		<span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">100</span>
+	}()
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">demo1</span>(<span style="color:#ae81ff">1</span>)
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;get result: %d\n&#34;</span>, <span style="color:#a6e22e">res</span>)
+}
+
+<span style="color:#75715e">//运行结果
+</span><span style="color:#75715e"></span><span style="color:#75715e">//Defer ...
+</span><span style="color:#75715e"></span><span style="color:#75715e">//get result: 1
+</span><span style="color:#75715e"></span>
+</code></pre></div><h4 id="声明返回值">声明返回值</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">demo2</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) (<span style="color:#a6e22e">res</span> <span style="color:#66d9ef">int</span>) {
+	<span style="color:#a6e22e">res</span> = <span style="color:#a6e22e">a</span>
+	<span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Defer ...&#34;</span>)
+		<span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">100</span>
+	}()
+	<span style="color:#66d9ef">return</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">demo2</span>(<span style="color:#ae81ff">1</span>)
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;get result: %d\n&#34;</span>, <span style="color:#a6e22e">res</span>)
+}
+
+<span style="color:#75715e">//运行结果
+</span><span style="color:#75715e"></span><span style="color:#75715e">//Defer ...
+</span><span style="color:#75715e"></span><span style="color:#75715e">//get result: 101
+</span><span style="color:#75715e"></span>
+</code></pre></div><p><strong>可见是否声明返回值对运行结果有很大的影响!</strong></p>
+<blockquote>
+<p>声明返回值时 defer函数改变了res值,未声明返回值时 defer函数无法改变res值</p>
+</blockquote>
+<h3 id="结论">结论</h3>
+<blockquote>
+<ul>
+<li>1.return 先给返回值赋值</li>
+</ul>
+<blockquote>
+<ul>
+<li>已经声明返回值则直接赋值</li>
+<li>未声明返回值则先声明一个匿名返回值再赋值</li>
+</ul>
+</blockquote>
+<ul>
+<li>2.调用RET返回指令并传入返回值</li>
+</ul>
+<blockquote>
+<ul>
+<li>RET则会检查defer是否存在，若存在就先逆序插入defer语句</li>
+</ul>
+</blockquote>
+<ul>
+<li>3.RET携带返回值退出函数；</li>
+</ul>
+</blockquote>
+<p>‍‍<strong>因此defer、return、返回值三者的执行顺序应该是：return给返回值赋值&ndash;&gt;defer开始执行&ndash;&gt;最后RET指令携带返回值退出函数</strong></p>
+<p>查看汇编代码来一探究竟</p>
+<blockquote>
+<ul>
+<li>将fmt.Println换成 println这个内建函数</li>
+<li>假设你的源文件名字是main.go</li>
+<li>对声明返回值与未声明返回值版本分别执行以下命令</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span><span style="color:#ae81ff">386</span> go tool compile -S main.go &gt;&gt; main.S
+</code></pre></div><blockquote>
+<p><strong>截取部分汇编代码</strong></p>
+</blockquote>
+<pre><code class="language-x86asm" data-lang="x86asm">&quot;&quot;.demo1 STEXT size=106 args=0x8 locals=0x10
+	0x0000 00000 (defer_topic.go:15)	TEXT	&quot;&quot;.demo1(SB), $16-8
+	0x0000 00000 (defer_topic.go:15)	MOVL	TLS, CX
+	0x0007 00007 (defer_topic.go:15)	MOVL	(CX)(TLS*2), CX
+	0x000d 00013 (defer_topic.go:15)	CMPL	SP, 8(CX)
+	0x0010 00016 (defer_topic.go:15)	JLS	99
+	0x0012 00018 (defer_topic.go:15)	SUBL	$16, SP
+	0x0015 00021 (defer_topic.go:15)	FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x0015 00021 (defer_topic.go:15)	FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x0015 00021 (defer_topic.go:15)	FUNCDATA	$3, gclocals·9fb7f0986f647f17cb53dda1484e0f7a(SB)
+	0x0015 00021 (defer_topic.go:15)	PCDATA	$2, $0
+	0x0015 00021 (defer_topic.go:15)	PCDATA	$0, $0
+	0x0015 00021 (defer_topic.go:15)	MOVL	$0, &quot;&quot;.~r1+24(SP)
+	0x001d 00029 (defer_topic.go:16)	MOVL	&quot;&quot;.a+20(SP), AX
+	0x0021 00033 (defer_topic.go:16)	MOVL	AX, &quot;&quot;.res+12(SP)
+	0x0025 00037 (defer_topic.go:20)	PCDATA	$2, $1
+	0x0025 00037 (defer_topic.go:20)	LEAL	&quot;&quot;.res+12(SP), AX
+	0x0029 00041 (defer_topic.go:20)	PCDATA	$2, $0
+	0x0029 00041 (defer_topic.go:20)	MOVL	AX, 8(SP)
+	0x002d 00045 (defer_topic.go:17)	MOVL	$4, (SP)
+	0x0034 00052 (defer_topic.go:17)	PCDATA	$2, $1
+	0x0034 00052 (defer_topic.go:17)	LEAL	&quot;&quot;.demo1.func1·f(SB), AX
+	0x003a 00058 (defer_topic.go:17)	PCDATA	$2, $0
+	0x003a 00058 (defer_topic.go:17)	MOVL	AX, 4(SP)
+	0x003e 00062 (defer_topic.go:17)	CALL	runtime.deferproc(SB)
+	0x0043 00067 (defer_topic.go:17)	TESTL	AX, AX
+	0x0045 00069 (defer_topic.go:17)	JNE	89
+	0x0047 00071 (defer_topic.go:21)	MOVL	&quot;&quot;.res+12(SP), AX
+	0x004b 00075 (defer_topic.go:21)	MOVL	AX, &quot;&quot;.~r1+24(SP)
+	0x004f 00079 (defer_topic.go:21)	XCHGL	AX, AX
+	0x0050 00080 (defer_topic.go:21)	CALL	runtime.deferreturn(SB)
+	0x0055 00085 (defer_topic.go:21)	ADDL	$16, SP
+	0x0058 00088 (defer_topic.go:21)	RET
+	0x0059 00089 (defer_topic.go:17)	XCHGL	AX, AX
+	0x005a 00090 (defer_topic.go:17)	CALL	runtime.deferreturn(SB)
+	0x005f 00095 (defer_topic.go:17)	ADDL	$16, SP
+	0x0062 00098 (defer_topic.go:17)	RET
+</code></pre><pre><code class="language-x86asm" data-lang="x86asm">&quot;&quot;.demo2 STEXT size=98 args=0x8 locals=0xc
+	0x0000 00000 (defer_topic.go:24)	TEXT	&quot;&quot;.demo2(SB), $12-8
+	0x0000 00000 (defer_topic.go:24)	MOVL	TLS, CX
+	0x0007 00007 (defer_topic.go:24)	MOVL	(CX)(TLS*2), CX
+	0x000d 00013 (defer_topic.go:24)	CMPL	SP, 8(CX)
+	0x0010 00016 (defer_topic.go:24)	JLS	91
+	0x0012 00018 (defer_topic.go:24)	SUBL	$12, SP
+	0x0015 00021 (defer_topic.go:24)	FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x0015 00021 (defer_topic.go:24)	FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x0015 00021 (defer_topic.go:24)	FUNCDATA	$3, gclocals·9fb7f0986f647f17cb53dda1484e0f7a(SB)
+	0x0015 00021 (defer_topic.go:24)	PCDATA	$2, $0
+	0x0015 00021 (defer_topic.go:24)	PCDATA	$0, $0
+	0x0015 00021 (defer_topic.go:24)	MOVL	$0, &quot;&quot;.res+20(SP)
+	0x001d 00029 (defer_topic.go:25)	MOVL	&quot;&quot;.a+16(SP), AX
+	0x0021 00033 (defer_topic.go:25)	MOVL	AX, &quot;&quot;.res+20(SP)
+	0x0025 00037 (defer_topic.go:29)	PCDATA	$2, $1
+	0x0025 00037 (defer_topic.go:29)	LEAL	&quot;&quot;.res+20(SP), AX
+	0x0029 00041 (defer_topic.go:29)	PCDATA	$2, $0
+	0x0029 00041 (defer_topic.go:29)	MOVL	AX, 8(SP)
+	0x002d 00045 (defer_topic.go:26)	MOVL	$4, (SP)
+	0x0034 00052 (defer_topic.go:26)	PCDATA	$2, $1
+	0x0034 00052 (defer_topic.go:26)	LEAL	&quot;&quot;.demo2.func1·f(SB), AX
+	0x003a 00058 (defer_topic.go:26)	PCDATA	$2, $0
+	0x003a 00058 (defer_topic.go:26)	MOVL	AX, 4(SP)
+	0x003e 00062 (defer_topic.go:26)	CALL	runtime.deferproc(SB)
+	0x0043 00067 (defer_topic.go:26)	TESTL	AX, AX
+	0x0045 00069 (defer_topic.go:26)	JNE	81
+	0x0047 00071 (defer_topic.go:30)	XCHGL	AX, AX
+	0x0048 00072 (defer_topic.go:30)	CALL	runtime.deferreturn(SB)
+	0x004d 00077 (defer_topic.go:30)	ADDL	$12, SP
+	0x0050 00080 (defer_topic.go:30)	RET
+	0x0051 00081 (defer_topic.go:26)	XCHGL	AX, AX
+	0x0052 00082 (defer_topic.go:26)	CALL	runtime.deferreturn(SB)
+	0x0057 00087 (defer_topic.go:26)	ADDL	$12, SP
+	0x005a 00090 (defer_topic.go:26)	RET
+</code></pre>
+    </div>
+
+    <div class="post-copyright">
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/golang/">
+                    #golang</a></span>
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/go/">
+                    #go</a></span>
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/defer/">
+                    #defer</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sinksmell.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://sinksmell.github.io/2019/network/" class="next" rel="next" title="计算机网络基础">计算机网络基础&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sinksmell.github.io">sinksmell</a> | </span> 
+         
+
+         
+		  <span>
+           Powered by
+           <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a>
+           <span> &  </span>
+           <a href="https://github.com/cyseria/LeaveIt" target="_blank" rel="external nofollow">LeaveIt</a>
+         </span> 
+      </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var message_Path = "/live2d/"
+    var home_Path = "https://sinksmell.github.io/"  
+</script>
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+
+
+
+
+     </div>
+  
+  </body>
+</html>

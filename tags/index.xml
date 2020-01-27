@@ -56,5 +56,32 @@
       <description></description>
     </item>
     
+    <item>
+      <title>defer</title>
+      <link>https://sinksmell.github.io/tags/defer/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/tags/defer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://sinksmell.github.io/tags/go/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://sinksmell.github.io/tags/golang/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

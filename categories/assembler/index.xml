@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Assembler on SinkSmell | Blog</title>
+    <link>https://sinksmell.github.io/categories/assembler/</link>
+    <description>Recent content in Assembler on SinkSmell | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sinksmell.github.io/categories/assembler/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Defer</title>
+      <link>https://sinksmell.github.io/2019/defer/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinksmell.github.io/2019/defer/</guid>
+      <description>Go语言Defer Return 返回值执行顺序探究 defer之间的执行顺序 go 的 defer 语句是用来延迟执行函数的关键字 package main import &amp;#34;fmt&amp;#34; func defers(a int) int { defer func() { fmt.Println(&amp;#34;Defer 1...&amp;#34;) }() defer func() { fmt.Println(&amp;#34;Defer 2...&amp;#34;) }()</description>
+    </item>
+    
+  </channel>
+</rss>
