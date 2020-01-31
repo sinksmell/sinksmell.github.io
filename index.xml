@@ -5,8 +5,17 @@
     <description>Recent content in SinkSmell | Blog on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Jan 2020 13:49:33 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jan 2020 14:47:21 +0800</lastBuildDate>
     <atom:link href="https://sinksmell.github.io/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Posts</title>
+      <link>https://sinksmell.github.io/posts/</link>
+      <pubDate>Fri, 31 Jan 2020 14:47:21 +0800</pubDate>
+      
+      <guid>https://sinksmell.github.io/posts/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>About</title>
@@ -21,15 +30,6 @@
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Posts</title>
-      <link>https://sinksmell.github.io/posts/</link>
-      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://sinksmell.github.io/posts/</guid>
-      <description></description>
     </item>
     
   </channel>
