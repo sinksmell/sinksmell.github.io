@@ -42,12 +42,12 @@ hasCJKLanguage = true
     weight = 4
 
 [params]
-    since = 2020
+    since = 2019
     author = "sinksmell"                           # Author's name
-    avatar = "/images/me/avatar.jpeg"           # Author's avatar
-    subtitle = "我会更好，因为我没有停止"         # Subtitle
+    avatar = "/images/me/card.jpg"           # Author's avatar
+    subtitle = "我心里那一座天下，你坐镇笑靥如桃花"         # Subtitle
     cdn_url = ""           # Base CDN URL
-    home_mode = "post" # post or other
+    home_mode = "other" # post or other
 
     google_verification = ""
    
@@ -60,11 +60,9 @@ hasCJKLanguage = true
     license= '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可'
 
 [params.social]
-    GitHub = "https://github.com/sinksmell"
+    GitHub = "sinksmell"
     Email   = "sinksmell@163.com"
-    Wechat = "/images/me/wechat.png"  # Wechat QRcode image
-    Facebook = "xxoo"
-    Telegram = "xxoo"
+    Wechat = "/images/me/wechat.jpg"  # Wechat QRcode image
 
 [params.live2d]
     messagePath = "/live2d/"
