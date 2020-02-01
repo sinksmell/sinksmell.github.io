@@ -6,10 +6,19 @@
     <description>Recent content in Categories on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 Jan 2020 14:47:21 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 01 Feb 2020 14:11:35 +0800</lastBuildDate>
     
 	<atom:link href="https://sinksmell.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>LeetCode</title>
+      <link>https://sinksmell.github.io/categories/leetcode/</link>
+      <pubDate>Sat, 01 Feb 2020 14:11:35 +0800</pubDate>
+      
+      <guid>https://sinksmell.github.io/categories/leetcode/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>算法模板</title>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LeetCode on SinkSmell | Blog</title>
+    <link>https://sinksmell.github.io/categories/leetcode/</link>
+    <description>Recent content in LeetCode on SinkSmell | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Feb 2020 14:11:35 +0800</lastBuildDate>
+    
+	<atom:link href="https://sinksmell.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LeetCode 二分查找专项练习</title>
+      <link>https://sinksmell.github.io/2020/leetcode-bsearch/</link>
+      <pubDate>Sat, 01 Feb 2020 14:11:35 +0800</pubDate>
+      
+      <guid>https://sinksmell.github.io/2020/leetcode-bsearch/</guid>
+      <description>LeetCode.69. x的平方根 题目描述 实现 int sqrt(int x) 函数。 计算并返回 x 的平方根，其中 x 是非负整数。 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。 示例</description>
+    </item>
+    
+  </channel>
+</rss>

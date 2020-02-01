@@ -17,7 +17,7 @@
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://sinksmell.github.io/2019/network/</guid>
-      <description>计算机网络基础知识 TCP/IP 四层结构 ps: 上图中是图解HTTP中的划分 应用层 决定了向用户提供应用服务时通信的活动 传输层 提供处于网络连接中的两台计算机直接</description>
+      <description>TCP/IP 四层结构 ps: 上图中是图解HTTP中的划分 应用层 决定了向用户提供应用服务时通信的活动 传输层 提供处于网络连接中的两台计算机直接的数据传输 网络层 或</description>
     </item>
     
   </channel>

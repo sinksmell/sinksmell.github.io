@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="sinksmell">
+    
+    <meta name="keywords" content="go,golang,sinksmell">
+    
+    <link rel="prev" href="https://sinksmell.github.io/2020/bsearch/" />
+    
+    <link rel="canonical" href="https://sinksmell.github.io/2020/leetcode-bsearch/" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+         
+         
+             LeetCode 二分查找专项练习 | SinkSmell | Blog
+         
+    </title>
+    <meta name="title" content="LeetCode 二分查找专项练习 | SinkSmell | Blog">
+      
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{   "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sinksmell.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "LeetCode 二分查找专项练习",
+    "headline" : "LeetCode 二分查找专项练习",
+    "description" : "LeetCode.69. x的平方根 题目描述 实现 int sqrt(int x) 函数。 计算并返回 x 的平方根，其中 x 是非负整数。 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。 示例",
+    "inLanguage" : "en-us",
+    "author" : "sinksmell",
+    "creator" : "sinksmell",
+    "publisher": "sinksmell",
+    "accountablePerson" : "sinksmell",
+    "copyrightHolder" : "sinksmell",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-02-01 14:11:35 \x2b0800 \x2b0800",
+    "dateModified" : "2020-02-01 14:11:35 \x2b0800 \x2b0800",
+    "url" : "https:\/\/sinksmell.github.io\/2020\/leetcode-bsearch\/",
+    "wordCount" : "777",
+    "keywords" : [ "二分查找","专项练习", "SinkSmell | Blog"]
+}
+</script>
+
+  </head>
+  
+    
+  
+  
+<aside class="side-toc">
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#leetcode69-x的平方根">LeetCode.69. x的平方根</a></li>
+        <li><a href="#leetcode35-搜索插入位置">LeetCode.35. 搜索插入位置</a></li>
+        <li><a href="#leetcode34在排序数组中查找元素的第一个和最后一个位置">LeetCode.34.在排序数组中查找元素的第一个和最后一个位置</a></li>
+        <li><a href="#leetcode74-搜索二维矩阵">LeetCode.74. 搜索二维矩阵</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    
+        <div class="top-scroll-bar"></div>
+    
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <div class="top-scroll-bar"></div>
+    
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+        
+        <div id="landlord">
+          <div class="message" style="opacity:0"></div>
+          <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+          <div class="hide-button">隐藏</div>
+       </div>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">LeetCode 二分查找专项练习</h1>
+        <div class="post-meta">
+                发表于 
+                <span class="post-time">
+                    <time datetime=2020-02-01 itemprop="datePublished">February 1, 2020</time>
+                </span>
+                | 分类于
+                
+                <span class="post-category">
+                        <a href="https://sinksmell.github.io/categories/leetcode/"> LeetCode </a>
+                        
+                </span>
+                <span class="post-word-count">（777 Words，阅读时间约 2 Min）</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="leetcode69-x的平方根">LeetCode.69. x的平方根</h3>
+<p><em>题目描述</em></p>
+<blockquote>
+<p>实现 int sqrt(int x) 函数。</p>
+<p>计算并返回 x 的平方根，其中 x 是非负整数。</p>
+<p>由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</p>
+<p>示例 1:</p>
+<p>输入: 4
+输出: 2
+示例 2:</p>
+<p>输入: 8
+输出: 2
+说明: 8 的平方根是 2.82842&hellip;,
+由于返回类型是整数，小数部分将被舍去。</p>
+</blockquote>
+<p><em>解题思路</em></p>
+<blockquote>
+<p>根据 n^2 &gt;= x 将 [0,n] 区间分成两部分 [n^2&lt;=x] 和 [n^2&gt;x] ,目标结果在所选性质的左边区间，所以使用模板2</p>
+</blockquote>
+<p><em>代码</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">mySqrt</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">x</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span> {
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">mid</span><span style="color:#f92672">*</span><span style="color:#a6e22e">mid</span> &gt;<span style="color:#a6e22e">x</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l</span>
+}
+</code></pre></div><h3 id="leetcode35-搜索插入位置">LeetCode.35. 搜索插入位置</h3>
+<p><em>题目描述</em></p>
+<blockquote>
+<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<p>示例 1:</p>
+<p>输入: [1,3,5,6], 5
+输出: 2
+示例 2:</p>
+<p>输入: [1,3,5,6], 2
+输出: 1
+示例 3:</p>
+<p>输入: [1,3,5,6], 7
+输出: 4
+示例 4:</p>
+<p>输入: [1,3,5,6], 0
+输出: 0</p>
+</blockquote>
+<p><em>解题思路</em></p>
+<blockquote>
+<p>根据 nums[i]&lt;target 将区间 [0,n]区间分成两部分{i | nums[i]&lt;target} 和 {i | nums[i]&gt;=target},目标值在所选性质的右边区间，选用模板1</p>
+</blockquote>
+<p><em>代码</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchInsert</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+  <span style="color:#75715e">// r 为最后一个能选到的位置
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>]&lt;<span style="color:#a6e22e">target</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l</span>
+}
+</code></pre></div><h3 id="leetcode34在排序数组中查找元素的第一个和最后一个位置">LeetCode.34.在排序数组中查找元素的第一个和最后一个位置</h3>
+<p><em>题目描述</em></p>
+<blockquote>
+<p>给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。</p>
+<p>你的算法时间复杂度必须是 O(log n) 级别。</p>
+<p>如果数组中不存在目标值，返回 [-1, -1]。</p>
+<p>示例 1:</p>
+<p>输入: nums = [5,7,7,8,8,10], target = 8
+输出: [3,4]
+示例 2:</p>
+<p>输入: nums = [5,7,7,8,8,10], target = 6
+输出: [-1,-1]</p>
+</blockquote>
+<p><em>解题思路</em></p>
+<blockquote>
+<ul>
+<li>选用 nums[i]&lt;target 可以查到模板值出现的第一个位置，分成{i | nums[i]&lt;target} 和 {i | nums[i] &gt;=target}，使用模板1</li>
+<li>选用 nums[i]&gt;target 可以查到目标值出现的最后一个位置，分成{i | nums[i]&lt;=target} 和 {i | nums[i] &gt;target}，使用模板2</li>
+</ul>
+</blockquote>
+<p><em>代码</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchRange</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span><span style="color:#f92672">:=</span>make([]<span style="color:#66d9ef">int</span>,<span style="color:#ae81ff">2</span>)
+    <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">0</span>]=<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">1</span>]=<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+  <span style="color:#75715e">// 数据为空，可以返回了
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+    }
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span>=(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>]&lt;<span style="color:#a6e22e">target</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+  <span style="color:#75715e">// 没找到第一次出现的位置，说明该数字没出现过，可以返回了
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">l</span>]<span style="color:#f92672">!=</span><span style="color:#a6e22e">target</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+    }
+    <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">0</span>]=<span style="color:#a6e22e">l</span>
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span>=<span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span>=(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>]&gt;<span style="color:#a6e22e">target</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">1</span>]=<span style="color:#a6e22e">l</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div><h3 id="leetcode74-搜索二维矩阵">LeetCode.74. 搜索二维矩阵</h3>
+
+    </div>
+
+    <div class="post-copyright">
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                    #二分查找</a></span>
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/%E4%B8%93%E9%A1%B9%E7%BB%83%E4%B9%A0/">
+                    #专项练习</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sinksmell.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sinksmell.github.io/2020/bsearch/" class="prev" rel="prev" title="二分查找模板"><i class="iconfont icon-left"></i>&nbsp;二分查找模板</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sinksmell.github.io">sinksmell</a> | </span> 
+         
+
+         
+		  <span>
+           Powered by
+           <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a>
+           <span> &  </span>
+           <a href="https://github.com/cyseria/LeaveIt" target="_blank" rel="external nofollow">LeaveIt</a>
+         </span> 
+      </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var message_Path = "/live2d/"
+    var home_Path = "https://sinksmell.github.io/"  
+</script>
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+
+
+
+
+     </div>
+  
+  </body>
+</html>

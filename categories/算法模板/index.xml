@@ -17,7 +17,7 @@
       <pubDate>Fri, 31 Jan 2020 14:47:21 +0800</pubDate>
       
       <guid>https://sinksmell.github.io/2020/bsearch/</guid>
-      <description>核心思想 找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素 搜索条件 数据有序 模板1. // 将区间 [l,r] 分割成 [l,mid] [mid+1,r]</description>
+      <description>核心思想 找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素 若目标值出现在所选性质的右边，则选用模板1，</description>
     </item>
     
   </channel>

@@ -47,7 +47,7 @@
     "articleSection" : "posts",
     "name" : "Go语言 Defer Return 执行顺序探究",
     "headline" : "Go语言 Defer Return 执行顺序探究",
-    "description" : "Go语言Defer Return 返回值执行顺序探究 defer之间的执行顺序 go 的 defer 语句是用来延迟执行函数的关键字 package main import \x26#34;fmt\x26#34; func defers(a int) int { defer func() { fmt.Println(\x26#34;Defer 1...\x26#34;) }() defer func() { fmt.Println(\x26#34;Defer 2...\x26#34;) }()",
+    "description" : "defer之间的执行顺序 go 的 defer 语句是用来延迟执行函数的关键字 package main import \x26#34;fmt\x26#34; func defers(a int) int { defer func() { fmt.Println(\x26#34;Defer 1...\x26#34;) }() defer func() { fmt.Println(\x26#34;Defer 2...\x26#34;) }() fmt.Println(\x26#34;Run defers ...\x26#34;) return a } func main() { res:= defers(1) fmt.Printf(\x26#34;get result: %d\\n\x26#34;,res) } \/\/运行",
     "inLanguage" : "en-us",
     "author" : "sinksmell",
     "creator" : "sinksmell",
@@ -58,7 +58,7 @@
     "datePublished": "2019-03-01 00:00:00 \x2b0000 UTC",
     "dateModified" : "2019-03-01 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/sinksmell.github.io\/2019\/defer\/",
-    "wordCount" : "1348",
+    "wordCount" : "1329",
     "keywords" : [ "golang","go","defer", "SinkSmell | Blog"]
 }
 </script>
@@ -72,10 +72,11 @@
     
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#go语言defer-return-返回值执行顺序探究">Go语言Defer Return 返回值执行顺序探究</a>
+    <li>
       <ul>
         <li><a href="#defer之间的执行顺序">defer之间的执行顺序</a></li>
         <li><a href="#未声明返回值">未声明返回值</a></li>
+        <li><a href="#声明返回值">声明返回值</a></li>
         <li><a href="#结论">结论</a></li>
       </ul>
     </li>
@@ -157,7 +158,7 @@
                         <a href="https://sinksmell.github.io/categories/assembler/"> Assembler </a>
                         
                 </span>
-                <span class="post-word-count">（1348 Words，阅读时间约 4 Min）</span>
+                <span class="post-word-count">（1329 Words，阅读时间约 4 Min）</span>
         </div>
     </header>
     <div class="post-content">
@@ -178,8 +179,7 @@
           
           
 
-          <h2 id="go语言defer-return-返回值执行顺序探究">Go语言Defer Return 返回值执行顺序探究</h2>
-<p><img src="https://i.loli.net/2019/03/01/5c79001fee417.png" alt=""></p>
+          <p><img src="https://i.loli.net/2019/03/01/5c79001fee417.png" alt=""></p>
 <h3 id="defer之间的执行顺序">defer之间的执行顺序</h3>
 <blockquote>
 <p>go 的 defer 语句是用来<code>延迟执行函数</code>的关键字</p>
@@ -241,7 +241,7 @@
 </span><span style="color:#75715e"></span><span style="color:#75715e">//Defer ...
 </span><span style="color:#75715e"></span><span style="color:#75715e">//get result: 1
 </span><span style="color:#75715e"></span>
-</code></pre></div><h4 id="声明返回值">声明返回值</h4>
+</code></pre></div><h3 id="声明返回值">声明返回值</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>

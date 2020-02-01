@@ -6,10 +6,19 @@
     <description>Recent content in Posts on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 Jan 2020 14:47:21 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 01 Feb 2020 14:11:35 +0800</lastBuildDate>
     
 	<atom:link href="https://sinksmell.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>LeetCode 二分查找专项练习</title>
+      <link>https://sinksmell.github.io/2020/leetcode-bsearch/</link>
+      <pubDate>Sat, 01 Feb 2020 14:11:35 +0800</pubDate>
+      
+      <guid>https://sinksmell.github.io/2020/leetcode-bsearch/</guid>
+      <description>LeetCode.69. x的平方根 题目描述 实现 int sqrt(int x) 函数。 计算并返回 x 的平方根，其中 x 是非负整数。 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。 示例</description>
+    </item>
     
     <item>
       <title>二分查找模板</title>
@@ -17,7 +26,7 @@
       <pubDate>Fri, 31 Jan 2020 14:47:21 +0800</pubDate>
       
       <guid>https://sinksmell.github.io/2020/bsearch/</guid>
-      <description>核心思想 找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素 搜索条件 数据有序 模板1. // 将区间 [l,r] 分割成 [l,mid] [mid+1,r]</description>
+      <description>核心思想 找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素 若目标值出现在所选性质的右边，则选用模板1，</description>
     </item>
     
     <item>
@@ -35,7 +44,7 @@
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://sinksmell.github.io/2019/network/</guid>
-      <description>计算机网络基础知识 TCP/IP 四层结构 ps: 上图中是图解HTTP中的划分 应用层 决定了向用户提供应用服务时通信的活动 传输层 提供处于网络连接中的两台计算机直接</description>
+      <description>TCP/IP 四层结构 ps: 上图中是图解HTTP中的划分 应用层 决定了向用户提供应用服务时通信的活动 传输层 提供处于网络连接中的两台计算机直接的数据传输 网络层 或</description>
     </item>
     
     <item>
@@ -44,7 +53,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://sinksmell.github.io/2019/defer/</guid>
-      <description>Go语言Defer Return 返回值执行顺序探究 defer之间的执行顺序 go 的 defer 语句是用来延迟执行函数的关键字 package main import &amp;#34;fmt&amp;#34; func defers(a int) int { defer func() { fmt.Println(&amp;#34;Defer 1...&amp;#34;) }() defer func() { fmt.Println(&amp;#34;Defer 2...&amp;#34;) }()</description>
+      <description>defer之间的执行顺序 go 的 defer 语句是用来延迟执行函数的关键字 package main import &amp;#34;fmt&amp;#34; func defers(a int) int { defer func() { fmt.Println(&amp;#34;Defer 1...&amp;#34;) }() defer func() { fmt.Println(&amp;#34;Defer 2...&amp;#34;) }() fmt.Println(&amp;#34;Run defers ...&amp;#34;) return a } func main() { res:= defers(1) fmt.Printf(&amp;#34;get result: %d\n&amp;#34;,res) } //运行</description>
     </item>
     
   </channel>

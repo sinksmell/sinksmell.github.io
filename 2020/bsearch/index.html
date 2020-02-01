@@ -10,7 +10,7 @@
     <meta name="keywords" content="go,golang,sinksmell">
     
     <link rel="prev" href="https://sinksmell.github.io/2019/cors/" />
-    
+    <link rel="next" href="https://sinksmell.github.io/2020/leetcode-bsearch/" />
     <link rel="canonical" href="https://sinksmell.github.io/2020/bsearch/" />
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -58,7 +58,7 @@
     "datePublished": "2020-01-31 14:47:21 \x2b0800 \x2b0800",
     "dateModified" : "2020-01-31 14:47:21 \x2b0800 \x2b0800",
     "url" : "https:\/\/sinksmell.github.io\/2020\/bsearch\/",
-    "wordCount" : "279",
+    "wordCount" : "345",
     "keywords" : [ "二分查找", "SinkSmell | Blog"]
 }
 </script>
@@ -141,7 +141,7 @@
                         <a href="https://sinksmell.github.io/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/"> 算法模板 </a>
                         
                 </span>
-                <span class="post-word-count">（279 Words，阅读时间约 0 Min）</span>
+                <span class="post-word-count">（345 Words，阅读时间约 1 Min）</span>
         </div>
     </header>
     <div class="post-content">
@@ -162,7 +162,11 @@
 
           <h3 id="核心思想">核心思想</h3>
 <blockquote>
-<p>找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素</p>
+<ul>
+<li>找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素</li>
+<li>若目标值出现在所选性质的右边，则选用模板1，若出现在性质左边，可选用模板2</li>
+<li>模板2别忘了加一，mid=(l+r+1)/2 防止出现死循环</li>
+</ul>
 </blockquote>
 <h3 id="搜索条件">搜索条件</h3>
 <blockquote>
@@ -268,6 +272,8 @@
         
         <a href="https://sinksmell.github.io/2019/cors/" class="prev" rel="prev" title="跨域问题及解决方法"><i class="iconfont icon-left"></i>&nbsp;跨域问题及解决方法</a>
          
+        
+        <a href="https://sinksmell.github.io/2020/leetcode-bsearch/" class="next" rel="next" title="LeetCode 二分查找专项练习">LeetCode 二分查找专项练习&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
