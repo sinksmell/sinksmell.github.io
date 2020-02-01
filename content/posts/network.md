@@ -11,7 +11,6 @@ categories:
   - "HTTP"
 ---
 
-## 计算机网络基础知识
 
 ### TCP/IP 四层结构
 

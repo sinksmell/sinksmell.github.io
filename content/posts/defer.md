@@ -9,7 +9,6 @@ categories:
   - "Assembler"
 ---
 
-## Go语言Defer Return 返回值执行顺序探究
 ![](https://i.loli.net/2019/03/01/5c79001fee417.png)
 
 ### defer之间的执行顺序
@@ -74,7 +73,7 @@ func main() {
 
 ```
 
-#### 声明返回值
+### 声明返回值
 
 ``` go
 package main

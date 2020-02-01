@@ -6,4 +6,4 @@ draft: false
 
 #### SinkSmell
 > * golang 开发工程师
-
+> * 开源爱好者
