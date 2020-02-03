@@ -1,7 +1,7 @@
 ---
 title: "Concurrency in Go 读书笔记 第一章"
 date: 2020-02-01T16:42:30+08:00
-draft: true
+draft: false
 tags:
     - "concurrency in go"
     - "chapter1"
@@ -267,7 +267,205 @@ created by main.main
 > * A请求资源b, B请求资源a，都不成功，陷入等待状态  **互斥，相互等待**
 > * 又有**资源不可剥夺**，于是死锁出现
 
-![image-20200201193204237](./note-cigo-ch01.assets/image-20200201193204237.png)
+![image-20200201193204237.png](https://i.loli.net/2020/02/03/LSmNUEJQ4FH6apA.png)
 
 
 
+#### Livelock 活锁
+
+> * 活锁是指并发地操作在正常地进行，但是并没有是程序的状态向前推进
+>
+>   > 举个例子，你走在一条狭窄路上，迎面走来一个人，你向左边走，给他让路，他向右边走(你的左边)给你让路，然后你意识到了这样没办法通过，于是你向右边走，他又向左边走(你的右边)，如此反复，谁都不能通过。
+
+**代码示例**
+
+```go
+package main
+
+import (
+	"bytes"
+	"fmt"
+	"sync"
+	"sync/atomic"
+	"time"
+)
+
+var (
+	// 控制两个人的行走步调
+	cadence = sync.NewCond(&sync.Mutex{})
+	left    int32 // 1表示向左走,注意此处的方向为相对于第一个人的方向
+	right   int32 // 1 表示向右走
+)
+
+func main() {
+
+	go func() {
+		for range time.Tick(time.Millisecond) {
+			cadence.Broadcast()
+		}
+	}()
+	var peoples sync.WaitGroup
+	peoples.Add(2)
+	go walk(&peoples, "Alice")
+	go walk(&peoples, "David")
+
+	peoples.Wait()
+}
+
+// 模拟两个行人
+func walk(wg *sync.WaitGroup, name string) {
+	var out bytes.Buffer
+	defer wg.Done()
+	defer func() {
+		fmt.Println(out.String())
+	}()
+	fmt.Fprintf(&out, "%v is trying to scoot:", name)
+	// 设置转向次数为5
+	for i := 0; i < 5; i++ {
+		if tryLeft(&out) || tryRight(&out) {
+			return
+		}
+	}
+	fmt.Fprintf(&out, "\n %v give up!", name)
+}
+
+// 尝试向左走
+func tryLeft(out *bytes.Buffer) bool {
+	return tryDirection("left", &left, out)
+}
+
+// 尝试向右走
+func tryRight(out *bytes.Buffer) bool {
+	return tryDirection("right", &right, out)
+}
+
+// 模拟行走,两个人步调要一致
+func takeStep() {
+	cadence.L.Lock()
+	cadence.Wait()
+	cadence.L.Unlock()
+}
+
+// 尝试向某个方向移动
+func tryDirection(dirName string, dir *int32, out *bytes.Buffer) bool {
+	fmt.Fprintf(out, " %v", dirName)
+	atomic.AddInt32(dir, 1)
+	takeStep()
+	if atomic.LoadInt32(dir) == 1 {
+		fmt.Fprintf(out, ". Success!")
+		return true
+	}
+	takeStep()
+	atomic.AddInt32(dir, -1)
+	return false
+}
+
+```
+
+**运行结果**
+
+```shell
+Alice is trying to scoot: left right left right left right left right left right
+ Alice give up!
+David is trying to scoot: left right left right left right left right left right
+ David give up!
+```
+
+
+
+**拓展**
+
+> * **程序正常工作也有可能出现活锁现象**
+> * **活锁**是饥饿现象的一个子集
+
+
+
+#### Starvation 饥饿
+
+> * 如果并发的线程/进程不能获取它所需的所有资源，就认为出现了饥饿
+> * 饥饿通常意味着，一个或多个的线程/进程阻碍其他线程/进程高效地工作
+
+**代码示例**
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func main() {
+	var wg sync.WaitGroup
+	var shardLock sync.Mutex
+	const runtime = time.Second
+
+	greedyWorker := func() {
+		defer wg.Done()
+		var count int
+    // 贪婪的工作者，在整个工作时间内都持有锁
+		for begin := time.Now(); time.Since(begin) <= runtime; {
+			shardLock.Lock()
+			time.Sleep(3 * time.Nanosecond)
+			shardLock.Unlock()
+			count++
+		}
+		fmt.Printf("Greedy worker was able to execute %v work loops\n", count)
+	}
+
+	politeWorker := func() {
+		defer wg.Done()
+		var count int
+    // 礼貌的工作者，在需要的时候获取锁
+		for begin := time.Now(); time.Since(begin) <= runtime; {
+			shardLock.Lock()
+			time.Sleep(1 * time.Nanosecond)
+			shardLock.Unlock()
+
+			shardLock.Lock()
+			time.Sleep(1 * time.Nanosecond)
+			shardLock.Unlock()
+
+			shardLock.Lock()
+			time.Sleep(1 * time.Nanosecond)
+			shardLock.Unlock()
+
+			count++
+		}
+		fmt.Printf("Polite worker was able to execute %v work loops\n", count)
+	}
+
+	wg.Add(2)
+	go greedyWorker()
+	go politeWorker()
+
+	wg.Wait()
+}
+
+```
+
+**运行结果**
+
+```shell
+Greedy worker was able to execute 657044 work loops
+Polite worker was able to execute 369205 work loops
+```
+
+**结果分析**
+
+> * 贪婪的工作者与礼貌的工作者虽然工作时间相同，但是前者的工作量几乎达到了后者的两倍
+> * 贪婪工作者将锁的控制拓展到了临界区的外面
+> * 并不是贪婪工作者的算法更高效，而是通过饥饿了其他工作者来提高了工作效率
+
+**拓展**
+
+> * 为了避免饥饿其他工作线程，应该只锁定临界区
+> * 如果出现了同步的性能问题再考虑拓展范围
+
+
+
+### Determining Concurrency Safety 确定并发安全
+
+> * 编写函数时，要确定一个函数的并发安全性
+> * 大意就是通过函数的原型，注释来说明某个函数是否适用并发场景
