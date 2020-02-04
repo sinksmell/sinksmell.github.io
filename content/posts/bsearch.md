@@ -32,6 +32,8 @@ func bsearch(nums []int)int{
       r=mid
     }
   }
+  // 返回 l或r 都可以
+  return l
 }
 
 // example
@@ -75,6 +77,8 @@ func bsearch(nums []int)int{
       r=mid-1
     }
   }
+  // 返回 l或r 都可以
+  return l
 }
 
 // example
