@@ -3,9 +3,9 @@ title: "LeetCode 二叉树专题练习"
 date: 2020-02-04T14:07:22+08:00
 draft: false
 tags:
-	- "二叉树"
+  - "二叉树"
 categories:
-	- "LeetCode"
+  - "LeetCode"
 ---
 
 ### 98.验证二叉搜索树
@@ -239,38 +239,38 @@ type  Stack  struct{
 }
 
 func NewStack()*Stack{
-	return &Stack{
-		data: []interface{}{},
-		top:-1,
-	}
+    return &Stack{
+        data: []interface{}{},
+        top:-1,
+    }
 }
 
 func(s *Stack)Empty()bool{
-	return s.top==-1
+    return s.top==-1
 }
 
 func(s *Stack)Size()int{
-	return s.top+1
+    return s.top+1
 }
 
 func (s *Stack) Push(elem interface{}) {
-	s.top++
-	lens := len(s.data)
-	if s.top > lens-1 {
-		newd := make([]interface{}, lens*2+1)
-		copy(newd, s.data)
-		s.data=newd
-	}
-	s.data[s.top] = elem
+    s.top++
+    lens := len(s.data)
+    if s.top > lens-1 {
+        newd := make([]interface{}, lens*2+1)
+        copy(newd, s.data)
+        s.data=newd
+    }
+    s.data[s.top] = elem
 }
 
 func (s *Stack)Pop()interface{}{
-	if s.top!=-1 {
-		res := s.data[s.top]
-		s.top--
-		return res
-	}
-	panic(s.top)
+    if s.top!=-1 {
+        res := s.data[s.top]
+        s.top--
+        return res
+    }
+    panic(s.top)
 }
 
 ```
@@ -331,8 +331,8 @@ func build(preorder,inorder []int,pl,pr,il,ir int)*TreeNode{
     root.Val=preorder[pl]
     i:=index(inorder,root.Val)
     llen:=i-il // 左子树节点数量
-  	// 先序 [pl+1,pl+llen] 和 [pl+llen+1,pr]
-  	// 中序 [il,i-1] 和 [i+1,ir]
+      // 先序 [pl+1,pl+llen] 和 [pl+llen+1,pr]
+      // 中序 [il,i-1] 和 [i+1,ir]
     root.Left=build(preorder,inorder,pl+1,pl+llen,il,i-1)
     root.Right=build(preorder,inorder,pl+llen+1,pr,i+1,ir)
     return root

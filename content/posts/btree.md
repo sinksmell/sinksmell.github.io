@@ -3,9 +3,9 @@ title: "二叉树常见模板"
 date: 2020-02-04T15:33:40+08:00
 draft: true
 tags:
-	- "二叉树"
+  - "二叉树"
 categories:
-	- "算法模板"
+  - "算法模板"
 ---
 
 ### 二叉树的遍历
@@ -66,38 +66,38 @@ type  Stack  struct{
 }
 
 func NewStack()*Stack{
-	return &Stack{
-		data: []interface{}{},
-		top:-1,
-	}
+  return &Stack{
+    data: []interface{}{},
+    top:-1,
+  }
 }
 
 func(s *Stack)Empty()bool{
-	return s.top==-1
+  return s.top==-1
 }
 
 func(s *Stack)Size()int{
-	return s.top+1
+  return s.top+1
 }
 
 func (s *Stack) Push(elem interface{}) {
-	s.top++
-	lens := len(s.data)
-	if s.top > lens-1 {
-		newd := make([]interface{}, lens*2+1)
-		copy(newd, s.data)
-		s.data=newd
-	}
-	s.data[s.top] = elem
+  s.top++
+  lens := len(s.data)
+  if s.top > lens-1 {
+    newd := make([]interface{}, lens*2+1)
+    copy(newd, s.data)
+    s.data=newd
+  }
+  s.data[s.top] = elem
 }
 
 func (s *Stack)Pop()interface{}{
-	if s.top!=-1 {
-		res := s.data[s.top]
-		s.top--
-		return res
-	}
-	panic(s.top)
+  if s.top!=-1 {
+    res := s.data[s.top]
+    s.top--
+    return res
+  }
+  panic(s.top)
 }
 ```
 
