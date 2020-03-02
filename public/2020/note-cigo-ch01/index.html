@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="sinksmell">
+    
+    <meta name="keywords" content="go,golang,sinksmell">
+    
+    <link rel="prev" href="https://www.sinksmell.xyz/2020/leetcode-bsearch/" />
+    <link rel="next" href="https://www.sinksmell.xyz/2020/leetcode-btree/" />
+    <link rel="canonical" href="https://www.sinksmell.xyz/2020/note-cigo-ch01/" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+         
+         
+             Concurrency in Go 读书笔记 第一章 | SinkSmell | Blog
+         
+    </title>
+    <meta name="title" content="Concurrency in Go 读书笔记 第一章 | SinkSmell | Blog">
+      
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{   "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/www.sinksmell.xyz"
+    },
+    "articleSection" : "posts",
+    "name" : "Concurrency in Go 读书笔记 第一章",
+    "headline" : "Concurrency in Go 读书笔记 第一章",
+    "description" : "并发简介 Race Conditions 竞态 出现条件 两个及以上的操作必须按照正确地顺序执行，但程序未对执行顺序进行保证，将会出现 race condition 示例代码 package main import \x26#34;fmt\x26#34; func main(){ var data int go func() { data \x2b\x2b",
+    "inLanguage" : "en-us",
+    "author" : "sinksmell",
+    "creator" : "sinksmell",
+    "publisher": "sinksmell",
+    "accountablePerson" : "sinksmell",
+    "copyrightHolder" : "sinksmell",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-02-01 16:42:30 \x2b0800 CST",
+    "dateModified" : "2020-02-01 16:42:30 \x2b0800 CST",
+    "url" : "https:\/\/www.sinksmell.xyz\/2020\/note-cigo-ch01\/",
+    "wordCount" : "1995",
+    "keywords" : [ "concurrency in go","chapter1", "SinkSmell | Blog"]
+}
+</script>
+
+  </head>
+  
+    
+  
+  
+<aside class="side-toc">
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#并发简介">并发简介</a>
+      <ul>
+        <li><a href="#race-conditions-竞态">Race Conditions 竞态</a></li>
+        <li><a href="#atomicity-原子性">Atomicity 原子性</a></li>
+        <li><a href="#memory-access-synchronization">Memory Access Synchronization</a></li>
+        <li><a href="#deadlockslivelocksand-starvation">Deadlocks,Livelocks,and Starvation</a></li>
+        <li><a href="#determining-concurrency-safety-确定并发安全">Determining Concurrency Safety 确定并发安全</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    
+        <div class="top-scroll-bar"></div>
+    
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://www.sinksmell.xyz">SinkSmell | Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <div class="top-scroll-bar"></div>
+    
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://www.sinksmell.xyz">SinkSmell | Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+        
+        <div id="landlord">
+          <div class="message" style="opacity:0"></div>
+          <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+          <div class="hide-button">隐藏</div>
+       </div>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Concurrency in Go 读书笔记 第一章</h1>
+        <div class="post-meta">
+                发表于 
+                <span class="post-time">
+                    <time datetime=2020-02-01 itemprop="datePublished">February 1, 2020</time>
+                </span>
+                | 分类于
+                
+                <span class="post-category">
+                        <a href="https://www.sinksmell.xyz/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"> 读书笔记 </a>
+                        
+                </span>
+                <span class="post-word-count">（1995 Words，阅读时间约 6 Min）</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="并发简介">并发简介</h2>
+<h3 id="race-conditions-竞态">Race Conditions 竞态</h3>
+<p><strong>出现条件</strong></p>
+<blockquote>
+<p>两个及以上的操作必须按照正确地顺序执行，但程序未对执行顺序进行保证，将会出现 <em>race condition</em></p>
+</blockquote>
+<p><strong>示例代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(){
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#66d9ef">int</span>
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">data</span> <span style="color:#f92672">++</span>
+	}()
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">data</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;the value is %v\n&#34;</span>,<span style="color:#a6e22e">data</span>)
+	}
+}
+
+</code></pre></div><p><strong>结果预测</strong></p>
+<blockquote>
+<ul>
+<li>没有内容输出，data 在 if 判断之前被改变</li>
+<li>the value is 0 data 在打印数据之前被该变</li>
+<li>the value is 1 data在 if 判断之后，打印数据之前被改变</li>
+</ul>
+</blockquote>
+<p><strong>竞态检测</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sun@sundeMacBook-Pro <span style="color:#f92672">[</span>16:57:47<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>~/VSCode/sinksmell/notes/ch01<span style="color:#f92672">]</span> 
+-&gt; % go build -race race1.go 
+sun@sundeMacBook-Pro <span style="color:#f92672">[</span>16:57:58<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>~/VSCode/sinksmell/notes/ch01<span style="color:#f92672">]</span> 
+-&gt; % ls           
+race1    race1.go
+sun@sundeMacBook-Pro <span style="color:#f92672">[</span>16:58:03<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>~/VSCode/sinksmell/notes/ch01<span style="color:#f92672">]</span> 
+-&gt; % ./race1            
+the value is 0
+<span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span>
+WARNING: DATA RACE
+Write at 0x00c0000b8008 by goroutine 7:
+  main.main.func1<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+      /Users/sun/VSCode/sinksmell/notes/ch01/race1.go:8 +0x4e
+
+Previous read at 0x00c0000b8008 by main goroutine:
+  main.main<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+      /Users/sun/VSCode/sinksmell/notes/ch01/race1.go:10 +0x88
+
+Goroutine <span style="color:#ae81ff">7</span> <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span> created at:
+  main.main<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+      /Users/sun/VSCode/sinksmell/notes/ch01/race1.go:7 +0x7a
+<span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span>
+Found <span style="color:#ae81ff">1</span> data race<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+
+// 从上面输出可以看到，data 值在改变前就被 main goroutine 读了
+</code></pre></div><p><strong>临界资源</strong></p>
+<blockquote>
+<p>可以被被多个进程/线程共享的资源，例如全局变量，共享内存，文件等</p>
+</blockquote>
+<p><strong>临界区</strong></p>
+<blockquote>
+<p>并不是某个区域，而是访问临界资源的一段代码</p>
+</blockquote>
+<p><strong>解决竞态，类似操作系统里管理临界区，保证某一时刻，只有一个进程/线程能进入临界区访问临界资源</strong></p>
+<blockquote>
+<p>可对临界资源进行加锁，解决上面例子中的问题</p>
+</blockquote>
+<p><strong>尝试解除竞态</strong></p>
+<blockquote>
+<p>👇的代码实际上仍然未明确规定哪个goroutine先访问data,只是对临界区加以管理</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;sync&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(){
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#66d9ef">int</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mutex</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">mutex</span>.<span style="color:#a6e22e">Lock</span>()
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">mutex</span>.<span style="color:#a6e22e">Unlock</span>()
+		<span style="color:#a6e22e">data</span> <span style="color:#f92672">++</span>
+	}()
+	<span style="color:#a6e22e">mutex</span>.<span style="color:#a6e22e">Lock</span>()
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">mutex</span>.<span style="color:#a6e22e">Unlock</span>()
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">data</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;the value is %v\n&#34;</span>,<span style="color:#a6e22e">data</span>)
+	}
+}
+
+</code></pre></div><p><strong>再次检测</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sun@sundeMacBook-Pro <span style="color:#f92672">[</span>17:20:11<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>~/VSCode/sinksmell/notes/ch01<span style="color:#f92672">]</span> 
+-&gt; % go build -race race1.go
+sun@sundeMacBook-Pro <span style="color:#f92672">[</span>17:21:10<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>~/VSCode/sinksmell/notes/ch01<span style="color:#f92672">]</span> 
+-&gt; % ./race1
+the value is <span style="color:#ae81ff">0</span>
+</code></pre></div><h3 id="atomicity-原子性">Atomicity 原子性</h3>
+<p><strong>原子性</strong></p>
+<blockquote>
+<p>在某个上下文环境中，一个操作满足不可分割不可打断，就认为这个操作具有原子性</p>
+<blockquote>
+<ul>
+<li>上下文的重要性，可以认为是作用域，例如在进程中的原子操作，放到操作系统层面来看，可能就不是原子操作。</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><strong>直觉中的原子操作</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>
+</code></pre></div><blockquote>
+<p>这条语句看起来是一个原子操作，实际上从指令执行角度它分为3步，虽然每一步都是原子操作，但是组合起来就不是了</p>
+<ul>
+<li>取出i的值</li>
+<li>把i的值加一</li>
+<li>存储i的值</li>
+</ul>
+</blockquote>
+<p><strong>原子性有何意义?</strong></p>
+<blockquote>
+<p>如果一个操作的原子性得到了保证，那么可以认为这个操作是<strong>并发安全</strong>的</p>
+</blockquote>
+<h3 id="memory-access-synchronization">Memory Access Synchronization</h3>
+<blockquote>
+<p>实际上就是操作系统中对临界区的管理，可参考线程之间的同步与互斥</p>
+</blockquote>
+<h3 id="deadlockslivelocksand-starvation">Deadlocks,Livelocks,and Starvation</h3>
+<h4 id="deadlock-死锁">Deadlock 死锁</h4>
+<blockquote>
+<p>所有的工作进程/线程都在等待其他的线程释放资源</p>
+<p>死锁必要条件</p>
+<p><strong>描述1</strong>：</p>
+<ul>
+<li>资源独占性</li>
+<li>资源不可剥夺</li>
+<li>互斥</li>
+<li>相互等待</li>
+</ul>
+<p><strong>原文描述</strong></p>
+<ul>
+<li>Mutual Exclusion</li>
+</ul>
+<blockquote>
+<p>Mutual Exclusion A concurrent process holds exclusive rights to a resource at any one time.</p>
+</blockquote>
+<ul>
+<li>Wait For Condition</li>
+</ul>
+<blockquote>
+<p>A concurrent process must simultaneously hold a resource and be waiting for an additional resource.</p>
+</blockquote>
+<ul>
+<li>No Preemption</li>
+</ul>
+<blockquote>
+<p>A resource held by a concurrent process can only be released by that process, so it fulfills this condition.</p>
+</blockquote>
+<ul>
+<li>Circular Wait</li>
+</ul>
+<blockquote>
+<p>A concurrent process (P1) must be waiting on a chain of other concurrent processes (P2), which are in turn waiting on it (P1), so it fulfills this final condition too.</p>
+</blockquote>
+</blockquote>
+<p><strong>示例代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;sync&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">type</span>  <span style="color:#a6e22e">value</span>  <span style="color:#66d9ef">struct</span>{
+    <span style="color:#a6e22e">mu</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
+    <span style="color:#a6e22e">value</span> <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(){
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+	<span style="color:#a6e22e">printSum</span><span style="color:#f92672">:=</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">v1</span>,<span style="color:#a6e22e">v2</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">value</span>) {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#a6e22e">v1</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">v1</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+
+		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)
+		<span style="color:#a6e22e">v2</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">v2</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;sum=%v\n&#34;</span>,<span style="color:#a6e22e">v1</span>.<span style="color:#a6e22e">value</span><span style="color:#f92672">+</span><span style="color:#a6e22e">v2</span>.<span style="color:#a6e22e">value</span>)
+	}
+
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span>,<span style="color:#a6e22e">b</span> <span style="color:#a6e22e">value</span>
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">2</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">printSum</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">a</span>,<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">b</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">printSum</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">b</span>,<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">a</span>)
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+
+}
+
+</code></pre></div><p><strong>运行结果</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-&gt; % ./deadlock 
+fatal error: all goroutines are asleep - deadlock!
+
+goroutine <span style="color:#ae81ff">1</span> <span style="color:#f92672">[</span>semacquire<span style="color:#f92672">]</span>:
+sync.runtime_Semacquire<span style="color:#f92672">(</span>0xc0000180c8<span style="color:#f92672">)</span>
+        /usr/local/Cellar/go/1.13/libexec/src/runtime/sema.go:56 +0x42
+sync.<span style="color:#f92672">(</span>*WaitGroup<span style="color:#f92672">)</span>.Wait<span style="color:#f92672">(</span>0xc0000180c0<span style="color:#f92672">)</span>
+        /usr/local/Cellar/go/1.13/libexec/src/sync/waitgroup.go:130 +0x64
+main.main<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+        /Users/sun/VSCode/sinksmell/notes/ch01/deadlock.go:31 +0x122
+
+goroutine <span style="color:#ae81ff">5</span> <span style="color:#f92672">[</span>semacquire<span style="color:#f92672">]</span>:
+sync.runtime_SemacquireMutex<span style="color:#f92672">(</span>0xc0000180e4, 0x1051300, 0x1<span style="color:#f92672">)</span>
+        /usr/local/Cellar/go/1.13/libexec/src/runtime/sema.go:71 +0x47
+sync.<span style="color:#f92672">(</span>*Mutex<span style="color:#f92672">)</span>.lockSlow<span style="color:#f92672">(</span>0xc0000180e0<span style="color:#f92672">)</span>
+        /usr/local/Cellar/go/1.13/libexec/src/sync/mutex.go:138 +0xfc
+sync.<span style="color:#f92672">(</span>*Mutex<span style="color:#f92672">)</span>.Lock<span style="color:#f92672">(</span>...<span style="color:#f92672">)</span>
+        /usr/local/Cellar/go/1.13/libexec/src/sync/mutex.go:81
+main.main.func1<span style="color:#f92672">(</span>0xc0000180d0, 0xc0000180e0<span style="color:#f92672">)</span>
+        /Users/sun/VSCode/sinksmell/notes/ch01/deadlock.go:22 +0x1f4
+created by main.main
+        /Users/sun/VSCode/sinksmell/notes/ch01/deadlock.go:29 +0xea
+
+goroutine <span style="color:#ae81ff">6</span> <span style="color:#f92672">[</span>semacquire<span style="color:#f92672">]</span>:
+sync.runtime_SemacquireMutex<span style="color:#f92672">(</span>0xc0000180d4, 0x1300, 0x1<span style="color:#f92672">)</span>
+        /usr/local/Cellar/go/1.13/libexec/src/runtime/sema.go:71 +0x47
+sync.<span style="color:#f92672">(</span>*Mutex<span style="color:#f92672">)</span>.lockSlow<span style="color:#f92672">(</span>0xc0000180d0<span style="color:#f92672">)</span>
+        /usr/local/Cellar/go/1.13/libexec/src/sync/mutex.go:138 +0xfc
+sync.<span style="color:#f92672">(</span>*Mutex<span style="color:#f92672">)</span>.Lock<span style="color:#f92672">(</span>...<span style="color:#f92672">)</span>
+        /usr/local/Cellar/go/1.13/libexec/src/sync/mutex.go:81
+main.main.func1<span style="color:#f92672">(</span>0xc0000180e0, 0xc0000180d0<span style="color:#f92672">)</span>
+        /Users/sun/VSCode/sinksmell/notes/ch01/deadlock.go:22 +0x1f4
+created by main.main
+        /Users/sun/VSCode/sinksmell/notes/ch01/deadlock.go:30 +0x114
+
+</code></pre></div><p><strong>分析</strong></p>
+<blockquote>
+<ul>
+<li>Main,printSum(&amp;a,&amp;b),printSum(&amp;b,&amp;a) 三个goroutine</li>
+<li>Main等待两个printSum简记为A，B的返回</li>
+<li>现在有两个资源 a,b , A 占用了a, B 占用了b  <strong>独占</strong></li>
+<li>A请求资源b, B请求资源a，都不成功，陷入等待状态  <strong>互斥，相互等待</strong></li>
+<li>又有<strong>资源不可剥夺</strong>，于是死锁出现</li>
+</ul>
+</blockquote>
+<p><img src="https://i.loli.net/2020/02/03/LSmNUEJQ4FH6apA.png" alt="image-20200201193204237.png"></p>
+<h4 id="livelock-活锁">Livelock 活锁</h4>
+<blockquote>
+<ul>
+<li>
+<p>活锁是指并发操作在正常地进行，但是并没有使程序的状态向前推进</p>
+<blockquote>
+<p>举个例子，你走在一条狭窄路上，这条路可以允许两个人同时通过。迎面走来一个人，你向左边走，给他让路，他向右边走(你的左边)给你让路，然后你意识到了这样没办法通过，于是你向右边走，他又向左边走(你的右边)，如此反复，谁都不能通过。</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><strong>代码示例</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;bytes&#34;</span>
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;sync&#34;</span>
+	<span style="color:#e6db74">&#34;sync/atomic&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">var</span> (
+	<span style="color:#75715e">// 控制两个人的行走步调
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">cadence</span> = <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">NewCond</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>{})
+	<span style="color:#a6e22e">left</span>    <span style="color:#66d9ef">int32</span> <span style="color:#75715e">// 1表示向左走,注意此处的方向为相对于第一个人的方向
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">right</span>   <span style="color:#66d9ef">int32</span> <span style="color:#75715e">// 1 表示向右走
+</span><span style="color:#75715e"></span>)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">for</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Tick</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>) {
+			<span style="color:#a6e22e">cadence</span>.<span style="color:#a6e22e">Broadcast</span>()
+		}
+	}()
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">peoples</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+	<span style="color:#a6e22e">peoples</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">2</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">walk</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">peoples</span>, <span style="color:#e6db74">&#34;Alice&#34;</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">walk</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">peoples</span>, <span style="color:#e6db74">&#34;David&#34;</span>)
+
+	<span style="color:#a6e22e">peoples</span>.<span style="color:#a6e22e">Wait</span>()
+}
+
+<span style="color:#75715e">// 模拟两个行人
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">walk</span>(<span style="color:#a6e22e">wg</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>, <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>) {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">out</span> <span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">Buffer</span>
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+	<span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">String</span>())
+	}()
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">out</span>, <span style="color:#e6db74">&#34;%v is trying to scoot:&#34;</span>, <span style="color:#a6e22e">name</span>)
+	<span style="color:#75715e">// 设置转向次数为5
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">tryLeft</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">out</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">tryRight</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">out</span>) {
+			<span style="color:#66d9ef">return</span>
+		}
+	}
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">out</span>, <span style="color:#e6db74">&#34;\n %v give up!&#34;</span>, <span style="color:#a6e22e">name</span>)
+}
+
+<span style="color:#75715e">// 尝试向左走
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">tryLeft</span>(<span style="color:#a6e22e">out</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">Buffer</span>) <span style="color:#66d9ef">bool</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">tryDirection</span>(<span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">left</span>, <span style="color:#a6e22e">out</span>)
+}
+
+<span style="color:#75715e">// 尝试向右走
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">tryRight</span>(<span style="color:#a6e22e">out</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">Buffer</span>) <span style="color:#66d9ef">bool</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">tryDirection</span>(<span style="color:#e6db74">&#34;right&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">right</span>, <span style="color:#a6e22e">out</span>)
+}
+
+<span style="color:#75715e">// 模拟行走,两个人步调要一致
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">takeStep</span>() {
+	<span style="color:#a6e22e">cadence</span>.<span style="color:#a6e22e">L</span>.<span style="color:#a6e22e">Lock</span>()
+	<span style="color:#a6e22e">cadence</span>.<span style="color:#a6e22e">Wait</span>()
+	<span style="color:#a6e22e">cadence</span>.<span style="color:#a6e22e">L</span>.<span style="color:#a6e22e">Unlock</span>()
+}
+
+<span style="color:#75715e">// 尝试向某个方向移动
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">tryDirection</span>(<span style="color:#a6e22e">dirName</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">dir</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int32</span>, <span style="color:#a6e22e">out</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">Buffer</span>) <span style="color:#66d9ef">bool</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">out</span>, <span style="color:#e6db74">&#34; %v&#34;</span>, <span style="color:#a6e22e">dirName</span>)
+	<span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">AddInt32</span>(<span style="color:#a6e22e">dir</span>, <span style="color:#ae81ff">1</span>)
+	<span style="color:#a6e22e">takeStep</span>()
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">LoadInt32</span>(<span style="color:#a6e22e">dir</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">out</span>, <span style="color:#e6db74">&#34;. Success!&#34;</span>)
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+	}
+	<span style="color:#a6e22e">takeStep</span>()
+	<span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">AddInt32</span>(<span style="color:#a6e22e">dir</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+}
+
+</code></pre></div><p><strong>运行结果</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Alice is trying to scoot: left right left right left right left right left right
+ Alice give up!
+David is trying to scoot: left right left right left right left right left right
+ David give up!
+</code></pre></div><p><strong>拓展</strong></p>
+<blockquote>
+<ul>
+<li><strong>程序正常工作也有可能出现活锁现象</strong></li>
+<li><strong>活锁</strong>是饥饿现象的一个子集</li>
+</ul>
+</blockquote>
+<h4 id="starvation-饥饿">Starvation 饥饿</h4>
+<blockquote>
+<ul>
+<li>如果并发的线程/进程不能获取它所需的所有资源，就认为出现了饥饿</li>
+<li>饥饿通常意味着，一个或多个的线程/进程阻碍其他线程/进程高效地工作</li>
+</ul>
+</blockquote>
+<p><strong>代码示例</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;sync&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">shardLock</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
+	<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">runtime</span> = <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>
+
+	<span style="color:#a6e22e">greedyWorker</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">count</span> <span style="color:#66d9ef">int</span>
+    <span style="color:#75715e">// 贪婪的工作者，在整个工作时间内都持有锁
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">begin</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>(); <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Since</span>(<span style="color:#a6e22e">begin</span>) <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">runtime</span>; {
+			<span style="color:#a6e22e">shardLock</span>.<span style="color:#a6e22e">Lock</span>()
+			<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Nanosecond</span>)
+			<span style="color:#a6e22e">shardLock</span>.<span style="color:#a6e22e">Unlock</span>()
+			<span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>
+		}
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Greedy worker was able to execute %v work loops\n&#34;</span>, <span style="color:#a6e22e">count</span>)
+	}
+
+	<span style="color:#a6e22e">politeWorker</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">count</span> <span style="color:#66d9ef">int</span>
+    <span style="color:#75715e">// 礼貌的工作者，在需要的时候获取锁
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">begin</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>(); <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Since</span>(<span style="color:#a6e22e">begin</span>) <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">runtime</span>; {
+			<span style="color:#a6e22e">shardLock</span>.<span style="color:#a6e22e">Lock</span>()
+			<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Nanosecond</span>)
+			<span style="color:#a6e22e">shardLock</span>.<span style="color:#a6e22e">Unlock</span>()
+
+			<span style="color:#a6e22e">shardLock</span>.<span style="color:#a6e22e">Lock</span>()
+			<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Nanosecond</span>)
+			<span style="color:#a6e22e">shardLock</span>.<span style="color:#a6e22e">Unlock</span>()
+
+			<span style="color:#a6e22e">shardLock</span>.<span style="color:#a6e22e">Lock</span>()
+			<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Nanosecond</span>)
+			<span style="color:#a6e22e">shardLock</span>.<span style="color:#a6e22e">Unlock</span>()
+
+			<span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>
+		}
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Polite worker was able to execute %v work loops\n&#34;</span>, <span style="color:#a6e22e">count</span>)
+	}
+
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">2</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">greedyWorker</span>()
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">politeWorker</span>()
+
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+
+</code></pre></div><p><strong>运行结果</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Greedy worker was able to execute <span style="color:#ae81ff">657044</span> work loops
+Polite worker was able to execute <span style="color:#ae81ff">369205</span> work loops
+</code></pre></div><p><strong>结果分析</strong></p>
+<blockquote>
+<ul>
+<li>贪婪的工作者与礼貌的工作者虽然工作时间相同，但是前者的工作量几乎达到了后者的两倍</li>
+<li>贪婪工作者将锁的控制拓展到了临界区的外面</li>
+<li>并不是贪婪工作者的算法更高效，而是通过饥饿了其他工作者来提高了工作效率</li>
+</ul>
+</blockquote>
+<p><strong>拓展</strong></p>
+<blockquote>
+<ul>
+<li>为了避免饥饿其他工作线程，应该只锁定临界区</li>
+<li>如果出现了同步的性能问题再考虑拓展范围</li>
+</ul>
+</blockquote>
+<h3 id="determining-concurrency-safety-确定并发安全">Determining Concurrency Safety 确定并发安全</h3>
+<blockquote>
+<ul>
+<li>编写函数时，要确定一个函数的并发安全性</li>
+<li>大意就是通过函数的原型，注释来说明某个函数是否适用并发场景</li>
+</ul>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://www.sinksmell.xyz/tags/concurrency-in-go/">
+                    #concurrency in go</a></span>
+            
+            <span class="tag"><a href="https://www.sinksmell.xyz/tags/chapter1/">
+                    #chapter1</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://www.sinksmell.xyz">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://www.sinksmell.xyz/2020/leetcode-bsearch/" class="prev" rel="prev" title="LeetCode 二分查找专项练习"><i class="iconfont icon-left"></i>&nbsp;LeetCode 二分查找专项练习</a>
+         
+        
+        <a href="https://www.sinksmell.xyz/2020/leetcode-btree/" class="next" rel="next" title="LeetCode 二叉树专题练习">LeetCode 二叉树专题练习&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://www.sinksmell.xyz">sinksmell</a> | </span> 
+         
+
+         
+		  <span>
+           Powered by
+           <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a>
+           <span> &  </span>
+           <a href="https://github.com/cyseria/LeaveIt" target="_blank" rel="external nofollow">LeaveIt</a>
+         </span> 
+      </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var message_Path = "/live2d/"
+    var home_Path = "https://www.sinksmell.xyz/"  
+</script>
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+
+
+
+
+     </div>
+  
+  </body>
+</html>

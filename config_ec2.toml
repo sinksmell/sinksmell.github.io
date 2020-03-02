@@ -1,0 +1,71 @@
+baseURL = "https://www.sinksmell.xyz"
+languageCode = "en-us"
+title = "SinkSmell | Blog"
+theme = "LeaveIt"
+
+paginate = 12
+enableEmoji = true
+enableRobotsTXT = true
+googleAnalytics = ""
+
+preserveTaxonomyNames = true
+hasCJKLanguage = true
+
+
+[blackfriday]
+  hrefTargetBlank = true
+  nofollowLinks = true
+  noreferrerLinks = true
+
+[Permalinks]
+ posts = "/:year/:filename/"
+
+[menu]
+  [[menu.main]]
+    name = "Archive"
+    url = "/posts/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+
+[params]
+    since = 2019
+    author = "sinksmell"                           # Author's name
+    avatar = "/images/me/card.jpg"           # Author's avatar
+    subtitle = "我心里那一座天下，你坐镇笑靥如桃花"         # Subtitle
+    cdn_url = ""           # Base CDN URL
+    home_mode = "other" # post or other
+
+    google_verification = ""
+   
+    description = "" # site description
+    keywords = "go,golang,sinksmell" # site keywords
+
+    beian = ""
+    baiduAnalytics = ""
+
+    license= '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可'
+
+[params.social]
+    GitHub = "sinksmell"
+    Email   = "sinksmell@163.com"
+    Wechat = "/images/me/wechat.jpg"  # Wechat QRcode image
+
+[params.live2d]
+    messagePath = "/live2d/"
+    homePath   = "https://www.sinksmell.xyz/"
+
+

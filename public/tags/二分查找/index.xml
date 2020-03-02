@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>二分查找 on SinkSmell | Blog</title>
+    <link>https://www.sinksmell.xyz/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</link>
+    <description>Recent content in 二分查找 on SinkSmell | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Feb 2020 14:11:35 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sinksmell.xyz/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LeetCode 二分查找专项练习</title>
+      <link>https://www.sinksmell.xyz/2020/leetcode-bsearch/</link>
+      <pubDate>Sat, 01 Feb 2020 14:11:35 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2020/leetcode-bsearch/</guid>
+      <description>69. x的平方根 题目描述 实现 int sqrt(int x) 函数。 计算并返回 x 的平方根，其中 x 是非负整数。 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。 示例</description>
+    </item>
+    
+    <item>
+      <title>二分查找模板</title>
+      <link>https://www.sinksmell.xyz/2020/bsearch/</link>
+      <pubDate>Fri, 31 Jan 2020 14:47:21 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2020/bsearch/</guid>
+      <description>核心思想 找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素 若目标值出现在所选性质的右边，则选用模板1，</description>
+    </item>
+    
+  </channel>
+</rss>

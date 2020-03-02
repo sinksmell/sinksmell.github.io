@@ -1,14 +1,105 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on LeaveIt</title>
-    <link>https://sinksmell.github.io/categories/</link>
-    <description>Recent content in Categories on LeaveIt</description>
+    <title>Categories on SinkSmell | Blog</title>
+    <link>https://www.sinksmell.xyz/categories/</link>
+    <description>Recent content in Categories on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 18 Feb 2020 14:12:26 +0800</lastBuildDate>
     
-	<atom:link href="https://sinksmell.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sinksmell.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>内部推荐</title>
+      <link>https://www.sinksmell.xyz/categories/%E5%86%85%E9%83%A8%E6%8E%A8%E8%8D%90/</link>
+      <pubDate>Tue, 18 Feb 2020 14:12:26 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/%E5%86%85%E9%83%A8%E6%8E%A8%E8%8D%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LeetCode</title>
+      <link>https://www.sinksmell.xyz/categories/leetcode/</link>
+      <pubDate>Tue, 04 Feb 2020 14:07:22 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/leetcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>读书笔记</title>
+      <link>https://www.sinksmell.xyz/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 01 Feb 2020 16:42:30 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>算法模板</title>
+      <link>https://www.sinksmell.xyz/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Fri, 31 Jan 2020 14:47:21 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTTP</title>
+      <link>https://www.sinksmell.xyz/categories/http/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network</title>
+      <link>https://www.sinksmell.xyz/categories/network/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://www.sinksmell.xyz/categories/nginx/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TCP</title>
+      <link>https://www.sinksmell.xyz/categories/tcp/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/tcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assembler</title>
+      <link>https://www.sinksmell.xyz/categories/assembler/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/assembler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://www.sinksmell.xyz/categories/go/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/categories/go/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

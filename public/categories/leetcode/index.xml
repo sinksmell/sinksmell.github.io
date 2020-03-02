@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LeetCode on SinkSmell | Blog</title>
+    <link>https://www.sinksmell.xyz/categories/leetcode/</link>
+    <description>Recent content in LeetCode on SinkSmell | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Feb 2020 14:07:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sinksmell.xyz/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LeetCode 二叉树专题练习</title>
+      <link>https://www.sinksmell.xyz/2020/leetcode-btree/</link>
+      <pubDate>Tue, 04 Feb 2020 14:07:22 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2020/leetcode-btree/</guid>
+      <description>98.验证二叉搜索树 题目描述 给定一个二叉树，判断其是否是一个有效的二叉搜索树。 假设一个二叉搜索树具有如下特征： 节点的左子树只包含小于当前节点</description>
+    </item>
+    
+    <item>
+      <title>LeetCode 二分查找专项练习</title>
+      <link>https://www.sinksmell.xyz/2020/leetcode-bsearch/</link>
+      <pubDate>Sat, 01 Feb 2020 14:11:35 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2020/leetcode-bsearch/</guid>
+      <description>69. x的平方根 题目描述 实现 int sqrt(int x) 函数。 计算并返回 x 的平方根，其中 x 是非负整数。 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。 示例</description>
+    </item>
+    
+  </channel>
+</rss>

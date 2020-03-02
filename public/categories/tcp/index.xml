@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TCP on SinkSmell | Blog</title>
+    <link>https://www.sinksmell.xyz/categories/tcp/</link>
+    <description>Recent content in TCP on SinkSmell | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sinksmell.xyz/categories/tcp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>计算机网络基础</title>
+      <link>https://www.sinksmell.xyz/2019/network/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2019/network/</guid>
+      <description>TCP/IP 四层结构 ps: 上图中是图解HTTP中的划分 应用层 决定了向用户提供应用服务时通信的活动 传输层 提供处于网络连接中的两台计算机直接的数据传输 网络层 或</description>
+    </item>
+    
+  </channel>
+</rss>

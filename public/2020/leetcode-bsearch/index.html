@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="sinksmell">
+    
+    <meta name="keywords" content="go,golang,sinksmell">
+    
+    <link rel="prev" href="https://www.sinksmell.xyz/2020/bsearch/" />
+    <link rel="next" href="https://www.sinksmell.xyz/2020/note-cigo-ch01/" />
+    <link rel="canonical" href="https://www.sinksmell.xyz/2020/leetcode-bsearch/" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+         
+         
+             LeetCode 二分查找专项练习 | SinkSmell | Blog
+         
+    </title>
+    <meta name="title" content="LeetCode 二分查找专项练习 | SinkSmell | Blog">
+      
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{   "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/www.sinksmell.xyz"
+    },
+    "articleSection" : "posts",
+    "name" : "LeetCode 二分查找专项练习",
+    "headline" : "LeetCode 二分查找专项练习",
+    "description" : "69. x的平方根 题目描述 实现 int sqrt(int x) 函数。 计算并返回 x 的平方根，其中 x 是非负整数。 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。 示例",
+    "inLanguage" : "en-us",
+    "author" : "sinksmell",
+    "creator" : "sinksmell",
+    "publisher": "sinksmell",
+    "accountablePerson" : "sinksmell",
+    "copyrightHolder" : "sinksmell",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-02-01 14:11:35 \x2b0800 CST",
+    "dateModified" : "2020-02-01 14:11:35 \x2b0800 CST",
+    "url" : "https:\/\/www.sinksmell.xyz\/2020\/leetcode-bsearch\/",
+    "wordCount" : "2619",
+    "keywords" : [ "二分查找","专项练习", "SinkSmell | Blog"]
+}
+</script>
+
+  </head>
+  
+    
+  
+  
+<aside class="side-toc">
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#69-x的平方根">69. x的平方根</a></li>
+        <li><a href="#35-搜索插入位置">35. 搜索插入位置</a></li>
+        <li><a href="#34在排序数组中查找元素的第一个和最后一个位置">34.在排序数组中查找元素的第一个和最后一个位置</a></li>
+        <li><a href="#74-搜索二维矩阵">74. 搜索二维矩阵</a></li>
+        <li><a href="#153-寻找旋转排序数组中的最小值">153. 寻找旋转排序数组中的最小值</a></li>
+        <li><a href="#33-搜索旋转排序数组">33. 搜索旋转排序数组</a></li>
+        <li><a href="#278-第一个错误版本">278. 第一个错误版本</a></li>
+        <li><a href="#162-寻找峰值">162. 寻找峰值</a></li>
+        <li><a href="#275-h指数">275. H指数</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    
+        <div class="top-scroll-bar"></div>
+    
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://www.sinksmell.xyz">SinkSmell | Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <div class="top-scroll-bar"></div>
+    
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://www.sinksmell.xyz">SinkSmell | Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+        
+        <div id="landlord">
+          <div class="message" style="opacity:0"></div>
+          <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+          <div class="hide-button">隐藏</div>
+       </div>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">LeetCode 二分查找专项练习</h1>
+        <div class="post-meta">
+                发表于 
+                <span class="post-time">
+                    <time datetime=2020-02-01 itemprop="datePublished">February 1, 2020</time>
+                </span>
+                | 分类于
+                
+                <span class="post-category">
+                        <a href="https://www.sinksmell.xyz/categories/leetcode/"> LeetCode </a>
+                        
+                </span>
+                <span class="post-word-count">（2619 Words，阅读时间约 8 Min）</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="69-x的平方根">69. x的平方根</h3>
+<hr>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>实现 int sqrt(int x) 函数。</p>
+<p>计算并返回 x 的平方根，其中 x 是非负整数。</p>
+<p>由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</p>
+<p>示例 1:</p>
+<p>输入: 4
+输出: 2
+示例 2:</p>
+<p>输入: 8
+输出: 2
+说明: 8 的平方根是 2.82842&hellip;,
+由于返回类型是整数，小数部分将被舍去。</p>
+</blockquote>
+<p><strong>解题思路</strong></p>
+<blockquote>
+<p>根据 n^2 &gt;= x 将 [0,n] 区间分成两部分 [n^2&lt;=x] 和 [n^2&gt;x] ,目标结果在所选性质的左边区间，所以使用模板2</p>
+</blockquote>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">mySqrt</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">x</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span> {
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">mid</span><span style="color:#f92672">*</span><span style="color:#a6e22e">mid</span> &gt;<span style="color:#a6e22e">x</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l</span>
+}
+</code></pre></div><h3 id="35-搜索插入位置">35. 搜索插入位置</h3>
+<hr>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<p>示例 1:</p>
+<p>输入: [1,3,5,6], 5
+输出: 2
+示例 2:</p>
+<p>输入: [1,3,5,6], 2
+输出: 1
+示例 3:</p>
+<p>输入: [1,3,5,6], 7
+输出: 4
+示例 4:</p>
+<p>输入: [1,3,5,6], 0
+输出: 0</p>
+</blockquote>
+<p><strong>解题思路</strong></p>
+<blockquote>
+<p>根据 nums[i]&lt;target 将区间 [0,n]区间分成两部分{i | nums[i]&lt;target} 和 {i | nums[i]&gt;=target},目标值在所选性质的右边区间，选用模板1</p>
+</blockquote>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchInsert</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+  <span style="color:#75715e">// r 为最后一个能选到的位置
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>]&lt;<span style="color:#a6e22e">target</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l</span>
+}
+</code></pre></div><h3 id="34在排序数组中查找元素的第一个和最后一个位置">34.在排序数组中查找元素的第一个和最后一个位置</h3>
+<hr>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。</p>
+<p>你的算法时间复杂度必须是 O(log n) 级别。</p>
+<p>如果数组中不存在目标值，返回 [-1, -1]。</p>
+<p>示例 1:</p>
+<p>输入: nums = [5,7,7,8,8,10], target = 8
+输出: [3,4]
+示例 2:</p>
+<p>输入: nums = [5,7,7,8,8,10], target = 6
+输出: [-1,-1]</p>
+</blockquote>
+<p><strong>解题思路</strong></p>
+<blockquote>
+<ul>
+<li>选用 nums[i]&lt;target 可以查到模板值出现的第一个位置，分成{i | nums[i]&lt;target} 和 {i | nums[i] &gt;=target}，使用模板1</li>
+<li>选用 nums[i]&gt;target 可以查到目标值出现的最后一个位置，分成{i | nums[i]&lt;=target} 和 {i | nums[i] &gt;target}，使用模板2</li>
+</ul>
+</blockquote>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchRange</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span><span style="color:#f92672">:=</span>make([]<span style="color:#66d9ef">int</span>,<span style="color:#ae81ff">2</span>)
+    <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">0</span>]=<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">1</span>]=<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+  <span style="color:#75715e">// 数据为空，可以返回了
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+    }
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span>=(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>]&lt;<span style="color:#a6e22e">target</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+  <span style="color:#75715e">// 没找到第一次出现的位置，说明该数字没出现过，可以返回了
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">l</span>]<span style="color:#f92672">!=</span><span style="color:#a6e22e">target</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+    }
+    <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">0</span>]=<span style="color:#a6e22e">l</span>
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span>=<span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span>=(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>]&gt;<span style="color:#a6e22e">target</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">1</span>]=<span style="color:#a6e22e">l</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div><h3 id="74-搜索二维矩阵">74. 搜索二维矩阵</h3>
+<hr>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>编写一个高效的算法来判断 m x n 矩阵中，是否存在一个目标值。该矩阵具有如下特性：</p>
+<p>每行中的整数从左到右按升序排列。
+每行的第一个整数大于前一行的最后一个整数。
+示例 1:</p>
+<p>输入:
+matrix = [
+[1,   3,  5,  7],
+[10, 11, 16, 20],
+[23, 30, 34, 50]
+]
+target = 3
+输出: true
+示例 2:</p>
+<p>输入:
+matrix = [
+[1,   3,  5,  7],
+[10, 11, 16, 20],
+[23, 30, 34, 50]
+]
+target = 13
+输出: false</p>
+</blockquote>
+<p><strong>解题思路</strong></p>
+<blockquote>
+<p>将二维矩阵看作是有序的一维数组，转化成简单的二分搜索，使用 &lt; 性质划分，目标在右边，故使用模板1</p>
+</blockquote>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchMatrix</span>(<span style="color:#a6e22e">matrix</span> [][]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">matrix</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> len(<span style="color:#a6e22e">matrix</span>[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+    }
+    <span style="color:#a6e22e">m</span>,<span style="color:#a6e22e">n</span><span style="color:#f92672">:=</span>len(<span style="color:#a6e22e">matrix</span>),len(<span style="color:#a6e22e">matrix</span>[<span style="color:#ae81ff">0</span>])
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">m</span><span style="color:#f92672">*</span><span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#a6e22e">x</span>,<span style="color:#a6e22e">y</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">toXY</span>(<span style="color:#a6e22e">mid</span>,<span style="color:#a6e22e">n</span>)
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">matrix</span>[<span style="color:#a6e22e">x</span>][<span style="color:#a6e22e">y</span>]&lt;<span style="color:#a6e22e">target</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#a6e22e">x</span>,<span style="color:#a6e22e">y</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">toXY</span>(<span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">n</span>)
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">matrix</span>[<span style="color:#a6e22e">x</span>][<span style="color:#a6e22e">y</span>]<span style="color:#f92672">==</span><span style="color:#a6e22e">target</span>
+}
+
+<span style="color:#75715e">// i =&gt; [0,m*n-1]
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">toXY</span>(<span style="color:#a6e22e">i</span>,<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>)(<span style="color:#a6e22e">x</span> ,<span style="color:#a6e22e">y</span> <span style="color:#66d9ef">int</span>){
+    <span style="color:#a6e22e">x</span>= <span style="color:#a6e22e">i</span><span style="color:#f92672">/</span><span style="color:#a6e22e">n</span>
+    <span style="color:#a6e22e">y</span>= <span style="color:#a6e22e">i</span><span style="color:#f92672">%</span><span style="color:#a6e22e">n</span>
+    <span style="color:#66d9ef">return</span>
+}
+</code></pre></div><h3 id="153-寻找旋转排序数组中的最小值">153. 寻找旋转排序数组中的最小值</h3>
+<hr>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
+<p>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。</p>
+<p>请找出其中最小的元素。</p>
+<p>你可以假设数组中不存在重复元素。</p>
+<p>示例 1:</p>
+<p>输入: [3,4,5,1,2]
+输出: 1
+示例 2:</p>
+<p>输入: [4,5,6,7,0,1,2]
+输出: 0</p>
+</blockquote>
+<p><strong>解题思路</strong></p>
+<blockquote>
+<ul>
+<li>可以想象成一段上升的线段，从中间截断，然后将左侧的平移到右侧</li>
+<li>寻找一个性质，可以将数组分成两部分，这里选择：将数组最后一个元素记为 <strong>last</strong>,根据 &gt; last 分成两部分</li>
+<li>目标结果在性质右边，选用模板1</li>
+</ul>
+</blockquote>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">findMin</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+    }
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">last</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">r</span>]
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>] &gt; <span style="color:#a6e22e">last</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">l</span>]
+}
+</code></pre></div><h3 id="33-搜索旋转排序数组">33. 搜索旋转排序数组</h3>
+<hr>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
+<p>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。</p>
+<p>搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。</p>
+<p>你可以假设数组中不存在重复的元素。</p>
+<p>你的算法时间复杂度必须是 O(log n) 级别。</p>
+<p>示例 1:</p>
+<p>输入: nums = [4,5,6,7,0,1,2], target = 0
+输出: 4
+示例 2:</p>
+<p>输入: nums = [4,5,6,7,0,1,2], target = 3
+输出: -1</p>
+</blockquote>
+<p><strong>解题思路</strong></p>
+<blockquote>
+<ul>
+<li>寻找旋转点，参考 <strong>leetcode 153</strong></li>
+<li>旋转目标值所在的区间进行二分查找</li>
+</ul>
+</blockquote>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">search</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">p</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">spinPoint</span>(<span style="color:#a6e22e">nums</span>)
+    <span style="color:#a6e22e">res</span><span style="color:#f92672">:=</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">&gt;=</span><span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">p</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">target</span> <span style="color:#f92672">&lt;=</span><span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">r</span>]{
+        <span style="color:#a6e22e">res</span>=<span style="color:#a6e22e">bsearch</span>(<span style="color:#a6e22e">nums</span>,<span style="color:#a6e22e">p</span>,<span style="color:#a6e22e">r</span>,<span style="color:#a6e22e">target</span>)
+    }<span style="color:#66d9ef">else</span>{
+        <span style="color:#a6e22e">res</span>=<span style="color:#a6e22e">bsearch</span>(<span style="color:#a6e22e">nums</span>,<span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">p</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#a6e22e">target</span>)
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+<span style="color:#75715e">// 获取旋转点
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">spinPoint</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>)<span style="color:#66d9ef">int</span>{
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">last</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">r</span>]
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>] &gt; <span style="color:#a6e22e">last</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l</span>
+}
+<span style="color:#75715e">// 普通二分查找
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bsearch</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>,<span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span>,<span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>)<span style="color:#66d9ef">int</span>{
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">l</span>&gt;<span style="color:#a6e22e">r</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">r</span>&lt;<span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>]&lt;<span style="color:#a6e22e">target</span>{
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">l</span>]<span style="color:#f92672">!=</span><span style="color:#a6e22e">target</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l</span>
+}
+</code></pre></div><h3 id="278-第一个错误版本">278. 第一个错误版本</h3>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。</p>
+<p>假设你有 n 个版本 [1, 2, &hellip;, n]，你想找出导致之后所有版本出错的第一个错误的版本。</p>
+<p>你可以通过调用 bool isBadVersion(version) 接口来判断版本号 version 是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对调用 API 的次数。</p>
+<p>示例:</p>
+<p>给定 n = 5，并且 version = 4 是第一个错误的版本。</p>
+<p>调用 isBadVersion(3) -&gt; false
+调用 isBadVersion(5) -&gt; true
+调用 isBadVersion(4) -&gt; true</p>
+<p>所以，4 是第一个错误的版本。</p>
+</blockquote>
+<p><strong>解题思路</strong></p>
+<blockquote>
+<ul>
+<li>按照版本是否错误这一性质划分数组，选用模板1</li>
+<li>本题要考察的实际上是 mid=(l+r)/2 会溢出，改写为 mid=l + (r-l)/2 即可</li>
+</ul>
+</blockquote>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// Forward declaration of isBadVersion API.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isBadVersion</span>(<span style="color:#66d9ef">int</span> version);
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> firstBadVersion(<span style="color:#66d9ef">int</span> n) {
+        <span style="color:#66d9ef">int</span> l<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,r<span style="color:#f92672">=</span>n;
+        <span style="color:#66d9ef">while</span>(l<span style="color:#f92672">&lt;</span>r){
+            <span style="color:#66d9ef">int</span> mid<span style="color:#f92672">=</span>l<span style="color:#f92672">+</span>(r<span style="color:#f92672">-</span>l)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
+            <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>isBadVersion(mid)){
+                l<span style="color:#f92672">=</span>mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+            }<span style="color:#66d9ef">else</span>{
+                r<span style="color:#f92672">=</span>mid;
+            }
+        }
+        <span style="color:#66d9ef">return</span> l;
+    }
+};
+</code></pre></div><h3 id="162-寻找峰值">162. 寻找峰值</h3>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>峰值元素是指其值大于左右相邻值的元素。</p>
+<p>给定一个输入数组 nums，其中 nums[i] ≠ nums[i+1]，找到峰值元素并返回其索引。</p>
+<p>数组可能包含多个峰值，在这种情况下，返回任何一个峰值所在位置即可。</p>
+<p>你可以假设 nums[-1] = nums[n] = -∞。</p>
+<p>示例 1:</p>
+<p>输入: nums = [1,2,3,1]
+输出: 2
+解释: 3 是峰值元素，你的函数应该返回其索引 2。
+示例 2:</p>
+<p>输入: nums = [1,2,1,3,5,6,4]
+输出: 1 或 5
+解释: 你的函数可以返回索引 1，其峰值元素为 2；
+或者返回索引 5， 其峰值元素为 6。
+说明:</p>
+<p>你的解法应该是 O(logN) 时间复杂度的。</p>
+</blockquote>
+<p><strong>解题思路</strong></p>
+<blockquote>
+<ul>
+<li>根据 <strong>nums[i-1] &lt; nums[i] &lt; nums[i+1]</strong> ，即递增性质，将数组分成两部分</li>
+<li>目标值处于峰值，也就是在该性质的右边，选择模板1</li>
+<li>说明: 本题可能有多个峰值，返回其中一个即可</li>
+</ul>
+</blockquote>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">findPeakElement</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+    }
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#75715e">// nums[i-1] &lt; nums[i] &lt; nums[i+1]  说明还处于递增状态      
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">isGreat</span>(<span style="color:#a6e22e">nums</span>,<span style="color:#a6e22e">mid</span>,<span style="color:#a6e22e">mid</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isGreat</span>(<span style="color:#a6e22e">nums</span>,<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,<span style="color:#a6e22e">mid</span>){
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l</span>
+}
+
+<span style="color:#75715e">// if nums[i1] &gt; nums[i2] return true else return false
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">isGreat</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>,<span style="color:#a6e22e">i1</span>,<span style="color:#a6e22e">i2</span> <span style="color:#66d9ef">int</span>)<span style="color:#66d9ef">bool</span>{
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i2</span>&lt;<span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+    }
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i1</span>&gt;len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i1</span>]&gt;<span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i2</span>]
+}
+
+</code></pre></div><h3 id="275-h指数">275. H指数</h3>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>给定一位研究者论文被引用次数的数组（被引用次数是非负整数），数组已经按照升序排列。编写一个方法，计算出研究者的 h 指数。</p>
+<p>h 指数的定义: “h 代表“高引用次数”（high citations），一名科研人员的 h 指数是指他（她）的 （N 篇论文中）至多有 h 篇论文分别被引用了至少 h 次。（其余的 N - h 篇论文每篇被引用次数不多于 h 次。）&rdquo;</p>
+<p>示例:</p>
+<p>输入: citations = [0,1,3,5,6]
+输出: 3
+解释: 给定数组表示研究者总共有 5 篇论文，每篇论文相应的被引用了 0, 1, 3, 5, 6 次。
+由于研究者有 3 篇论文每篇至少被引用了 3 次，其余两篇论文每篇被引用不多于 3 次，所以她的 h 指数是 3。</p>
+</blockquote>
+<p><strong>解题思路</strong></p>
+<blockquote>
+<ul>
+<li>题目花里胡哨地引入了H指数概念，关键还是要找到一个性质划分数组</li>
+<li>根据<strong>论文被引用次数&lt;达标篇数</strong>来划分数组，目标值在性质右边，选用模板1</li>
+<li>Ps: 如果最终的目标被引用次数为0，则返回0</li>
+</ul>
+</blockquote>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hIndex</span>(<span style="color:#a6e22e">citations</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">citations</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+    }
+    <span style="color:#a6e22e">lens</span><span style="color:#f92672">:=</span>len(<span style="color:#a6e22e">citations</span>)
+    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">lens</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">citations</span>[<span style="color:#a6e22e">mid</span>] &lt; (<span style="color:#a6e22e">lens</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mid</span>){
+            <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">citations</span>[<span style="color:#a6e22e">l</span>]<span style="color:#f92672">!=</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lens</span><span style="color:#f92672">-</span><span style="color:#a6e22e">l</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>   
+}
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://www.sinksmell.xyz/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                    #二分查找</a></span>
+            
+            <span class="tag"><a href="https://www.sinksmell.xyz/tags/%E4%B8%93%E9%A1%B9%E7%BB%83%E4%B9%A0/">
+                    #专项练习</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://www.sinksmell.xyz">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://www.sinksmell.xyz/2020/bsearch/" class="prev" rel="prev" title="二分查找模板"><i class="iconfont icon-left"></i>&nbsp;二分查找模板</a>
+         
+        
+        <a href="https://www.sinksmell.xyz/2020/note-cigo-ch01/" class="next" rel="next" title="Concurrency in Go 读书笔记 第一章">Concurrency in Go 读书笔记 第一章&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://www.sinksmell.xyz">sinksmell</a> | </span> 
+         
+
+         
+		  <span>
+           Powered by
+           <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a>
+           <span> &  </span>
+           <a href="https://github.com/cyseria/LeaveIt" target="_blank" rel="external nofollow">LeaveIt</a>
+         </span> 
+      </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var message_Path = "/live2d/"
+    var home_Path = "https://www.sinksmell.xyz/"  
+</script>
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+
+
+
+
+     </div>
+  
+  </body>
+</html>

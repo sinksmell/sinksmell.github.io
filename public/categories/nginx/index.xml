@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on SinkSmell | Blog</title>
+    <link>https://www.sinksmell.xyz/categories/nginx/</link>
+    <description>Recent content in Nginx on SinkSmell | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sinksmell.xyz/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>跨域问题及解决方法</title>
+      <link>https://www.sinksmell.xyz/2019/cors/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2019/cors/</guid>
+      <description>跨域问题是什么 同源策略 同源策略是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSRF等攻击。所</description>
+    </item>
+    
+  </channel>
+</rss>

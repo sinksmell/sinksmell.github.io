@@ -1,21 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://sinksmell.github.io/2020/test/</loc>
+      <loc>https://www.sinksmell.xyz/categories/</loc>
       
-      <lastmod>2020-01-26T10:10:36+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sinksmell.github.io/2020/ci/</loc>
-      
-      <lastmod>2020-01-26T10:03:50+08:00</lastmod>
+      <lastmod>2020-02-18T14:12:26+08:00</lastmod>
       
       
       
@@ -23,45 +12,351 @@
     </url>
   
     <url>
-      <loc>https://sinksmell.github.io/categories/</loc>
+      <loc>https://www.sinksmell.xyz/posts/</loc>
+      
+      <lastmod>2020-02-18T14:12:26+08:00</lastmod>
       
       
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://sinksmell.github.io/</loc>
-      
-      <lastmod>2020-01-26T10:10:36+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
       
       
     </url>
   
     <url>
-      <loc>https://sinksmell.github.io/posts/</loc>
+      <loc>https://www.sinksmell.xyz/</loc>
       
-      <lastmod>2020-01-26T10:10:36+08:00</lastmod>
+      <lastmod>2020-02-18T14:12:26+08:00</lastmod>
       
       
-      
-      <priority>0</priority>
       
       
     </url>
   
     <url>
-      <loc>https://sinksmell.github.io/tags/</loc>
+      <loc>https://www.sinksmell.xyz/categories/%E5%86%85%E9%83%A8%E6%8E%A8%E8%8D%90/</loc>
+      
+      <lastmod>2020-02-18T14:12:26+08:00</lastmod>
       
       
       
-      <priority>0</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/2020/neitui/</loc>
+      
+      <lastmod>2020-02-18T14:12:26+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/categories/leetcode/</loc>
+      
+      <lastmod>2020-02-04T14:07:22+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/2020/leetcode-btree/</loc>
+      
+      <lastmod>2020-02-04T14:07:22+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/</loc>
+      
+      <lastmod>2020-02-04T14:07:22+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+      
+      <lastmod>2020-02-04T14:07:22+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/chapter1/</loc>
+      
+      <lastmod>2020-02-01T16:42:30+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/concurrency-in-go/</loc>
+      
+      <lastmod>2020-02-01T16:42:30+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/2020/note-cigo-ch01/</loc>
+      
+      <lastmod>2020-02-01T16:42:30+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+      
+      <lastmod>2020-02-01T16:42:30+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/2020/leetcode-bsearch/</loc>
+      
+      <lastmod>2020-02-01T14:11:35+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/%E4%B8%93%E9%A1%B9%E7%BB%83%E4%B9%A0/</loc>
+      
+      <lastmod>2020-02-01T14:11:35+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</loc>
+      
+      <lastmod>2020-02-01T14:11:35+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/2020/bsearch/</loc>
+      
+      <lastmod>2020-01-31T14:47:21+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/</loc>
+      
+      <lastmod>2020-01-31T14:47:21+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/about/</loc>
+      
+      <lastmod>2020-01-26T13:49:33+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/cors/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/categories/http/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/http/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/categories/network/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/network/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/categories/nginx/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/nginx/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/2019/cors/</loc>
+      
+      <lastmod>2020-01-26T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/categories/tcp/</loc>
+      
+      <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/tcp/</loc>
+      
+      <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/2019/network/</loc>
+      
+      <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/categories/assembler/</loc>
+      
+      <lastmod>2019-03-01T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/defer/</loc>
+      
+      <lastmod>2019-03-01T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/categories/go/</loc>
+      
+      <lastmod>2019-03-01T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/go/</loc>
+      
+      <lastmod>2019-03-01T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/tags/golang/</loc>
+      
+      <lastmod>2019-03-01T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.sinksmell.xyz/2019/defer/</loc>
+      
+      <lastmod>2019-03-01T00:00:00+00:00</lastmod>
+      
+      
       
       
     </url>

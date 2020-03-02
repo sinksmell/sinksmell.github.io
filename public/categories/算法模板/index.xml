@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法模板 on SinkSmell | Blog</title>
+    <link>https://www.sinksmell.xyz/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/</link>
+    <description>Recent content in 算法模板 on SinkSmell | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 Jan 2020 14:47:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sinksmell.xyz/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>二分查找模板</title>
+      <link>https://www.sinksmell.xyz/2020/bsearch/</link>
+      <pubDate>Fri, 31 Jan 2020 14:47:21 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2020/bsearch/</guid>
+      <description>核心思想 找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素 若目标值出现在所选性质的右边，则选用模板1，</description>
+    </item>
+    
+  </channel>
+</rss>

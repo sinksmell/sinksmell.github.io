@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LeaveIt on LeaveIt</title>
-    <link>https://sinksmell.github.io/</link>
-    <description>Recent content in LeaveIt on LeaveIt</description>
+    <title>SinkSmell | Blog on SinkSmell | Blog</title>
+    <link>https://www.sinksmell.xyz/</link>
+    <description>Recent content in SinkSmell | Blog on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Jan 2020 10:10:36 +0800</lastBuildDate>
-    <atom:link href="https://sinksmell.github.io/" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Feb 2020 14:12:26 +0800</lastBuildDate>
+    <atom:link href="https://www.sinksmell.xyz/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Test</title>
-      <link>https://sinksmell.github.io/2020/test/</link>
-      <pubDate>Sun, 26 Jan 2020 10:10:36 +0800</pubDate>
+      <title>Posts</title>
+      <link>https://www.sinksmell.xyz/posts/</link>
+      <pubDate>Tue, 18 Feb 2020 14:12:26 +0800</pubDate>
       
-      <guid>https://sinksmell.github.io/2020/test/</guid>
-      <description>
-
-&lt;h4 id=&#34;test-mock-ci&#34;&gt;test mock ci&lt;/h4&gt;
-</description>
+      <guid>https://www.sinksmell.xyz/posts/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>Ci</title>
-      <link>https://sinksmell.github.io/2020/ci/</link>
-      <pubDate>Sun, 26 Jan 2020 10:03:50 +0800</pubDate>
+      <title>About</title>
+      <link>https://www.sinksmell.xyz/about/</link>
+      <pubDate>Sun, 26 Jan 2020 13:49:33 +0800</pubDate>
       
-      <guid>https://sinksmell.github.io/2020/ci/</guid>
-      <description>
-
-&lt;h4 id=&#34;test-ci&#34;&gt;Test ci&lt;/h4&gt;
+      <guid>https://www.sinksmell.xyz/about/</guid>
+      <description>&lt;h4 id=&#34;sinksmell&#34;&gt;SinkSmell&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;golang 开发工程师&lt;/li&gt;
+&lt;li&gt;开源爱好者&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     

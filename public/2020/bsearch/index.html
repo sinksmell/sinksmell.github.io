@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="sinksmell">
+    
+    <meta name="keywords" content="go,golang,sinksmell">
+    
+    <link rel="prev" href="https://www.sinksmell.xyz/2019/cors/" />
+    <link rel="next" href="https://www.sinksmell.xyz/2020/leetcode-bsearch/" />
+    <link rel="canonical" href="https://www.sinksmell.xyz/2020/bsearch/" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+         
+         
+             二分查找模板 | SinkSmell | Blog
+         
+    </title>
+    <meta name="title" content="二分查找模板 | SinkSmell | Blog">
+      
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{   "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/www.sinksmell.xyz"
+    },
+    "articleSection" : "posts",
+    "name" : "二分查找模板",
+    "headline" : "二分查找模板",
+    "description" : "刷题必备的二分查找go模板",
+    "inLanguage" : "en-us",
+    "author" : "sinksmell",
+    "creator" : "sinksmell",
+    "publisher": "sinksmell",
+    "accountablePerson" : "sinksmell",
+    "copyrightHolder" : "sinksmell",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-01-31 14:47:21 \x2b0800 CST",
+    "dateModified" : "2020-01-31 14:47:21 \x2b0800 CST",
+    "url" : "https:\/\/www.sinksmell.xyz\/2020\/bsearch\/",
+    "wordCount" : "367",
+    "keywords" : [ "二分查找", "SinkSmell | Blog"]
+}
+</script>
+
+  </head>
+  
+    
+  
+  
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    
+        <div class="top-scroll-bar"></div>
+    
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://www.sinksmell.xyz">SinkSmell | Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <div class="top-scroll-bar"></div>
+    
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://www.sinksmell.xyz">SinkSmell | Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+        
+        <div id="landlord">
+          <div class="message" style="opacity:0"></div>
+          <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+          <div class="hide-button">隐藏</div>
+       </div>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">二分查找模板</h1>
+        <div class="post-meta">
+                发表于 
+                <span class="post-time">
+                    <time datetime=2020-01-31 itemprop="datePublished">January 31, 2020</time>
+                </span>
+                | 分类于
+                
+                <span class="post-category">
+                        <a href="https://www.sinksmell.xyz/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/"> 算法模板 </a>
+                        
+                </span>
+                <span class="post-word-count">（367 Words，阅读时间约 1 Min）</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="核心思想">核心思想</h3>
+<blockquote>
+<ul>
+<li>找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素</li>
+<li>若目标值出现在所选性质的右边，则选用模板1，若出现在性质左边，可选用模板2</li>
+<li>模板2别忘了加一，mid=(l+r+1)/2 防止出现死循环</li>
+</ul>
+</blockquote>
+<h3 id="搜索条件">搜索条件</h3>
+<blockquote>
+<p>数据有序</p>
+</blockquote>
+<h3 id="模板1">模板1.</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 将区间 [l,r] 分割成 [l,mid] [mid+1,r]
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bsearch</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>)<span style="color:#66d9ef">int</span>{
+  <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)
+  <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+    <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span> <span style="color:#75715e">// 可能会出现整数相加溢出
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">check</span>(<span style="color:#a6e22e">mid</span>)){
+      <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+    }<span style="color:#66d9ef">else</span>{
+      <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span>
+    }
+  }
+  <span style="color:#75715e">// 返回 l或r 都可以
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l</span>
+}
+
+<span style="color:#75715e">// example
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 在有序数组（递增）中寻找目标元素
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 使用 &lt;num 这个性质将区间划分成两个部分
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getNumberIndex</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>,<span style="color:#a6e22e">num</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#a6e22e">left</span>,<span style="color:#a6e22e">right</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">left</span>&lt;<span style="color:#a6e22e">right</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">left</span><span style="color:#f92672">+</span><span style="color:#a6e22e">right</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>]&lt;<span style="color:#a6e22e">num</span>{
+            <span style="color:#a6e22e">left</span> =<span style="color:#a6e22e">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">right</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+  	<span style="color:#75715e">// 此时 left 与 right 已经相等
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">left</span>]<span style="color:#f92672">==</span><span style="color:#a6e22e">num</span>{
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">left</span>
+  }
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+}
+
+</code></pre></div><h3 id="模板二">模板二</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 将区间 [l,r] 分割成 [l,mid-1] [mid,r]
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bsearch</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>)<span style="color:#66d9ef">int</span>{
+  <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)
+  <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
+    <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span> <span style="color:#75715e">// +1 是为了防止死循环
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">check</span>(<span style="color:#a6e22e">mid</span>)){
+      <span style="color:#a6e22e">l</span>=<span style="color:#a6e22e">mid</span>
+    }<span style="color:#66d9ef">else</span>{
+      <span style="color:#a6e22e">r</span>=<span style="color:#a6e22e">mid</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    }
+  }
+  <span style="color:#75715e">// 返回 l或r 都可以
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l</span>
+}
+
+<span style="color:#75715e">// example
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 在有序数组（递增）中寻找目标元素
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 使用 &gt;num 这个性质将区间划分成两个部分
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getNumberIndex</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>,<span style="color:#a6e22e">num</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#a6e22e">left</span>,<span style="color:#a6e22e">right</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">left</span>&lt;<span style="color:#a6e22e">right</span>{
+        <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">left</span><span style="color:#f92672">+</span><span style="color:#a6e22e">right</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">mid</span>]&gt;<span style="color:#a6e22e">num</span>{
+            <span style="color:#a6e22e">right</span> =<span style="color:#a6e22e">mid</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">left</span>=<span style="color:#a6e22e">mid</span>
+        }
+    }
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">left</span>]<span style="color:#f92672">!=</span><span style="color:#a6e22e">left</span>{
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">left</span>
+}
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://www.sinksmell.xyz/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                    #二分查找</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://www.sinksmell.xyz">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://www.sinksmell.xyz/2019/cors/" class="prev" rel="prev" title="跨域问题及解决方法"><i class="iconfont icon-left"></i>&nbsp;跨域问题及解决方法</a>
+         
+        
+        <a href="https://www.sinksmell.xyz/2020/leetcode-bsearch/" class="next" rel="next" title="LeetCode 二分查找专项练习">LeetCode 二分查找专项练习&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://www.sinksmell.xyz">sinksmell</a> | </span> 
+         
+
+         
+		  <span>
+           Powered by
+           <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a>
+           <span> &  </span>
+           <a href="https://github.com/cyseria/LeaveIt" target="_blank" rel="external nofollow">LeaveIt</a>
+         </span> 
+      </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var message_Path = "/live2d/"
+    var home_Path = "https://www.sinksmell.xyz/"  
+</script>
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+
+
+
+
+     </div>
+  
+  </body>
+</html>

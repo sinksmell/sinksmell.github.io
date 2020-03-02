@@ -1,32 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on LeaveIt</title>
-    <link>https://sinksmell.github.io/posts/</link>
-    <description>Recent content in Posts on LeaveIt</description>
+    <title>Posts on SinkSmell | Blog</title>
+    <link>https://www.sinksmell.xyz/posts/</link>
+    <description>Recent content in Posts on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Jan 2020 10:10:36 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 18 Feb 2020 14:12:26 +0800</lastBuildDate>
     
-	<atom:link href="https://sinksmell.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sinksmell.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Test</title>
-      <link>https://sinksmell.github.io/2020/test/</link>
-      <pubDate>Sun, 26 Jan 2020 10:10:36 +0800</pubDate>
+      <title>米哈游春招内推</title>
+      <link>https://www.sinksmell.xyz/2020/neitui/</link>
+      <pubDate>Tue, 18 Feb 2020 14:12:26 +0800</pubDate>
       
-      <guid>https://sinksmell.github.io/2020/test/</guid>
-      <description> test mock ci </description>
+      <guid>https://www.sinksmell.xyz/2020/neitui/</guid>
+      <description>投递方式 职位可参考官网 join.mihoyo.com 联系邮箱 sinksmell@163.com 个人内推码 22105DA 个人内推码 22105DA 渠道选择内部员工推荐，不要选择牛客网 渠道选择内部员工推荐，不要选择牛客网 渠道选择内</description>
     </item>
     
     <item>
-      <title>Ci</title>
-      <link>https://sinksmell.github.io/2020/ci/</link>
-      <pubDate>Sun, 26 Jan 2020 10:03:50 +0800</pubDate>
+      <title>LeetCode 二叉树专题练习</title>
+      <link>https://www.sinksmell.xyz/2020/leetcode-btree/</link>
+      <pubDate>Tue, 04 Feb 2020 14:07:22 +0800</pubDate>
       
-      <guid>https://sinksmell.github.io/2020/ci/</guid>
-      <description> Test ci </description>
+      <guid>https://www.sinksmell.xyz/2020/leetcode-btree/</guid>
+      <description>98.验证二叉搜索树 题目描述 给定一个二叉树，判断其是否是一个有效的二叉搜索树。 假设一个二叉搜索树具有如下特征： 节点的左子树只包含小于当前节点</description>
+    </item>
+    
+    <item>
+      <title>Concurrency in Go 读书笔记 第一章</title>
+      <link>https://www.sinksmell.xyz/2020/note-cigo-ch01/</link>
+      <pubDate>Sat, 01 Feb 2020 16:42:30 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2020/note-cigo-ch01/</guid>
+      <description>并发简介 Race Conditions 竞态 出现条件 两个及以上的操作必须按照正确地顺序执行，但程序未对执行顺序进行保证，将会出现 race condition 示例代码 package main import &amp;#34;fmt&amp;#34; func main(){ var data int go func() { data ++</description>
+    </item>
+    
+    <item>
+      <title>LeetCode 二分查找专项练习</title>
+      <link>https://www.sinksmell.xyz/2020/leetcode-bsearch/</link>
+      <pubDate>Sat, 01 Feb 2020 14:11:35 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2020/leetcode-bsearch/</guid>
+      <description>69. x的平方根 题目描述 实现 int sqrt(int x) 函数。 计算并返回 x 的平方根，其中 x 是非负整数。 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。 示例</description>
+    </item>
+    
+    <item>
+      <title>二分查找模板</title>
+      <link>https://www.sinksmell.xyz/2020/bsearch/</link>
+      <pubDate>Fri, 31 Jan 2020 14:47:21 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2020/bsearch/</guid>
+      <description>核心思想 找出某个性质，根据这个性质，可以将区间划分成两个部分，逐渐缩小搜索区间，直至找到目标元素 若目标值出现在所选性质的右边，则选用模板1，</description>
+    </item>
+    
+    <item>
+      <title>跨域问题及解决方法</title>
+      <link>https://www.sinksmell.xyz/2019/cors/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2019/cors/</guid>
+      <description>跨域问题是什么 同源策略 同源策略是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSRF等攻击。所</description>
+    </item>
+    
+    <item>
+      <title>计算机网络基础</title>
+      <link>https://www.sinksmell.xyz/2019/network/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2019/network/</guid>
+      <description>TCP/IP 四层结构 ps: 上图中是图解HTTP中的划分 应用层 决定了向用户提供应用服务时通信的活动 传输层 提供处于网络连接中的两台计算机直接的数据传输 网络层 或</description>
+    </item>
+    
+    <item>
+      <title>Go语言 Defer Return 执行顺序探究</title>
+      <link>https://www.sinksmell.xyz/2019/defer/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2019/defer/</guid>
+      <description>defer之间的执行顺序 go 的 defer 语句是用来延迟执行函数的关键字 package main import &amp;#34;fmt&amp;#34; func defers(a int) int { defer func() { fmt.Println(&amp;#34;Defer 1...&amp;#34;) }() defer func() { fmt.Println(&amp;#34;Defer 2...&amp;#34;) }() fmt.Println(&amp;#34;Run defers ...&amp;#34;) return a } func main() { res:= defers(1) fmt.Printf(&amp;#34;get result: %d\n&amp;#34;,res) } //运行</description>
     </item>
     
   </channel>

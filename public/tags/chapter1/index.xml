@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>chapter1 on SinkSmell | Blog</title>
+    <link>https://www.sinksmell.xyz/tags/chapter1/</link>
+    <description>Recent content in chapter1 on SinkSmell | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Feb 2020 16:42:30 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sinksmell.xyz/tags/chapter1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Concurrency in Go 读书笔记 第一章</title>
+      <link>https://www.sinksmell.xyz/2020/note-cigo-ch01/</link>
+      <pubDate>Sat, 01 Feb 2020 16:42:30 +0800</pubDate>
+      
+      <guid>https://www.sinksmell.xyz/2020/note-cigo-ch01/</guid>
+      <description>并发简介 Race Conditions 竞态 出现条件 两个及以上的操作必须按照正确地顺序执行，但程序未对执行顺序进行保证，将会出现 race condition 示例代码 package main import &amp;#34;fmt&amp;#34; func main(){ var data int go func() { data ++</description>
+    </item>
+    
+  </channel>
+</rss>
