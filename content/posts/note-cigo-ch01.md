@@ -11,8 +11,6 @@ categories:
 
 ## 并发简介
 
-
-
 ### Race Conditions 竞态
 
 **出现条件**
@@ -119,8 +117,6 @@ func main(){
 
 ```
 
-
-
 **再次检测**
 
 ```shell
@@ -161,7 +157,7 @@ i++
 
 ### Memory Access Synchronization
 
-> 实际上就是操作系统中对临界区的管理，可参考线程程之间的同步与互斥
+> 实际上就是操作系统中对临界区的管理，可参考线程之间的同步与互斥
 
 
 
@@ -173,10 +169,30 @@ i++
 >
 > 死锁必要条件
 >
+> **描述1**：
+>
 > * 资源独占性
 > * 资源不可剥夺
 > * 互斥
 > * 相互等待
+>
+> **原文描述**
+>
+> * Mutual Exclusion
+>
+> >  Mutual Exclusion A concurrent process holds exclusive rights to a resource at any one time.
+>
+> * Wait For Condition
+>
+> > A concurrent process must simultaneously hold a resource and be waiting for an additional resource.
+>
+> * No Preemption
+>
+> >  A resource held by a concurrent process can only be released by that process, so it fulfills this condition.
+>
+> * Circular Wait
+>
+> > A concurrent process (P1) must be waiting on a chain of other concurrent processes (P2), which are in turn waiting on it (P1), so it fulfills this final condition too.
 
 **示例代码**
 
@@ -273,9 +289,9 @@ created by main.main
 
 #### Livelock 活锁
 
-> * 活锁是指并发地操作在正常地进行，但是并没有是程序的状态向前推进
+> * 活锁是指并发操作在正常地进行，但是并没有使程序的状态向前推进
 >
->   > 举个例子，你走在一条狭窄路上，迎面走来一个人，你向左边走，给他让路，他向右边走(你的左边)给你让路，然后你意识到了这样没办法通过，于是你向右边走，他又向左边走(你的右边)，如此反复，谁都不能通过。
+>   > 举个例子，你走在一条狭窄路上，这条路可以允许两个人同时通过。迎面走来一个人，你向左边走，给他让路，他向右边走(你的左边)给你让路，然后你意识到了这样没办法通过，于是你向右边走，他又向左边走(你的右边)，如此反复，谁都不能通过。
 
 **代码示例**
 
@@ -462,8 +478,6 @@ Polite worker was able to execute 369205 work loops
 
 > * 为了避免饥饿其他工作线程，应该只锁定临界区
 > * 如果出现了同步的性能问题再考虑拓展范围
-
-
 
 ### Determining Concurrency Safety 确定并发安全
 
