@@ -6,10 +6,19 @@
     <description>Recent content in 算法模板 on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 Jan 2020 14:47:21 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Feb 2020 15:33:40 +0800</lastBuildDate>
     
 	<atom:link href="https://sinksmell.github.io/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>二叉树常见模板</title>
+      <link>https://sinksmell.github.io/2020/btree/</link>
+      <pubDate>Tue, 04 Feb 2020 15:33:40 +0800</pubDate>
+      
+      <guid>https://sinksmell.github.io/2020/btree/</guid>
+      <description>二叉树的遍历 先序遍历（递归） 核心思想 若当前节点不为空，先访问当前节点，再递归访问左右子树 先序遍历（非递归） 核心思想 令 p= root 若 p !=nil ，访问 p，若 p.Right!=nil</description>
+    </item>
     
     <item>
       <title>二分查找模板</title>

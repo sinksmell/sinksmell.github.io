@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="sinksmell">
+    
+    <meta name="keywords" content="go,golang,sinksmell">
+    
+    <link rel="prev" href="https://sinksmell.github.io/2020/leetcode-btree/" />
+    <link rel="next" href="https://sinksmell.github.io/2020/neitui/" />
+    <link rel="canonical" href="https://sinksmell.github.io/2020/btree/" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+         
+         
+             二叉树常见模板 | SinkSmell | Blog
+         
+    </title>
+    <meta name="title" content="二叉树常见模板 | SinkSmell | Blog">
+      
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{   "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sinksmell.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "二叉树常见模板",
+    "headline" : "二叉树常见模板",
+    "description" : "二叉树的遍历 先序遍历（递归） 核心思想 若当前节点不为空，先访问当前节点，再递归访问左右子树 先序遍历（非递归） 核心思想 令 p= root 若 p !=nil ，访问 p，若 p.Right!=nil",
+    "inLanguage" : "en-us",
+    "author" : "sinksmell",
+    "creator" : "sinksmell",
+    "publisher": "sinksmell",
+    "accountablePerson" : "sinksmell",
+    "copyrightHolder" : "sinksmell",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-02-04 15:33:40 \x2b0800 \x2b0800",
+    "dateModified" : "2020-02-04 15:33:40 \x2b0800 \x2b0800",
+    "url" : "https:\/\/sinksmell.github.io\/2020\/btree\/",
+    "wordCount" : "263",
+    "keywords" : [ "二叉树", "SinkSmell | Blog"]
+}
+</script>
+
+  </head>
+  
+    
+  
+  
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    
+        <div class="top-scroll-bar"></div>
+    
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <div class="top-scroll-bar"></div>
+    
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+        
+        <div id="landlord">
+          <div class="message" style="opacity:0"></div>
+          <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+          <div class="hide-button">隐藏</div>
+       </div>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">二叉树常见模板</h1>
+        <div class="post-meta">
+                发表于 
+                <span class="post-time">
+                    <time datetime=2020-02-04 itemprop="datePublished">February 4, 2020</time>
+                </span>
+                | 分类于
+                
+                <span class="post-category">
+                        <a href="https://sinksmell.github.io/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/"> 算法模板 </a>
+                        
+                </span>
+                <span class="post-word-count">（263 Words，阅读时间约 0 Min）</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="二叉树的遍历">二叉树的遍历</h3>
+<h4 id="先序遍历递归">先序遍历（递归）</h4>
+<blockquote>
+<ul>
+<li>
+<p>核心思想</p>
+<blockquote>
+<p>若当前节点不为空，先访问当前节点，再递归访问左右子树</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h4 id="先序遍历非递归">先序遍历（非递归）</h4>
+<blockquote>
+<ul>
+<li>
+<p>核心思想</p>
+<blockquote>
+<ol>
+<li>令 p= root</li>
+<li>若 p !=nil ，访问 p，若 p.Right!=nil ，将 p.Right 压入栈中</li>
+<li>若 p.Left!=nil , 令 p=p.Left 重复2</li>
+<li>若p.Left==nil,重栈中弹出元素，即 p=stack.pop(),重复2,3</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>需要一个辅助栈</p>
+</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * Definition for a binary tree node.
+</span><span style="color:#75715e"> * type TreeNode struct {
+</span><span style="color:#75715e"> *     Val int
+</span><span style="color:#75715e"> *     Left *TreeNode
+</span><span style="color:#75715e"> *     Right *TreeNode
+</span><span style="color:#75715e"> * }
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">res</span> []<span style="color:#66d9ef">int</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">preTraversal</span>(<span style="color:#a6e22e">root</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>) []<span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">stk</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">NewStack</span>()
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">p</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">root</span>;<span style="color:#a6e22e">p</span><span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>;{
+        <span style="color:#a6e22e">visit</span>(<span style="color:#a6e22e">p</span>)
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">Right</span><span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+            <span style="color:#a6e22e">stk</span>.<span style="color:#a6e22e">Push</span>(<span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">Right</span>)
+        }
+        <span style="color:#a6e22e">p</span>=<span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">Left</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p</span><span style="color:#f92672">==</span><span style="color:#66d9ef">nil</span> <span style="color:#f92672">&amp;&amp;</span> !<span style="color:#a6e22e">stk</span>.<span style="color:#a6e22e">Empty</span>(){
+            <span style="color:#a6e22e">p</span>=<span style="color:#a6e22e">stk</span>.<span style="color:#a6e22e">Pop</span>().(<span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>)
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">visit</span>(<span style="color:#a6e22e">root</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>){
+    <span style="color:#a6e22e">res</span>=append(<span style="color:#a6e22e">res</span>,<span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">Val</span>)
+}
+</code></pre></div><p><strong>辅助栈</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span>  <span style="color:#a6e22e">Stack</span>  <span style="color:#66d9ef">struct</span>{
+    <span style="color:#a6e22e">data</span> [] <span style="color:#66d9ef">interface</span>{}
+    <span style="color:#a6e22e">top</span> <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewStack</span>()<span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>{
+  <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Stack</span>{
+    <span style="color:#a6e22e">data</span>: []<span style="color:#66d9ef">interface</span>{}{},
+    <span style="color:#a6e22e">top</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,
+  }
+}
+
+<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>)<span style="color:#a6e22e">Empty</span>()<span style="color:#66d9ef">bool</span>{
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">==</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+}
+
+<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>)<span style="color:#a6e22e">Size</span>()<span style="color:#66d9ef">int</span>{
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>) <span style="color:#a6e22e">Push</span>(<span style="color:#a6e22e">elem</span> <span style="color:#66d9ef">interface</span>{}) {
+  <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">++</span>
+  <span style="color:#a6e22e">lens</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>)
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span> &gt; <span style="color:#a6e22e">lens</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
+    <span style="color:#a6e22e">newd</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">lens</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+    copy(<span style="color:#a6e22e">newd</span>, <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>)
+    <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>=<span style="color:#a6e22e">newd</span>
+  }
+  <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span>] = <span style="color:#a6e22e">elem</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>)<span style="color:#a6e22e">Pop</span>()<span style="color:#66d9ef">interface</span>{}{
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">!=</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span>]
+    <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">--</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+  }
+  panic(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span>)
+}
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                    #二叉树</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sinksmell.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sinksmell.github.io/2020/leetcode-btree/" class="prev" rel="prev" title="LeetCode 二叉树专题练习"><i class="iconfont icon-left"></i>&nbsp;LeetCode 二叉树专题练习</a>
+         
+        
+        <a href="https://sinksmell.github.io/2020/neitui/" class="next" rel="next" title="米哈游春招内推">米哈游春招内推&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sinksmell.github.io">sinksmell</a> | </span> 
+         
+
+         
+		  <span>
+           Powered by
+           <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a>
+           <span> &  </span>
+           <a href="https://github.com/cyseria/LeaveIt" target="_blank" rel="external nofollow">LeaveIt</a>
+         </span> 
+      </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var message_Path = "/live2d/"
+    var home_Path = "https://sinksmell.github.io/"  
+</script>
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+
+
+
+
+     </div>
+  
+  </body>
+</html>

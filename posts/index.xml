@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>二叉树常见模板</title>
+      <link>https://sinksmell.github.io/2020/btree/</link>
+      <pubDate>Tue, 04 Feb 2020 15:33:40 +0800</pubDate>
+      
+      <guid>https://sinksmell.github.io/2020/btree/</guid>
+      <description>二叉树的遍历 先序遍历（递归） 核心思想 若当前节点不为空，先访问当前节点，再递归访问左右子树 先序遍历（非递归） 核心思想 令 p= root 若 p !=nil ，访问 p，若 p.Right!=nil</description>
+    </item>
+    
+    <item>
       <title>LeetCode 二叉树专题练习</title>
       <link>https://sinksmell.github.io/2020/leetcode-btree/</link>
       <pubDate>Tue, 04 Feb 2020 14:07:22 +0800</pubDate>
