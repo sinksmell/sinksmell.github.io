@@ -23,11 +23,29 @@
       <pubDate>Sun, 26 Jan 2020 13:49:33 +0800</pubDate>
       
       <guid>https://sinksmell.github.io/about/</guid>
-      <description>&lt;h4 id=&#34;sinksmell&#34;&gt;SinkSmell&lt;/h4&gt;
+      <description>&lt;h3 id=&#34;个人简介&#34;&gt;个人简介&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;golang 开发工程师&lt;/li&gt;
+&lt;li&gt;golang 爱好者&lt;/li&gt;
+&lt;li&gt;linux 爱好者&lt;/li&gt;
 &lt;li&gt;开源爱好者&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;工作经历&#34;&gt;工作经历&lt;/h3&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;CaiCloud&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;作为 infra 组中的 net 小组成员&lt;/li&gt;
+&lt;li&gt;学习容器网络网络与 k8s 相关知识，GitHub 工作流，敏捷开发。&lt;/li&gt;
+&lt;li&gt;参与 LB,CNI 等网络基础设施的开发&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;miHoYo&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;用户社区后端开发&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 </description>
