@@ -6,10 +6,19 @@
     <description>Recent content in 读书笔记 on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Feb 2020 16:42:30 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Feb 2020 13:24:47 +0800</lastBuildDate>
     
 	<atom:link href="https://sinksmell.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Concurrency in Go 读书笔记 第二章</title>
+      <link>https://sinksmell.github.io/2020/note-cigo-ch02/</link>
+      <pubDate>Wed, 05 Feb 2020 13:24:47 +0800</pubDate>
+      
+      <guid>https://sinksmell.github.io/2020/note-cigo-ch02/</guid>
+      <description>代码建模: CSP 并发与并行 教科书上的定义，并发指的是某一时间段内多个任务同时进行，并行指的是某一时刻，多个任务同时进行 本书中的定义很独特 Concurrency is a property</description>
+    </item>
     
     <item>
       <title>Concurrency in Go 读书笔记 第一章</title>

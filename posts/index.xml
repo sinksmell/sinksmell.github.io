@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Concurrency in Go 读书笔记 第二章</title>
+      <link>https://sinksmell.github.io/2020/note-cigo-ch02/</link>
+      <pubDate>Wed, 05 Feb 2020 13:24:47 +0800</pubDate>
+      
+      <guid>https://sinksmell.github.io/2020/note-cigo-ch02/</guid>
+      <description>代码建模: CSP 并发与并行 教科书上的定义，并发指的是某一时间段内多个任务同时进行，并行指的是某一时刻，多个任务同时进行 本书中的定义很独特 Concurrency is a property</description>
+    </item>
+    
+    <item>
       <title>二叉树常见模板</title>
       <link>https://sinksmell.github.io/2020/btree/</link>
       <pubDate>Tue, 04 Feb 2020 15:33:40 +0800</pubDate>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="sinksmell">
+    
+    <meta name="keywords" content="go,golang,sinksmell">
+    
+    <link rel="prev" href="https://sinksmell.github.io/2020/btree/" />
+    <link rel="next" href="https://sinksmell.github.io/2020/neitui/" />
+    <link rel="canonical" href="https://sinksmell.github.io/2020/note-cigo-ch02/" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+         
+         
+             Concurrency in Go 读书笔记 第二章 | SinkSmell | Blog
+         
+    </title>
+    <meta name="title" content="Concurrency in Go 读书笔记 第二章 | SinkSmell | Blog">
+      
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{   "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/sinksmell.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Concurrency in Go 读书笔记 第二章",
+    "headline" : "Concurrency in Go 读书笔记 第二章",
+    "description" : "代码建模: CSP 并发与并行 教科书上的定义，并发指的是某一时间段内多个任务同时进行，并行指的是某一时刻，多个任务同时进行 本书中的定义很独特 Concurrency is a property",
+    "inLanguage" : "en-us",
+    "author" : "sinksmell",
+    "creator" : "sinksmell",
+    "publisher": "sinksmell",
+    "accountablePerson" : "sinksmell",
+    "copyrightHolder" : "sinksmell",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-02-05 13:24:47 \x2b0800 \x2b0800",
+    "dateModified" : "2020-02-05 13:24:47 \x2b0800 \x2b0800",
+    "url" : "https:\/\/sinksmell.github.io\/2020\/note-cigo-ch02\/",
+    "wordCount" : "1795",
+    "keywords" : [ "concurrency in go","chapter1", "SinkSmell | Blog"]
+}
+</script>
+
+  </head>
+  
+    
+  
+  
+<aside class="side-toc">
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#代码建模-csp">代码建模: CSP</a>
+      <ul>
+        <li><a href="#并发与并行">并发与并行</a></li>
+        <li><a href="#context">Context</a></li>
+        <li><a href="#经典并发模型">经典并发模型</a></li>
+        <li><a href="#go并发模型">Go并发模型</a></li>
+        <li><a href="#csp简介">CSP简介</a></li>
+        <li><a href="#通过实例感受并发模型的差异">通过实例感受并发模型的差异</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    
+        <div class="top-scroll-bar"></div>
+    
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <div class="top-scroll-bar"></div>
+    
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://sinksmell.github.io">SinkSmell | Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Archive</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+        
+        <div id="landlord">
+          <div class="message" style="opacity:0"></div>
+          <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+          <div class="hide-button">隐藏</div>
+       </div>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Concurrency in Go 读书笔记 第二章</h1>
+        <div class="post-meta">
+                发表于 
+                <span class="post-time">
+                    <time datetime=2020-02-05 itemprop="datePublished">February 5, 2020</time>
+                </span>
+                | 分类于
+                
+                <span class="post-category">
+                        <a href="https://sinksmell.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"> 读书笔记 </a>
+                        
+                </span>
+                <span class="post-word-count">（1795 Words，阅读时间约 5 Min）</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="代码建模-csp">代码建模: CSP</h2>
+<h3 id="并发与并行">并发与并行</h3>
+<blockquote>
+<ul>
+<li>
+<p>教科书上的定义，并发指的是某一时间段内多个任务同时进行，并行指的是某一时刻，多个任务同时进行</p>
+</li>
+<li>
+<p>本书中的定义很独特 <code>Concurrency is a property of the code;parallelism is a property of the running program</code></p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<ol>
+<li>编码角度。当你在编写代码时，可以使用多线程或其他方式，使得某些任务可以同时进行。但是，你只编写了并发的代码而不是并行的代码。</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>运行角度。假设你的程序编写的两个线程可以同时执行，但是 cpu 是单核的。程序一执行，操作系统中就多了一个进程，该进程中的两个线程，并不能同一时刻执行，他们只能构成并发。如果 CPU 是两核或者是单核两线程，那么该进程中的两个线程，可能被调度到不同的核心上执行，从而构成并行。</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>并行与时间。并行性是一个时间的函数，或者说是上下文（context）。举个例子，我们有一个 context，时间是5s,有两个操作待执行，每个操作是 2 s,此时两个任务可以并行执行。如果 context 时间是 1 s,那么两个任务只能是串行。 <code>context is defined as the bounds by which two or more operations could be considered parallel</code> , 这里作者就是想通过操作执行时间与时间上下文的关系说明能否实现并行。</li>
+</ol>
+</li>
+<li>总结，并行是一个动态的概念，并发还是并行，除了程序本身的多线程技术，还要考虑 <strong>runtime</strong>, OS,CPU等的情况。</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="context">Context</h3>
+<blockquote>
+<p>译作上下文，可指代的内容广泛。</p>
+<blockquote>
+<p>一个进程，系统线程，机器等都可以描述为上下文。正如原子操作的定义依赖上下文，并发操作的正确性也依赖上下文。</p>
+</blockquote>
+</blockquote>
+<h4 id="上下文举例">上下文举例</h4>
+<blockquote>
+<p>逐渐降低抽象级别</p>
+<ol>
+<li>进程级别。假设你的电脑上有一个计算器的程序，你点击他，程序启动了。此时，你的电脑就是这个计算器进程的上下文。</li>
+</ol>
+<blockquote>
+<p>ps 根据操作系统的知识，进程有独立性的性质，再启动一个计算器程序，两个进程之间相互独立。</p>
+</blockquote>
+<ol start="2">
+<li>
+<p>线程级别。假设该计算器进程能被多个用户同时访问，每个用户开一个线程，此时进程就是线程的上下文。此时就需要考虑，竞态，死锁，活锁，饥饿等问题，因为多个线程共享一个进程的资源，处于同一上下文内。</p>
+</li>
+<li>
+<p>函数调用栈级别。此时问题变得异常复杂，但越底层，越复杂，对并发影响越大。还好大部分并发逻辑都是在线程级别编写的。</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="经典并发模型">经典并发模型</h3>
+<blockquote>
+<ul>
+<li>go出现之前，大多数编程语言都是基于线程级别，加上同步内存访问实现的并发</li>
+<li>由于频繁创建和释放线程开销较大，出现了线程池的技术</li>
+</ul>
+</blockquote>
+<h3 id="go并发模型">Go并发模型</h3>
+<blockquote>
+<ul>
+<li>
+<p>使用 goroutine 代替 thread</p>
+</li>
+<li>
+<p>基于 Communicating Seauential Processes 论文 ，实现了 channel + goroutine 的并发模型</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<p>goroutine 可以看做是协程的一种，也就是用户级线程，运行与于用户态。其他语言中的线程，是系统级线程，线程表维护在系统内核中，使用 ps ，top 之类的工具可以看到的线程。在Linux中会为线程单独分配一个 pid。线程被调度执行时，触发一个中断事件，使 cpu 进入内核态，进行上下文切换，因此也被成为内核级线程。</p>
+</li>
+<li>
+<p>Channel 类似传统的Linux FIFO,命名管道，可在 goroutine 直接进行通信，并发安全。</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="csp简介">CSP简介</h3>
+<h4 id="时代背景">时代背景</h4>
+<blockquote>
+<ul>
+<li>1978 Charles Antony Richard Hoare 发表的论文</li>
+<li>Hoare 建议 input,output 应该作为编程语言的原语，类似P,V原语，特别是在并发操作中</li>
+</ul>
+</blockquote>
+<h4 id="communicating-seauential-processes">Communicating Seauential Processes</h4>
+<blockquote>
+<ul>
+<li>字面上的意思就是多个过程之间的通信</li>
+<li>Process 这里指的是一段逻辑，它需要输入去执行，然后产生输出供其他 process 消费</li>
+<li>process 可以是进程，线程，也可以是某个函数</li>
+<li>为了能在 process 之间进行通信，Hoare 提出了一种channel</li>
+</ul>
+</blockquote>
+<h4 id="hoare-提出的-channel">Hoare 提出的 channel</h4>
+<blockquote>
+<p>cardreader?card image</p>
+<blockquote>
+<p>From cardreader, read a card and assign its value (an array of characters) to the variable cardimage.</p>
+</blockquote>
+<p>lineprinter!line image</p>
+<blockquote>
+<p>To lineprinter, send the value of lineimage for printing.</p>
+</blockquote>
+<p>X?(x, y)</p>
+<blockquote>
+<p>From process named X, input a pair of values and assign them to x and y.</p>
+</blockquote>
+<p>DIV!(3*a+b, 13)</p>
+<blockquote>
+<p>To process DIV, output the two specified values.</p>
+</blockquote>
+<p>*[c:character; west?c → east!c]</p>
+<blockquote>
+<p>Read all the characters output by west, and output them one by one to east. The repetition terminates when the process west terminates.</p>
+</blockquote>
+<p>guarded command</p>
+<blockquote>
+<p>A guarded command is simply a statement with a left- and righthand side, split by a -&gt;</p>
+<p>The lefthand side served as a conditional, or guard for the righthand side in that if the lefthand side was false or, in the case of a command, returned false or had exited, the righthand side would never be executed</p>
+</blockquote>
+</blockquote>
+<h4 id="go-channel">Go Channel</h4>
+<blockquote>
+<ul>
+<li>引入了 channel 概念</li>
+<li>将 chennel 的 input/output 作为一种原语</li>
+</ul>
+</blockquote>
+<h3 id="通过实例感受并发模型的差异">通过实例感受并发模型的差异</h3>
+<blockquote>
+<p>假设你需要编写一个 web server 服务，接收http请求,返回结果</p>
+</blockquote>
+<h4 id="使用传统编程语言">使用传统编程语言</h4>
+<blockquote>
+<ul>
+<li>标准库是否自带线程 ,还是要选一个第三方库？</li>
+<li>线程数量的限制? 如何找到一个最佳的数量?</li>
+<li>在所用的操作系统上，线程的资源开销?</li>
+<li>所编写的程序，在操作系统上运行时，如何处理多线程?</li>
+</ul>
+</blockquote>
+<p>以上的问题都很重要，但是与我们要处理的实际问题都没什么关系。</p>
+<p>回到问题本身，用户连接我的 web server 时，服务处理用户的请求，返回响应。</p>
+<h4 id="使用-go">使用 Go</h4>
+<blockquote>
+<ul>
+<li>直接将上述步骤转换成 go 代码，每个请求，开启一个 goroutine 去处理</li>
+<li>goroutine是轻量级的，不需要太过关心资源开销</li>
+<li>有充足的时间考虑系统中运行了多少 goroutine, 不需要过早地进行优化</li>
+<li>充分利用多核CPU进行并行</li>
+</ul>
+</blockquote>
+<h4 id="作者建议">作者建议</h4>
+<blockquote>
+<p>如果将 goroutine 比作 thread , channel 比作 mutex , 那么这些不同的抽象对于使用者有什么作用?</p>
+</blockquote>
+<blockquote>
+<p>Goroutines free us from having to think about our problem space in terms of parallelism and instead allow us to model problems closer to their natural level of concurrency. Although we went over the difference between concurrency and parallelism, how that difference affects how we model solutions might not be clear. Let’s jump into an example.</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/concurrency-in-go/">
+                    #concurrency in go</a></span>
+            
+            <span class="tag"><a href="https://sinksmell.github.io/tags/chapter1/">
+                    #chapter1</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://sinksmell.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://sinksmell.github.io/2020/btree/" class="prev" rel="prev" title="二叉树常见模板"><i class="iconfont icon-left"></i>&nbsp;二叉树常见模板</a>
+         
+        
+        <a href="https://sinksmell.github.io/2020/neitui/" class="next" rel="next" title="米哈游春招内推">米哈游春招内推&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://sinksmell.github.io">sinksmell</a> | </span> 
+         
+
+         
+		  <span>
+           Powered by
+           <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a>
+           <span> &  </span>
+           <a href="https://github.com/cyseria/LeaveIt" target="_blank" rel="external nofollow">LeaveIt</a>
+         </span> 
+      </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var message_Path = "/live2d/"
+    var home_Path = "https://sinksmell.github.io/"  
+</script>
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+
+
+
+
+     </div>
+  
+  </body>
+</html>
