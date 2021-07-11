@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        python-version: [3.7, 3.8, 3.9]
 
     steps:
       - name: Hugo Actions
@@ -26,7 +24,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.personal_token }} 
+          personal_token: ${{ secrets.hugo_token}} 
           PUBLISH_BRANCH: master 
           PUBLISH_DIR: ./public  
           commit_message: Auto Deploy
