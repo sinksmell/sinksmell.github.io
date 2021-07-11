@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Python package
+name: Hugo Deploy
 
 on:
   push:
@@ -19,3 +19,14 @@ jobs:
     steps:
       - name: Hugo Actions
         uses: srt32/hugo-action@v0.0.3
+
+      - name: Build 
+        run: hugo
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.personal_token }} 
+          PUBLISH_BRANCH: master 
+          PUBLISH_DIR: ./public  
+          commit_message: Auto Deploy
