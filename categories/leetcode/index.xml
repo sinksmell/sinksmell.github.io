@@ -6,11 +6,7 @@
     <description>Recent content in LeetCode on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Feb 2020 14:07:22 +0800</lastBuildDate>
-    
-	<atom:link href="https://sinksmell.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 04 Feb 2020 14:07:22 +0800</lastBuildDate><atom:link href="https://sinksmell.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LeetCode 二叉树专题练习</title>
       <link>https://sinksmell.github.io/2020/leetcode-btree/</link>

@@ -55,8 +55,8 @@
     "accountablePerson" : "sinksmell",
     "copyrightHolder" : "sinksmell",
     "copyrightYear" : "2020",
-    "datePublished": "2020-02-04 15:33:40 \x2b0800 \x2b0800",
-    "dateModified" : "2020-02-04 15:33:40 \x2b0800 \x2b0800",
+    "datePublished": "2020-02-04 15:33:40 \u002b0800 \u002b0800",
+    "dateModified" : "2020-02-04 15:33:40 \u002b0800 \u002b0800",
     "url" : "https:\/\/sinksmell.github.io\/2020\/btree\/",
     "wordCount" : "263",
     "keywords" : [ "二叉树", "SinkSmell | Blog"]
@@ -232,7 +232,7 @@
 }
 
 <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>)<span style="color:#a6e22e">Empty</span>()<span style="color:#66d9ef">bool</span>{
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">==</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">==-</span><span style="color:#ae81ff">1</span>
 }
 
 <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>)<span style="color:#a6e22e">Size</span>()<span style="color:#66d9ef">int</span>{
@@ -251,7 +251,7 @@
 }
 
 <span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>)<span style="color:#a6e22e">Pop</span>()<span style="color:#66d9ef">interface</span>{}{
-  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">!=</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">!=-</span><span style="color:#ae81ff">1</span> {
     <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span>]
     <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">--</span>
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
@@ -303,7 +303,7 @@
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2020</span>
+        <span itemprop="copyrightYear">2019 - 2021</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 

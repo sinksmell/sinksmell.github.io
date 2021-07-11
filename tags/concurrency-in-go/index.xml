@@ -6,11 +6,7 @@
     <description>Recent content in concurrency in go on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Feb 2020 13:24:47 +0800</lastBuildDate>
-    
-	<atom:link href="https://sinksmell.github.io/tags/concurrency-in-go/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 05 Feb 2020 13:24:47 +0800</lastBuildDate><atom:link href="https://sinksmell.github.io/tags/concurrency-in-go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Concurrency in Go 读书笔记 第二章</title>
       <link>https://sinksmell.github.io/2020/note-cigo-ch02/</link>

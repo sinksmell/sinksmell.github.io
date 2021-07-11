@@ -6,10 +6,15 @@
     <description>Recent content in Posts on SinkSmell | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Feb 2020 14:12:26 +0800</lastBuildDate>
-    
-	<atom:link href="https://sinksmell.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sun, 11 Jul 2021 16:36:51 +0800</lastBuildDate><atom:link href="https://sinksmell.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Toy Go</title>
+      <link>https://sinksmell.github.io/2021/toy-go/</link>
+      <pubDate>Sun, 11 Jul 2021 16:36:51 +0800</pubDate>
+      
+      <guid>https://sinksmell.github.io/2021/toy-go/</guid>
+      <description>toy-go Some useful tools for gopher Json to Go DDL to Go To be continue &amp;hellip; setup Run in Docker docker run -p 9090:9090 destory/toy-go:v0.0.1 Visit http://localhost:9090 usage Json to Go A tool that can quickly convert json to go code. Input Json Click The Icon Copy Go Code thanks golang/go: The Go programming language (github.com) vuejs/vue: 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the</description>
+    </item>
     
     <item>
       <title>米哈游春招内推</title>

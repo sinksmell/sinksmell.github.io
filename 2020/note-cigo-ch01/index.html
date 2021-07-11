@@ -47,7 +47,7 @@
     "articleSection" : "posts",
     "name" : "Concurrency in Go 读书笔记 第一章",
     "headline" : "Concurrency in Go 读书笔记 第一章",
-    "description" : "并发简介 Race Conditions 竞态 出现条件 两个及以上的操作必须按照正确地顺序执行，但程序未对执行顺序进行保证，将会出现 race condition 示例代码 package main import \x26#34;fmt\x26#34; func main(){ var data int go func() { data \x2b\x2b",
+    "description" : "并发简介 Race Conditions 竞态 出现条件 两个及以上的操作必须按照正确地顺序执行，但程序未对执行顺序进行保证，将会出现 race condition 示例代码 package main import \u0026#34;fmt\u0026#34; func main(){ var data int go func() { data \u002b\u002b",
     "inLanguage" : "en-us",
     "author" : "sinksmell",
     "creator" : "sinksmell",
@@ -55,8 +55,8 @@
     "accountablePerson" : "sinksmell",
     "copyrightHolder" : "sinksmell",
     "copyrightYear" : "2020",
-    "datePublished": "2020-02-01 16:42:30 \x2b0800 \x2b0800",
-    "dateModified" : "2020-02-01 16:42:30 \x2b0800 \x2b0800",
+    "datePublished": "2020-02-01 16:42:30 \u002b0800 \u002b0800",
+    "dateModified" : "2020-02-01 16:42:30 \u002b0800 \u002b0800",
     "url" : "https:\/\/sinksmell.github.io\/2020\/note-cigo-ch01\/",
     "wordCount" : "1995",
     "keywords" : [ "concurrency in go","chapter1", "SinkSmell | Blog"]
@@ -217,20 +217,20 @@ race1    race1.go
 sun@sundeMacBook-Pro <span style="color:#f92672">[</span>16:58:03<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>~/VSCode/sinksmell/notes/ch01<span style="color:#f92672">]</span> 
 -&gt; % ./race1            
 the value is 0
-<span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span>
+<span style="color:#f92672">==================</span>
 WARNING: DATA RACE
 Write at 0x00c0000b8008 by goroutine 7:
-  main.main.func1<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+  main.main.func1<span style="color:#f92672">()</span>
       /Users/sun/VSCode/sinksmell/notes/ch01/race1.go:8 +0x4e
 
 Previous read at 0x00c0000b8008 by main goroutine:
-  main.main<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+  main.main<span style="color:#f92672">()</span>
       /Users/sun/VSCode/sinksmell/notes/ch01/race1.go:10 +0x88
 
 Goroutine <span style="color:#ae81ff">7</span> <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span> created at:
-  main.main<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+  main.main<span style="color:#f92672">()</span>
       /Users/sun/VSCode/sinksmell/notes/ch01/race1.go:7 +0x7a
-<span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span>
+<span style="color:#f92672">==================</span>
 Found <span style="color:#ae81ff">1</span> data race<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
 
 // 从上面输出可以看到，data 值在改变前就被 main goroutine 读了
@@ -388,7 +388,7 @@ sync.runtime_Semacquire<span style="color:#f92672">(</span>0xc0000180c8<span sty
         /usr/local/Cellar/go/1.13/libexec/src/runtime/sema.go:56 +0x42
 sync.<span style="color:#f92672">(</span>*WaitGroup<span style="color:#f92672">)</span>.Wait<span style="color:#f92672">(</span>0xc0000180c0<span style="color:#f92672">)</span>
         /usr/local/Cellar/go/1.13/libexec/src/sync/waitgroup.go:130 +0x64
-main.main<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+main.main<span style="color:#f92672">()</span>
         /Users/sun/VSCode/sinksmell/notes/ch01/deadlock.go:31 +0x122
 
 goroutine <span style="color:#ae81ff">5</span> <span style="color:#f92672">[</span>semacquire<span style="color:#f92672">]</span>:
@@ -666,7 +666,7 @@ Polite worker was able to execute <span style="color:#ae81ff">369205</span> work
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2020</span>
+        <span itemprop="copyrightYear">2019 - 2021</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 

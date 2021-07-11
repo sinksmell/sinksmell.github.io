@@ -55,8 +55,8 @@
     "accountablePerson" : "sinksmell",
     "copyrightHolder" : "sinksmell",
     "copyrightYear" : "2020",
-    "datePublished": "2020-02-04 14:07:22 \x2b0800 \x2b0800",
-    "dateModified" : "2020-02-04 14:07:22 \x2b0800 \x2b0800",
+    "datePublished": "2020-02-04 14:07:22 \u002b0800 \u002b0800",
+    "dateModified" : "2020-02-04 14:07:22 \u002b0800 \u002b0800",
     "url" : "https:\/\/sinksmell.github.io\/2020\/leetcode-btree\/",
     "wordCount" : "1161",
     "keywords" : [ "二叉树", "SinkSmell | Blog"]
@@ -398,7 +398,7 @@
 }
 
 <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>)<span style="color:#a6e22e">Empty</span>()<span style="color:#66d9ef">bool</span>{
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">==</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">==-</span><span style="color:#ae81ff">1</span>
 }
 
 <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>)<span style="color:#a6e22e">Size</span>()<span style="color:#66d9ef">int</span>{
@@ -417,7 +417,7 @@
 }
 
 <span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>)<span style="color:#a6e22e">Pop</span>()<span style="color:#66d9ef">interface</span>{}{
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">!=</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">!=-</span><span style="color:#ae81ff">1</span> {
         <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span>]
         <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">--</span>
         <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
@@ -474,7 +474,7 @@
     <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">pl</span>&gt;<span style="color:#a6e22e">pr</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">il</span>&gt;<span style="color:#a6e22e">ir</span>{
         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
     }
-    <span style="color:#a6e22e">root</span><span style="color:#f92672">:=</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">TreeNode</span>{}
+    <span style="color:#a6e22e">root</span><span style="color:#f92672">:=&amp;</span><span style="color:#a6e22e">TreeNode</span>{}
     <span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">Val</span>=<span style="color:#a6e22e">preorder</span>[<span style="color:#a6e22e">pl</span>]
     <span style="color:#a6e22e">i</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">index</span>(<span style="color:#a6e22e">inorder</span>,<span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">Val</span>)
     <span style="color:#a6e22e">llen</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#a6e22e">il</span> <span style="color:#75715e">// 左子树节点数量
@@ -539,7 +539,7 @@
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2020</span>
+        <span itemprop="copyrightYear">2019 - 2021</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 

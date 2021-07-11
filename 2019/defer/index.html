@@ -47,7 +47,7 @@
     "articleSection" : "posts",
     "name" : "Go语言 Defer Return 执行顺序探究",
     "headline" : "Go语言 Defer Return 执行顺序探究",
-    "description" : "defer之间的执行顺序 go 的 defer 语句是用来延迟执行函数的关键字 package main import \x26#34;fmt\x26#34; func defers(a int) int { defer func() { fmt.Println(\x26#34;Defer 1...\x26#34;) }() defer func() { fmt.Println(\x26#34;Defer 2...\x26#34;) }() fmt.Println(\x26#34;Run defers ...\x26#34;) return a } func main() { res:= defers(1) fmt.Printf(\x26#34;get result: %d\\n\x26#34;,res) } \/\/运行",
+    "description" : "defer之间的执行顺序 go 的 defer 语句是用来延迟执行函数的关键字 package main import \u0026#34;fmt\u0026#34; func defers(a int) int { defer func() { fmt.Println(\u0026#34;Defer 1...\u0026#34;) }() defer func() { fmt.Println(\u0026#34;Defer 2...\u0026#34;) }() fmt.Println(\u0026#34;Run defers ...\u0026#34;) return a } func main() { res:= defers(1) fmt.Printf(\u0026#34;get result: %d\\n\u0026#34;,res) } \/\/运行",
     "inLanguage" : "en-us",
     "author" : "sinksmell",
     "creator" : "sinksmell",
@@ -55,8 +55,8 @@
     "accountablePerson" : "sinksmell",
     "copyrightHolder" : "sinksmell",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-01 00:00:00 \x2b0000 UTC",
-    "dateModified" : "2019-03-01 00:00:00 \x2b0000 UTC",
+    "datePublished": "2019-03-01 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2019-03-01 00:00:00 \u002b0000 UTC",
     "url" : "https:\/\/sinksmell.github.io\/2019\/defer\/",
     "wordCount" : "1329",
     "keywords" : [ "golang","go","defer", "SinkSmell | Blog"]
@@ -205,10 +205,10 @@
 }
 
 <span style="color:#75715e">//运行结果
-</span><span style="color:#75715e"></span><span style="color:#75715e">//Run defers  ...
-</span><span style="color:#75715e"></span><span style="color:#75715e">//Defer 2...
-</span><span style="color:#75715e"></span><span style="color:#75715e">//Defer 1...
-</span><span style="color:#75715e"></span><span style="color:#75715e">//get result: 1
+</span><span style="color:#75715e">//Run defers  ...
+</span><span style="color:#75715e">//Defer 2...
+</span><span style="color:#75715e">//Defer 1...
+</span><span style="color:#75715e">//get result: 1
 </span><span style="color:#75715e"></span>
 </code></pre></div><blockquote>
 <p>由此可见 :</p>
@@ -238,8 +238,8 @@
 }
 
 <span style="color:#75715e">//运行结果
-</span><span style="color:#75715e"></span><span style="color:#75715e">//Defer ...
-</span><span style="color:#75715e"></span><span style="color:#75715e">//get result: 1
+</span><span style="color:#75715e">//Defer ...
+</span><span style="color:#75715e">//get result: 1
 </span><span style="color:#75715e"></span>
 </code></pre></div><h3 id="声明返回值">声明返回值</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
@@ -261,8 +261,8 @@
 }
 
 <span style="color:#75715e">//运行结果
-</span><span style="color:#75715e"></span><span style="color:#75715e">//Defer ...
-</span><span style="color:#75715e"></span><span style="color:#75715e">//get result: 101
+</span><span style="color:#75715e">//Defer ...
+</span><span style="color:#75715e">//get result: 101
 </span><span style="color:#75715e"></span>
 </code></pre></div><p><strong>可见是否声明返回值对运行结果有很大的影响!</strong></p>
 <blockquote>
@@ -425,7 +425,7 @@
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2020</span>
+        <span itemprop="copyrightYear">2019 - 2021</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 

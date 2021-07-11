@@ -55,10 +55,10 @@
     "accountablePerson" : "sinksmell",
     "copyrightHolder" : "sinksmell",
     "copyrightYear" : "2019",
-    "datePublished": "2019-10-14 00:00:00 \x2b0000 UTC",
-    "dateModified" : "2019-10-14 00:00:00 \x2b0000 UTC",
+    "datePublished": "2019-10-14 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2019-10-14 00:00:00 \u002b0000 UTC",
     "url" : "https:\/\/sinksmell.github.io\/2019\/network\/",
-    "wordCount" : "1809",
+    "wordCount" : "1808",
     "keywords" : [ "network","tcp","http", "SinkSmell | Blog"]
 }
 </script>
@@ -160,7 +160,7 @@
                         <a href="https://sinksmell.github.io/categories/http/"> HTTP </a>
                         
                 </span>
-                <span class="post-word-count">（1809 Words，阅读时间约 5 Min）</span>
+                <span class="post-word-count">（1808 Words，阅读时间约 5 Min）</span>
         </div>
     </header>
     <div class="post-content">
@@ -239,30 +239,30 @@ ps: 上图中是图解HTTP中的划分</p>
 <table>
 <thead>
 <tr>
-<th align="center">序号</th>
-<th align="center">方向</th>
-<th align="center">动作</th>
-<th align="center">效果</th>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">方向</th>
+<th style="text-align:center">动作</th>
+<th style="text-align:center">效果</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">1</td>
-<td align="center">Client -&gt; Sever</td>
-<td align="center">发送带有<em>SYN</em>标志的数据包</td>
-<td align="center">Server确定自己接收正常；对方发送正常</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">Client -&gt; Sever</td>
+<td style="text-align:center">发送带有<em>SYN</em>标志的数据包</td>
+<td style="text-align:center">Server确定自己接收正常；对方发送正常</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="center">Server -&gt; Client</td>
-<td align="center">发送带有<em>SYN</em>和<em>ACK</em>标志的数据包</td>
-<td align="center">Client确定自己发送正常,接收正常；对方发送正常</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">Server -&gt; Client</td>
+<td style="text-align:center">发送带有<em>SYN</em>和<em>ACK</em>标志的数据包</td>
+<td style="text-align:center">Client确定自己发送正常,接收正常；对方发送正常</td>
 </tr>
 <tr>
-<td align="center">3</td>
-<td align="center">Client -&gt; Server</td>
-<td align="center">发送带有<em>ACK</em>标志的数据包</td>
-<td align="center">Server确认自己发送正常,接收正常；对方发送正常,接收正常</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">Client -&gt; Server</td>
+<td style="text-align:center">发送带有<em>ACK</em>标志的数据包</td>
+<td style="text-align:center">Server确认自己发送正常,接收正常；对方发送正常,接收正常</td>
 </tr>
 </tbody>
 </table>
@@ -292,36 +292,36 @@ ps: 上图中是图解HTTP中的划分</p>
 <table>
 <thead>
 <tr>
-<th align="center">序号</th>
-<th align="center">方向</th>
-<th align="center">动作</th>
-<th align="center">效果</th>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">方向</th>
+<th style="text-align:center">动作</th>
+<th style="text-align:center">效果</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">1</td>
-<td align="center">Client -&gt; Server</td>
-<td align="center">发送带有<em>FIN</em>的数据包</td>
-<td align="center">Client提出关闭请求,进入只接收不发送状态</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">Client -&gt; Server</td>
+<td style="text-align:center">发送带有<em>FIN</em>的数据包</td>
+<td style="text-align:center">Client提出关闭请求,进入只接收不发送状态</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="center">Server -&gt; Client</td>
-<td align="center">发送带有<em>ACK</em>的数据包</td>
-<td align="center">Server回应收到关闭请求</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">Server -&gt; Client</td>
+<td style="text-align:center">发送带有<em>ACK</em>的数据包</td>
+<td style="text-align:center">Server回应收到关闭请求</td>
 </tr>
 <tr>
-<td align="center">3</td>
-<td align="center">Server -&gt; Client</td>
-<td align="center">发送带有<em>FIN</em>的数据包</td>
-<td align="center">Server提出关闭请求</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">Server -&gt; Client</td>
+<td style="text-align:center">发送带有<em>FIN</em>的数据包</td>
+<td style="text-align:center">Server提出关闭请求</td>
 </tr>
 <tr>
-<td align="center">4</td>
-<td align="center">Client -&gt; Server</td>
-<td align="center">发送带有<em>ACK</em>的数据包</td>
-<td align="center">Client发送最后一个<em>ACK</em> 通道关闭</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">Client -&gt; Server</td>
+<td style="text-align:center">发送带有<em>ACK</em>的数据包</td>
+<td style="text-align:center">Client发送最后一个<em>ACK</em> 通道关闭</td>
 </tr>
 </tbody>
 </table>
@@ -382,7 +382,7 @@ ps: 上图中是图解HTTP中的划分</p>
 </ul>
 <blockquote>
 <ul>
-<li>这个套接字选项通知内核，如果端口忙，但TCP状态位于 TIME_WAIT ，可以重用 端口。如果端口忙，而TCP状态位于其他状态，重用端口时依旧得到一个错误信息， 指明&quot;地址已经使用中&rdquo;。如果你的服务程序停止后想立即重启，而新套接字依旧 使用同一端口，此时 SO_REUSEADDR 选项非常有用。必须意识到，此时任何非期 望数据到达，都可能导致服务程序反应混乱，不过这只是一种可能，事实上很不 可能。</li>
+<li>这个套接字选项通知内核，如果端口忙，但TCP状态位于 TIME_WAIT ，可以重用 端口。如果端口忙，而TCP状态位于其他状态，重用端口时依旧得到一个错误信息， 指明&quot;地址已经使用中&quot;。如果你的服务程序停止后想立即重启，而新套接字依旧 使用同一端口，此时 SO_REUSEADDR 选项非常有用。必须意识到，此时任何非期 望数据到达，都可能导致服务程序反应混乱，不过这只是一种可能，事实上很不 可能。</li>
 </ul>
 </blockquote>
 </blockquote>
@@ -461,7 +461,7 @@ ps: 上图中是图解HTTP中的划分</p>
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2020</span>
+        <span itemprop="copyrightYear">2019 - 2021</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 
