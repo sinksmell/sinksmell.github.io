@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-
 name: Hugo Deploy
 
 on:
@@ -31,4 +30,4 @@ jobs:
           personal_token: ${{ secrets.hugo_token}} 
           PUBLISH_BRANCH: master 
           PUBLISH_DIR: ./public  
-          commit_message: Auto Deploy
+          commit_message: CI Auto Deploy
