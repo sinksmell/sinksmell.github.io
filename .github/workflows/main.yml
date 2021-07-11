@@ -10,13 +10,17 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
 
     steps:
-      - name: Hugo Actions
-        uses: srt32/hugo-action@v0.0.3
+      - uses: actions/checkout@v1
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
 
       - name: Build 
         run: hugo
