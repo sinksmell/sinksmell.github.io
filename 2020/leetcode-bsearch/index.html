@@ -202,7 +202,7 @@
 <p>根据 n^2 &gt;= x 将 [0,n] 区间分成两部分 [n^2&lt;=x] 和 [n^2&gt;x] ,目标结果在所选性质的左边区间，所以使用模板2</p>
 </blockquote>
 <p><strong>代码</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">mySqrt</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">mySqrt</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
     <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">x</span>
     <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span> {
         <span style="color:#a6e22e">mid</span><span style="color:#f92672">:=</span>(<span style="color:#a6e22e">l</span><span style="color:#f92672">+</span><span style="color:#a6e22e">r</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
@@ -238,7 +238,7 @@
 <p>根据 nums[i]&lt;target 将区间 [0,n]区间分成两部分{i | nums[i]&lt;target} 和 {i | nums[i]&gt;=target},目标值在所选性质的右边区间，选用模板1</p>
 </blockquote>
 <p><strong>代码</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchInsert</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchInsert</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
   <span style="color:#75715e">// r 为最后一个能选到的位置
 </span><span style="color:#75715e"></span>    <span style="color:#a6e22e">l</span>,<span style="color:#a6e22e">r</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>,len(<span style="color:#a6e22e">nums</span>)
     <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">l</span>&lt;<span style="color:#a6e22e">r</span>{
@@ -273,7 +273,7 @@
 </ul>
 </blockquote>
 <p><strong>代码</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchRange</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchRange</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
     <span style="color:#a6e22e">res</span><span style="color:#f92672">:=</span>make([]<span style="color:#66d9ef">int</span>,<span style="color:#ae81ff">2</span>)
     <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">0</span>]=<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
     <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">1</span>]=<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
@@ -339,7 +339,7 @@ target = 13
 <p>将二维矩阵看作是有序的一维数组，转化成简单的二分搜索，使用 &lt; 性质划分，目标在右边，故使用模板1</p>
 </blockquote>
 <p><strong>代码</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchMatrix</span>(<span style="color:#a6e22e">matrix</span> [][]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchMatrix</span>(<span style="color:#a6e22e">matrix</span> [][]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
     <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">matrix</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> len(<span style="color:#a6e22e">matrix</span>[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
     }
@@ -388,7 +388,7 @@ target = 13
 </ul>
 </blockquote>
 <p><strong>代码</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">findMin</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">findMin</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
     <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
         <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
     }
@@ -428,7 +428,7 @@ target = 13
 </ul>
 </blockquote>
 <p><strong>代码</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">search</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">search</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
     <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
         <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
     }
@@ -495,7 +495,7 @@ target = 13
 </ul>
 </blockquote>
 <p><strong>代码</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// Forward declaration of isBadVersion API.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// Forward declaration of isBadVersion API.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isBadVersion</span>(<span style="color:#66d9ef">int</span> version);
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
@@ -541,7 +541,7 @@ target = 13
 </ul>
 </blockquote>
 <p><strong>代码</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">findPeakElement</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">findPeakElement</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
     <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
         <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
     }
@@ -593,7 +593,7 @@ target = 13
 </ul>
 </blockquote>
 <p><strong>代码</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hIndex</span>(<span style="color:#a6e22e">citations</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hIndex</span>(<span style="color:#a6e22e">citations</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
     <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">citations</span>)<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>{
         <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
     }
@@ -660,7 +660,7 @@ target = 13
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2021</span>
+        <span itemprop="copyrightYear">2019 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 

@@ -184,7 +184,7 @@
 <blockquote>
 <p>go 的 defer 语句是用来<code>延迟执行函数</code>的关键字</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
 
@@ -219,7 +219,7 @@
 </blockquote>
 </blockquote>
 <h3 id="未声明返回值">未声明返回值</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
 
@@ -242,7 +242,7 @@
 </span><span style="color:#75715e">//get result: 1
 </span><span style="color:#75715e"></span>
 </code></pre></div><h3 id="声明返回值">声明返回值</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
 
@@ -300,11 +300,11 @@
 <li>对声明返回值与未声明返回值版本分别执行以下命令</li>
 </ul>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span><span style="color:#ae81ff">386</span> go tool compile -S main.go &gt;&gt; main.S
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span><span style="color:#ae81ff">386</span> go tool compile -S main.go &gt;&gt; main.S
 </code></pre></div><blockquote>
 <p><strong>截取部分汇编代码</strong></p>
 </blockquote>
-<pre><code class="language-x86asm" data-lang="x86asm">&quot;&quot;.demo1 STEXT size=106 args=0x8 locals=0x10
+<pre tabindex="0"><code class="language-x86asm" data-lang="x86asm">&quot;&quot;.demo1 STEXT size=106 args=0x8 locals=0x10
 	0x0000 00000 (defer_topic.go:15)	TEXT	&quot;&quot;.demo1(SB), $16-8
 	0x0000 00000 (defer_topic.go:15)	MOVL	TLS, CX
 	0x0007 00007 (defer_topic.go:15)	MOVL	(CX)(TLS*2), CX
@@ -341,7 +341,7 @@
 	0x005a 00090 (defer_topic.go:17)	CALL	runtime.deferreturn(SB)
 	0x005f 00095 (defer_topic.go:17)	ADDL	$16, SP
 	0x0062 00098 (defer_topic.go:17)	RET
-</code></pre><pre><code class="language-x86asm" data-lang="x86asm">&quot;&quot;.demo2 STEXT size=98 args=0x8 locals=0xc
+</code></pre><pre tabindex="0"><code class="language-x86asm" data-lang="x86asm">&quot;&quot;.demo2 STEXT size=98 args=0x8 locals=0xc
 	0x0000 00000 (defer_topic.go:24)	TEXT	&quot;&quot;.demo2(SB), $12-8
 	0x0000 00000 (defer_topic.go:24)	MOVL	TLS, CX
 	0x0007 00007 (defer_topic.go:24)	MOVL	(CX)(TLS*2), CX
@@ -425,7 +425,7 @@
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2021</span>
+        <span itemprop="copyrightYear">2019 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 

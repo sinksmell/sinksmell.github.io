@@ -201,7 +201,7 @@
 <blockquote>
 <p>假设后台服务监听localhost:8080,以axios为例</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">axios</span>({
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">axios</span>({
   <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;post&#39;</span>,
   <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;http://localhost:8080/api/login&#39;</span>,
   <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
@@ -214,7 +214,7 @@
 <blockquote>
 <p>以beego为例，虽然不同框架添加形式不一样，但想法都是在后端允许跨域请求</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">InsertFilter</span>(<span style="color:#e6db74">&#34;*&#34;</span>, <span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">BeforeRouter</span>, <span style="color:#a6e22e">cors</span>.<span style="color:#a6e22e">Allow</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cors</span>.<span style="color:#a6e22e">Options</span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">InsertFilter</span>(<span style="color:#e6db74">&#34;*&#34;</span>, <span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">BeforeRouter</span>, <span style="color:#a6e22e">cors</span>.<span style="color:#a6e22e">Allow</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cors</span>.<span style="color:#a6e22e">Options</span>{
 		<span style="color:#a6e22e">AllowAllOrigins</span>:  <span style="color:#66d9ef">true</span>,
 		<span style="color:#a6e22e">AllowMethods</span>:     []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;POST&#34;</span>,<span style="color:#e6db74">&#34;OPTIONS&#34;</span>},
 		<span style="color:#a6e22e">AllowHeaders</span>:     []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;Origin&#34;</span>, <span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#e6db74">&#34;Access-Control-Allow-Origin&#34;</span>, <span style="color:#e6db74">&#34;Access-Control-Allow-Headers&#34;</span>, <span style="color:#e6db74">&#34;Content-Type&#34;</span>},
@@ -232,7 +232,7 @@
 <ul>
 <li>1.修改Nginx对应的配置文件,添加如下代码实现反向代理</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">server</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">server</span> {
 <span style="color:#a6e22e">listen</span> <span style="color:#ae81ff">9090</span>;
 <span style="color:#a6e22e">server_name</span> <span style="color:#a6e22e">localhost</span>;
  ......
@@ -253,7 +253,7 @@
 </code></pre></div><ul>
 <li>2.修改ajax请求地址</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">axios</span>({
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">axios</span>({
   <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;post&#39;</span>,
   <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/api/login&#39;</span>,
   <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
@@ -322,7 +322,7 @@
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2021</span>
+        <span itemprop="copyrightYear">2019 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 
